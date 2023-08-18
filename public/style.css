@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400&display=swap');
+@font-face {
+    font-family: "Bodoni";
+    src: url(fonts/BodoniflfRoman-vmAD.ttf)
+}
+
+h1 {
+    font-family: "Bodoni";
+    font-weight: bold;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.shoeContainer {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-family: 'Oxygen', sans-serif;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.shoeImage {
+    width: 250px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #e0e4ec;
+}
+
+.full-bleed {
+    box-shadow: 0 0 0 100vmax #e0e4ec;
+    clip-path: inset(0 -100vmax);
+}
+
+button.addToCartBtn {
+    padding: 8px 76px 8px;
+    background-color: #e0e4ec;
+    color: #000000;
+    border: 20px solid #000000;
+    position: relative;
+}
+
+.addToCartBtn:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.centeredBtnContainer {
+    text-align: center;
+}
+
+.shoeContainer p {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
