@@ -1,25 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shoe Paradise</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-
         <nav>
             <h1>SHOE PARADISE</h1>
         </nav>
-        <main>
-            <h2>Available Shoes</h2>
+        <main class="full-bleed">
+            <div id="slideshow-example" data-component="slideshow">
+                <div role="list">
+                    <div class="slide">
+                        <img src="/public/images/slideshow/1.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="/public/images/slideshow/2.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="/public/images/slideshow/3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
         </main>
+        <div class="full-bleed">
+            <h2>Available Shoes</h2>
+            <div class="filterSection">
+                <div>Filter Results</div>
+                <div>
+                    <label for="">Brand:</label>
+                    <select name="" id="brandSelect">
+                        <option value="default">Select Brand</option>
+                        <option value="GINO PAOLI">GINO PAOLI</option>
+                        <option value="MAZERATA">MAZERATA</option>
+                        <option value="ALDO">ALDO</option>
+                        <option value="CALL IT SPRING">CALL IT SPRING</option>
+                        <option value="STEVE MADDEN">STEVE MADDEN</option>
+                        <option value="POLO">POLO</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Colour:</label>
+                    <select name="" id="colourSelect">
+                        <option value="default">Select Colour</option>
+                        <option value="Grey">Grey</option>
+                        <option value="Tan">Tan</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Burgundy">Burgundy</option>
+                        <option value="Black">Black</option>
+                        <option value="Dark Brown">Dark Brown</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Size:</label>
+                    <select name="" id="sizeSelect">
+                        <option value="default">Select Size</option>
+                        <option value="10">10</option>
+                        <option value="9">9</option>
+                        <option value="8">8</option>
+                        <option value="7">7</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div id="showAllBtn">Show All</div>
+            </div>
+        </div>
         <section class="full-bleed">
         </section>
-        </div>
-    
+    </div>
+
     <script src="../src/shoe-catalogue-factory.js"></script>
     <script src="../src/main.js"></script>
 </body>
+
 </html>

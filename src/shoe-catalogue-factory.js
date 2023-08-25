@@ -145,7 +145,7 @@ function ShoeCatalogue() {
             img_src: "../public/images/oxford-leather-lace-up.png"
         },
         {
-            name: "Brogue toe cap gibson leather lace up",
+            name: "Brogue gibson leather lace up",
             brand: "POLO",
             colour: "Brown",
             size: 7,
@@ -172,7 +172,7 @@ function ShoeCatalogue() {
             img_src: "../public/images/lindo-leather.png"
         },
         {
-            name: "Burnished toe cap gibson leather lace up",
+            name: "Burnished gibson leather lace up",
             brand: "POLO",
             colour: "Dark Brown",
             size: 9,
@@ -194,9 +194,19 @@ function ShoeCatalogue() {
         })
     }
 
+    function filterShoes(brand, colour, size) {
+        const filteredShoes = shoes.filter(item =>
+            (brand === "default" || item.brand === brand) &&
+            (colour === "default" || item.colour === colour) &&
+            (size === "default" || item.size === Number(size)))
+
+        return filteredShoes;
+    }
+
     return {
         shoes,
-        addToCart
+        addToCart,
+        filterShoes
     }
 }
 
