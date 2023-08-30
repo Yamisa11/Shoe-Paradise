@@ -44,7 +44,7 @@ button.addToCartBtn {
     padding: 8px 74px 8px;
     background-color: #e0e4ec;
     color: #000000;
-    border: 20px solid #000000;
+    border: 1px solid #000000;
     position: relative;
 }
 
@@ -126,5 +126,46 @@ select {
 
 #showAllBtn:active {
     transform: translateY(2px);
+}
+
+@media (max-width: 600px) {
+    .shoeContainer {
+        width: 37%;
+    }
+
+    .shoeContainer img {
+        width: 100%;
+    }
+
+    button.addToCartBtn {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .container {
+        width: 96%;
+    }
+
+    .filterSection {
+        display: block;
+        padding: 0;
+    }
+    
+    .filterSection div {
+        margin-bottom: 10px;
+    }
+
+    #showAllBtn {
+        width: 76px;
+        margin-bottom: 20px;
+    }
+
+    .slide {
+        height: 42vh;
+    }
+
+    .slide img {
+        height: 100%;
+    }
 }
 
