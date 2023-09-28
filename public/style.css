@@ -19,7 +19,7 @@ h1, h2 {
     margin-bottom: 20px;
     font-family: 'Oxygen', sans-serif;
     background-color: white;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 10px;
     width: 241px;
 }
@@ -31,25 +31,26 @@ h1, h2 {
 section {
     display: flex;
     flex-wrap: wrap;
-    background-color: #e0e4ec;
+    /* background-color: #e0e4ec; */
     /* justify-content: space-between; */
 }
 
 .full-bleed {
-    box-shadow: 0 0 0 100vmax #e0e4ec;
+    box-shadow: 0 0 0 100vmax #F5F5F5;
     clip-path: inset(0 -100vmax);
 }
 
 button.addToCartBtn {
     padding: 8px 74px 8px;
     background-color: #e0e4ec;
-    color: #000000;
-    border: 1px solid #000000;
+    color: #2C3539;
+    border: 1px solid #2C3539 !important;
+    border: none;
     position: relative;
 }
 
 .addToCartBtn:hover {
-    background-color: #000000;
+    background-color: #2C3539;
     color: white;
 }
 
@@ -80,19 +81,19 @@ button.addToCartBtn {
 }
 
 h2 {
-    background-color: #e0e4ec;
+    /* background-color: #e0e4ec; */
     margin: 0;
     padding: 20px 0;
 }
 
 body {
-    background-color: #e0e4ec;
+    /* background-color: #e0e4ec; */
     height: 200vh;
 }
 
 .filterSection {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     padding: 20px;
     font-family: 'Oxygen', sans-serif;
 }
@@ -119,7 +120,7 @@ select {
     background-color: #418dff;
     border: 1px solid black;
     padding: 2px 8px;
-    font-size: 18px;
+    font-size: 20px;
     cursor: default;
     user-select: none;
 }
@@ -169,3 +170,30 @@ select {
     }
 }
 
+.filterSection {
+    background-color: #2C3539;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.filterSection div {
+    margin-right: 1em;
+}
+
+.filterSection div:first-child {
+    border-bottom: 3px solid white;
+    margin-right: 1.8em;
+}
+
+.full-bleed h2 {
+    background-color: #F5F5F5;
+}
+
+.filterSection {
+    margin-bottom: 0;
+}
+
+section {
+    padding-top: 20px;
+    background-color: #F5F5F5;
+}
