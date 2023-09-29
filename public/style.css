@@ -4,6 +4,11 @@
     src: url(fonts/BodoniflfRoman-vmAD.ttf)
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 h1, h2 {
     font-family: "Bodoni";
     font-weight: bold;
@@ -195,5 +200,9 @@ select {
 
 section {
     padding-top: 20px;
+    background-color: #F5F5F5;
+}
+
+body {
     background-color: #F5F5F5;
 }
