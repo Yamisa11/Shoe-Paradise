@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400&display=swap');
+
 @font-face {
     font-family: "Bodoni";
     src: url(fonts/BodoniflfRoman-vmAD.ttf)
+}
+@font-face {
+    font-family: "AudreyNormal";
+    src: url(fonts/Audrey-Normal.otf)
+}
+
+@font-face {
+    font-family: "Medio";
+    src: url(fonts/medio.otf)
 }
 
 body {
@@ -9,10 +19,14 @@ body {
     padding: 0;
 }
 
-h1, h2 {
-    font-family: "Bodoni";
-    font-weight: bold;
+h1 {
+    font-family: "AudreyNormal";
 }
+
+h2 {
+    font-family: "AudreyNormal";
+}
+
 
 .container {
     width: 90%;
@@ -79,7 +93,7 @@ button.addToCartBtn {
 
 [data-component="slideshow"] .slide {
     display: none;
-  }
+}
 
 [data-component="slideshow"] .slide.active {
     display: block;
@@ -103,7 +117,8 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
-.filterSection div, .filterSection select{
+.filterSection div,
+.filterSection select {
     font-size: 20px;
 }
 
@@ -123,7 +138,6 @@ select {
 
 #showAllBtn {
     background-color: #418dff;
-    border: 1px solid black;
     padding: 2px 8px;
     font-size: 20px;
     cursor: default;
@@ -156,7 +170,7 @@ select {
         display: block;
         padding: 0;
     }
-    
+
     .filterSection div {
         margin-bottom: 10px;
     }
@@ -205,4 +219,55 @@ section {
 
 body {
     background-color: #F5F5F5;
+}
+
+.overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.overlay-text p {
+    font-family: "Medio";
+    font-size: 24px;
+}
+
+.overlay-text h1 {
+    font-family: "Medio";
+    font-size: 45px;
+}
+
+.overlay-text button {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    color: white;
+    padding: 10px 14px;
+}
+
+.overlay-text button:active {
+    transform: translateY(2px);
+}
+
+.overlay-text a {
+    color: white;
+    text-decoration: none;
+}
+
+.overlay-text a:visited {
+    color: white;
 }
