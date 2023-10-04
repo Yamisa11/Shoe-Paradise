@@ -7,7 +7,7 @@ function ShoeCatalogue() {
             size: 6,
             price: 799,
             in_stock: 12,
-            img_src: "./public/images/scott-formal-shoe.png"
+            img_src: "./public/images/shoes/scott-formal-shoe.png"
         },
         {
             name: "Nanni 38 loafer",
@@ -16,7 +16,7 @@ function ShoeCatalogue() {
             size: 8,
             price: 559,
             in_stock: 8,
-            img_src: "./public/images/nanni-38-loafer.png"
+            img_src: "./public/images/shoes/nanni-38-loafer.png"
         },
         {
             name: "Miraylle",
@@ -25,7 +25,7 @@ function ShoeCatalogue() {
             size: 10,
             price: 2199,
             in_stock: 5,
-            img_src: "./public/images/miraylle.png"
+            img_src: "./public/images/shoes/miraylle.png"
         },
         {
             name: "Percival",
@@ -34,7 +34,7 @@ function ShoeCatalogue() {
             size: 7,
             price: 1649,
             in_stock: 3,
-            img_src: "./public/images/percival.png"
+            img_src: "./public/images/shoes/percival.png"
         },
         {
             name: "Nanni 36 - loafer",
@@ -43,7 +43,7 @@ function ShoeCatalogue() {
             size: 6,
             price: 664,
             in_stock: 7,
-            img_src: "./public/images/nanni-36-loafer.png"
+            img_src: "./public/images/shoes/nanni-36-loafer.png"
         },
         {
             name: "Magio 72 formal",
@@ -52,7 +52,7 @@ function ShoeCatalogue() {
             size: 8,
             price: 559,
             in_stock: 14,
-            img_src: "./public/images/magio-72-formal.png"
+            img_src: "./public/images/shoes/magio-72-formal.png"
         },
         {
             name: "Monetto",
@@ -61,7 +61,7 @@ function ShoeCatalogue() {
             size: 9,
             price: 1649,
             in_stock: 4,
-            img_src: "./public/images/monetto.png"
+            img_src: "./public/images/shoes/monetto.png"
         },
         {
             name: "Sergio formal shoe",
@@ -70,7 +70,7 @@ function ShoeCatalogue() {
             size: 7,
             price: 799,
             in_stock: 9,
-            img_src: "./public/images/sergio-formal-shoe.png"
+            img_src: "./public/images/shoes/sergio-formal-shoe.png"
         },
         {
             name: "Killyon",
@@ -79,7 +79,7 @@ function ShoeCatalogue() {
             size: 8,
             price: 899,
             in_stock: 11,
-            img_src: "./public/images/killyon.png"
+            img_src: "./public/images/shoes/killyon.png"
         },
         {
             name: "Albeck",
@@ -88,7 +88,7 @@ function ShoeCatalogue() {
             size: 6,
             price: 1899,
             in_stock: 5,
-            img_src: "./public/images/albeck.png"
+            img_src: "./public/images/shoes/albeck.png"
         },
         {
             name: "Magio 52 loafer",
@@ -97,7 +97,7 @@ function ShoeCatalogue() {
             size: 7,
             price: 551,
             in_stock: 6,
-            img_src: "./public/images/magio-52-loafer.png"
+            img_src: "./public/images/shoes/magio-52-loafer.png"
         },
         {
             name: "Wingstroll",
@@ -106,7 +106,7 @@ function ShoeCatalogue() {
             size: 9,
             price: 1699,
             in_stock: 10,
-            img_src: "./public/images/wingstroll.png"
+            img_src: "./public/images/shoes/wingstroll.png"
         },
         {
             name: "Matey leather",
@@ -115,7 +115,7 @@ function ShoeCatalogue() {
             size: 6,
             price: 250,
             in_stock: 4,
-            img_src: "./public/images/matey-leather.png"
+            img_src: "./public/images/shoes/matey-leather.png"
         },
         {
             name: "Grazie 61 canvas",
@@ -124,7 +124,7 @@ function ShoeCatalogue() {
             size: 8,
             price: 899,
             in_stock: 8,
-            img_src: "./public/images/grazie-61-canvas.png"
+            img_src: "./public/images/shoes/grazie-61-canvas.png"
         },
         {
             name: "Ybiari",
@@ -133,7 +133,7 @@ function ShoeCatalogue() {
             size: 10,
             price: 899,
             in_stock: 12,
-            img_src: "./public/images/ybiari.png"
+            img_src: "./public/images/shoes/ybiari.png"
         },
         {
             name: "Oxford leather lace up",
@@ -142,7 +142,7 @@ function ShoeCatalogue() {
             size: 8,
             price: 2999,
             in_stock: 5,
-            img_src: "./public/images/oxford-leather-lace-up.png"
+            img_src: "./public/images/shoes/oxford-leather-lace-up.png"
         },
         {
             name: "Brogue gibson leather lace up",
@@ -151,7 +151,7 @@ function ShoeCatalogue() {
             size: 7,
             price: 2099,
             in_stock: 9,
-            img_src: "./public/images/brogue-toe-cap-gibson-leather-lace-up.png"
+            img_src: "./public/images/shoes/brogue-toe-cap-gibson-leather-lace-up.png"
         },
         {
             name: "Sheldon slip-on",
@@ -160,7 +160,7 @@ function ShoeCatalogue() {
             size: 6,
             price: 599,
             in_stock: 7,
-            img_src: "./public/images/sheldon-slip-on.png"
+            img_src: "./public/images/shoes/sheldon-slip-on.png"
         },
         {
             name: "Lindo leather",
@@ -169,7 +169,7 @@ function ShoeCatalogue() {
             size: 9,
             price: 1999,
             in_stock: 3,
-            img_src: "./public/images/lindo-leather.png"
+            img_src: "./public/images/shoes/lindo-leather.png"
         },
         {
             name: "Burnished gibson leather lace up",
@@ -178,7 +178,7 @@ function ShoeCatalogue() {
             size: 9,
             price: 2999,
             in_stock: 10,
-            img_src: "./public/images/burnished-toe-cap-gibson-leather-lace-up.png"
+            img_src: "./public/images/shoes/burnished-toe-cap-gibson-leather-lace-up.png"
         }
     ]
 
