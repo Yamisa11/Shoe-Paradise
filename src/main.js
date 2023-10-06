@@ -32,6 +32,30 @@ function initSlideShow(slideshow) {
 
 const shoeCatalogue = ShoeCatalogue();
 
+async function getShoes() {
+
+    try {
+        const data = await axios.get('http://localhost:3000/api/shoes');
+
+        return data;
+    }
+
+    catch (err) {
+        console.error(err)
+    }
+}
+
+let shoeDataArr;
+
+async function getShoeData() {
+    const shoeData = await getShoes();
+    shoeDataArr = [...shoeData.data]
+    displayShoes(shoeDataArr)
+}
+
+getShoeData();
+
+
 function displayShoes(arr) {
 
     arr.forEach(item => {
@@ -45,6 +69,7 @@ function displayShoes(arr) {
         const addToCartBtn = document.createElement("button");
         const centeredBtnContainer = document.createElement("div");
 
+        shoeContainer.dataset.shoeId = item.id;
         shoeImg.src = item.img_src;
         shoeName.innerText = item.name;
         shoeBrand.innerText = item.brand;
@@ -62,6 +87,9 @@ function displayShoes(arr) {
         shoeStock.className = "shoeStock";
         addToCartBtn.className = "addToCartBtn";
         centeredBtnContainer.className = "centeredBtnContainer"
+
+        shoesDisplay.style.display = "flex";
+        shoesDisplay.style.textAlign = "initial";
 
         centeredBtnContainer.append(addToCartBtn);
         shoeContainer.append(shoeImg, shoeName, shoeBrand, shoePrice, shoeStock, centeredBtnContainer);
@@ -98,26 +126,34 @@ function displayShoes(arr) {
     })
 }
 
-displayShoes(shoeCatalogue.shoes)
-
 brandSelect.addEventListener("change", shoeFilter)
 colourSelect.addEventListener("change", shoeFilter)
 sizeSelect.addEventListener("change", shoeFilter)
 
-function shoeFilter() {
+async function shoeFilter() {
 
     shoesDisplay.innerHTML = "";
 
-    const filteredShoeArr = shoeCatalogue.filterShoes(brandSelect.value, colourSelect.value, sizeSelect.value);
+    const filteredShoeArr = await shoeCatalogue.filterShoes(brandSelect.value, colourSelect.value, sizeSelect.value);
+
+console.log(filteredShoeArr)
+
 
     if (filteredShoeArr.length === 0) {
 
         const p = document.createElement("p");
+        const img = document.createElement("img")
+        const div = document.createElement("div");
         p.innerText = "There are no shoes matching your criteria";
         p.classList.add("filterMsg")
-        shoesDisplay.append(p)
+        img.src = "../public/images/icons/no-search-results.png";
+        div.append(img)
+        shoesDisplay.style.display = "block";
+        shoesDisplay.style.textAlign = "center";
+        shoesDisplay.append(p, div)
         shoesDisplay.classList.add("centerFilterMsg")
     } else {
+        console.log(filteredShoeArr)
         displayShoes(filteredShoeArr);
         shoesDisplay.classList.remove("centerFilterMsg")
     }
@@ -125,7 +161,7 @@ function shoeFilter() {
 
 showAllBtn.addEventListener("click", () => {
     shoesDisplay.innerHTML = "";
-    displayShoes(shoeCatalogue.shoes)
+    displayShoes(shoeDataArr)
     brandSelect.value = "default";
     colourSelect.value = "default";
     sizeSelect.value = "default";

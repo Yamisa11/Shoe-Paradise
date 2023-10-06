@@ -139,6 +139,7 @@ select {
 
 .filterMsg {
     font-size: 24px;
+    font-family: 'Oxygen', sans-serif;
 }
 
 #showAllBtn {
