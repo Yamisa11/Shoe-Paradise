@@ -136,24 +136,19 @@ async function shoeFilter() {
 
     const filteredShoeArr = await shoeCatalogue.filterShoes(brandSelect.value, colourSelect.value, sizeSelect.value);
 
-console.log(filteredShoeArr)
-
-
     if (filteredShoeArr.length === 0) {
-
         const p = document.createElement("p");
         const img = document.createElement("img")
         const div = document.createElement("div");
         p.innerText = "There are no shoes matching your criteria";
         p.classList.add("filterMsg")
-        img.src = "../public/images/icons/no-search-results.png";
+        img.src = "./public/images/icons/no-search-results.png";
         div.append(img)
         shoesDisplay.style.display = "block";
         shoesDisplay.style.textAlign = "center";
         shoesDisplay.append(p, div)
         shoesDisplay.classList.add("centerFilterMsg")
     } else {
-        console.log(filteredShoeArr)
         displayShoes(filteredShoeArr);
         shoesDisplay.classList.remove("centerFilterMsg")
     }
@@ -166,4 +161,3 @@ showAllBtn.addEventListener("click", () => {
     colourSelect.value = "default";
     sizeSelect.value = "default";
 })
-
