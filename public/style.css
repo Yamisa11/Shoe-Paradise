@@ -110,11 +110,6 @@ h2 {
     padding: 20px 0;
 }
 
-body {
-    /* background-color: #e0e4ec; */
-    height: 200vh;
-}
-
 .filterSection {
     display: flex;
     /* justify-content: space-around; */
@@ -282,17 +277,9 @@ body {
     color: white;
 }
 
-.cart-icon {
-    position: relative;
-    cursor: pointer;
-}
-
 .cart-icon img {
-    position: absolute;
     width: 40px;
     height: 30px;
-    top: 16px;
-    right: 20px;
 }
 
 .cart-icon-badge {
@@ -301,7 +288,7 @@ body {
     color: white;
     padding: 2px 8px;
     position: absolute;
-    right: 70px;
+    right: 76px;
     top: 12px;
     font-size: 12px;
     font-family: 'Oxygen', sans-serif;
@@ -310,4 +297,77 @@ body {
 nav {
     display: flex;
     justify-content: space-between;
+}
+
+.menu-section {
+    display: flex;
+    align-items: center;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.menu-section a {
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.menu-section a:hover {
+    color: #418dff;
+}
+
+.cart-icon-section {
+    margin-left: 16px;
+}
+
+.form-container {
+    margin-top: 60px;
+    background-color: #DFDFDF;
+    width: 470px;
+    padding: 40px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    height: 640px;
+}
+
+.form-center {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)), url(./images/add-shoe-bg.jpeg);
+    background-size: cover;
+    height: 90vh;
+}
+
+.form-container input {
+    width: 94%;
+    padding: 10px;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border: none;
+    color: #696969;
+}
+
+.form-container input:focus {
+    border: 3px solid #A4A4A4;
+}
+
+nav h1 a {
+    color: black;
+    text-decoration: none;
+}
+
+.form-container button {
+    width: 98%;
+    font-size: 18px;
+    border: 1px solid #696969;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #CDCDCD;
+}
+
+.form-container button:hover {
+    background-color: #A4A4A4;
+    cursor: pointer;
 }

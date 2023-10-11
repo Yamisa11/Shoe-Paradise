@@ -1,0 +1,91 @@
+<header>
+    <div class="container">
+        <nav>
+            <h1><a href="/">SHOE PARADISE</a></h1>
+            <div class="menu-section">
+                <div><a href="/add">Add Shoe</a></div>
+                <div class="cart-icon-section">
+                    <div class="cart-icon">
+                        <img src="/images/icons/shopping-bag-icon.png" alt="">
+                    </div>
+                    <div class="cart-icon-badge">0</div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="container">
+    <main class="full-bleed">
+        <div id="slideshow-example" data-component="slideshow">
+            <div role="list">
+                <div class="slide">
+                    <img src="/images/slideshow/1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="/images/slideshow/2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="/images/slideshow/3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="overlay">
+        </div>
+
+        <div class="overlay-text">
+            <h1>Elevate Your Style with Elegance</h1>
+            <p>Explore our collection and discover the ideal smart/formal shoes that match your ambition and
+                elevate your style.</p>
+            <button><a href="#available-shoes-section">SHOP NOW</a></button>
+        </div>
+
+
+    </main>
+    <div class="full-bleed" id="available-shoes-section">
+        <h2>AVAILABLE SHOES</h2>
+        <div class="filterSection">
+            <div>Filter Results</div>
+            <div>
+                <label for="">Brand:</label>
+                <select name="" id="brandSelect">
+                    <option value="default">Select Brand</option>
+                    <option value="GINO-PAOLI">GINO PAOLI</option>
+                    <option value="MAZERATA">MAZERATA</option>
+                    <option value="ALDO">ALDO</option>
+                    <option value="CALL-IT-SPRING">CALL IT SPRING</option>
+                    <option value="STEVE-MADDEN">STEVE MADDEN</option>
+                    <option value="POLO">POLO</option>
+                </select>
+            </div>
+            <div>
+                <label for="">Colour:</label>
+                <select name="" id="colourSelect">
+                    <option value="default">Select Colour</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Tan">Tan</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Burgundy">Burgundy</option>
+                    <option value="Black">Black</option>
+                    <option value="Dark-Brown">Dark Brown</option>
+                </select>
+            </div>
+            <div>
+                <label for="">Size:</label>
+                <select name="" id="sizeSelect">
+                    <option value="default">Select Size</option>
+                    <option value="10">10</option>
+                    <option value="9">9</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div id="showAllBtn">Show All</div>
+        </div>
+    </div>
+    <section class="full-bleed">
+    </section>
+</div>
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+<script src="/js/shoe-catalogue-factory.js"></script>
+<script src="/js/main.js"></script>
