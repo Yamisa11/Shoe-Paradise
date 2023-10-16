@@ -35,7 +35,7 @@ const shoeCatalogue = ShoeCatalogue();
 async function getShoes() {
 
     try {
-        const data = await axios.get('http://localhost:3000/api/shoes');
+        const data = await axios.get('http://localhost:3010/api/shoes');
 
         return data;
     }
@@ -142,7 +142,7 @@ async function shoeFilter() {
         const div = document.createElement("div");
         p.innerText = "There are no shoes matching your criteria";
         p.classList.add("filterMsg")
-        img.src = "./public/images/icons/no-search-results.png";
+        img.src = "./images/icons/no-search-results.png";
         div.append(img)
         shoesDisplay.style.display = "block";
         shoesDisplay.style.textAlign = "center";

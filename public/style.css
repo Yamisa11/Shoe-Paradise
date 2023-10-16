@@ -371,3 +371,29 @@ nav h1 a {
     background-color: #A4A4A4;
     cursor: pointer;
 }
+
+.hide-element {
+    display: none !important;
+}
+
+.success-message {
+    background-color: #DFDFDF;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 24px;
+    padding: 40px;
+    text-align: center;
+}
+
+.add-success-message {
+    display: flex;
+    align-items: center;
+}
+
+.success-message a {
+    color: #418dff;
+    text-decoration: none;
+}
+
+.success-message a:hover {
+    text-decoration: underline;
+}
