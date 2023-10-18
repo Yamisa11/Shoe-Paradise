@@ -8,13 +8,14 @@ const imageInput = document.querySelector("#image-input");
 const addShoeBtn = document.querySelector("#add-shoe-btn");
 const shoeForm = document.querySelector("form");
 const formContainer = document.querySelector(".form-container");
+const formCenterContainer = document.querySelector(".form-center");
 const messageContainer = document.querySelector(".add-success-message");
 
 async function addShoe(event) {
     event.preventDefault();
 
     try {
-        const url = "http://localhost:3010/api/shoes";
+        const url = "https://shoe-catalogue-api-au25.onrender.com/api/shoes";
 
         const settings = {
             method: "POST",
@@ -33,15 +34,21 @@ async function addShoe(event) {
             })
         }
 
-        const response = await fetch(url, settings);
+        if (nameInput.value && brandInput.value && colourInput.value && sizeInput.value
+            && priceInput.value && stockInput.value && imageInput.value) {
 
-        if (response.ok) {
-            formContainer.classList.add("hide-element");
-            messageContainer.classList.remove("hide-element");
+            const response = await fetch(url, settings);
+
+            if (response.ok) {
+                formContainer.classList.add("hide-element");
+                messageContainer.classList.remove("hide-element");
+                formCenterContainer.style.height = "90vh";
+            }
         }
+
     }
 
-    catch(err) {
+    catch (err) {
         console.log(err.message)
     }
 }

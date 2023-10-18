@@ -201,25 +201,25 @@ function ShoeCatalogue() {
         const sizeSelection = size === "default";
 
         if(!brandSelection && !colourSelection && !sizeSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/brand/${brand}/colour/${colour}/size/${size}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/brand/${brand}/colour/${colour}/size/${size}`)
             return result.data;
         } else if (!brandSelection && !colourSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/brand/${brand}/colour/${colour}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/brand/${brand}/colour/${colour}`)
             return result.data;
         } else if (!brandSelection && !sizeSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/brand/${brand}/size/${size}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/brand/${brand}/size/${size}`)
             return result.data;
         } else if (!colourSelection && !sizeSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/colour/${colour}/size/${size}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/colour/${colour}/size/${size}`)
             return result.data;
         } else if (!brandSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/brand/${brand}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/brand/${brand}`)
             return result.data;
         } else if (!sizeSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/size/${size}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/size/${size}`)
             return result.data;
         } else if (!colourSelection) {
-            const result = await axios.get(`http://localhost:3010/api/shoes/colour/${colour}`)
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/colour/${colour}`)
             return result.data;
         }
 

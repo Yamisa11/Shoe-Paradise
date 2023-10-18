@@ -4,6 +4,7 @@
     font-family: "Bodoni";
     src: url(fonts/BodoniflfRoman-vmAD.ttf)
 }
+
 @font-face {
     font-family: "AudreyNormal";
     src: url(fonts/Audrey-Normal.otf)
@@ -17,6 +18,7 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 h1 {
@@ -333,9 +335,9 @@ nav {
     display: flex;
     justify-content: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3)), url(./images/add-shoe-bg.jpeg);
+            rgba(0, 0, 0, 0.3)), url(./images/add-shoe-bg.jpeg);
     background-size: cover;
-    height: 90vh;
+    height: 100%;
 }
 
 .form-container input {
@@ -396,4 +398,16 @@ nav h1 a {
 
 .success-message a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 1366px) and (max-height: 1208px) {
+    .form-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        zoom: 80%;
+    }
+
+    .cart-icon {
+        margin-right: 28px;
+    }
 }

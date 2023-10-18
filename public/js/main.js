@@ -35,7 +35,7 @@ const shoeCatalogue = ShoeCatalogue();
 async function getShoes() {
 
     try {
-        const data = await axios.get('http://localhost:3010/api/shoes');
+        const data = await axios.get('https://shoe-catalogue-api-au25.onrender.com/api/shoes');
 
         return data;
     }
