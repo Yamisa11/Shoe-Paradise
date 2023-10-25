@@ -400,6 +400,132 @@ nav h1 a {
     text-decoration: underline;
 }
 
+#shopping-cart-heading {
+    font-family: 'Oxygen', sans-serif;
+    font-weight: normal;
+}
+
+.cart-item {
+    width: 800px;
+    height: 160px;
+    /* background-color: green; */
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    font-weight: normal;
+    /* align-items: center; */
+}
+
+.cart-items-container {
+    display: flex;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.cart-items {
+    margin-right: 20px;
+}
+
+.cart-item img {
+    width: 180px;
+    height: 160px;
+}
+
+.cart-item-image {
+    flex: 1;
+}
+
+.cart-item-info {
+    padding-left: 16px;
+    flex: 2;
+}
+
+.cart-item-info p:nth-child(1) {
+    color: #333535;
+}
+
+.cart-item-info p:nth-child(2) {
+    color: #8d8989;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    font-size: 26px;
+    flex: 2;
+    text-align: right;
+    padding-right: 20px;
+}
+
+/* .cart-item-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.quantity-select {
+    display: flex;
+}
+
+.cart-item-quantity div {
+    margin-right: 20px;
+}
+
+.quantity-select div:nth-child(2) {
+    border: 1px solid grey;
+    padding: 6px 16px;
+}
+
+.quantity-select div:nth-child(1), .quantity-select div:nth-child(3) {
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.cart-item-quantity p {
+    margin: 15%;
+}
+
+.cart-summary {
+    width: 300px;
+    padding: 20px;
+    background-color: #dde2e6;
+}
+
+#summary-heading {
+    font-size: 24px;
+}
+
+.items-summary {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.total-summary {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+    color: #4d4d4f;
+    margin-bottom: 10px;
+}
+
+#checkout-btn {
+    background-color: #418dff;
+    width: 100px;
+    padding: 6px 10px;
+    display: flex;
+}
+
+#checkout-btn div:first-child {
+    margin-right: 10px;
+}
+
+.checkout-summary img {
+    width: 22px;
+    height: 20px;
+}
+
 @media (max-width: 1366px) and (max-height: 1208px) {
     .form-container {
         margin-top: 20px;
