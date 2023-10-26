@@ -407,7 +407,7 @@ nav h1 a {
 
 .cart-item {
     width: 800px;
-    height: 160px;
+    height: 140px;
     margin-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
@@ -425,7 +425,7 @@ nav h1 a {
 
 .cart-item img {
     width: 180px;
-    height: 160px;
+    height: 140px;
 }
 
 .cart-item-image {
@@ -535,6 +535,10 @@ nav h1 a {
     background-color: #DA2C43;
     padding: 6px 10px;
     cursor: pointer;
+}
+
+#login-btn, #signup-btn {
+    margin-right: 14px;
 }
 
 @media (max-width: 1366px) and (max-height: 1208px) {
