@@ -11,7 +11,7 @@ slideshows.forEach(initSlideShow);
 
 function initSlideShow(slideshow) {
 
-    var slides = document.querySelectorAll(`.slide`); // Get an array of slides
+    var slides = document.querySelectorAll(`.slide`);
 
     var index = 0, time = 5000;
     slides[index].classList.add('active');
@@ -19,10 +19,8 @@ function initSlideShow(slideshow) {
     setInterval(() => {
         slides[index].classList.remove('active');
 
-        //Go over each slide incrementing the index
         index++;
 
-        // If you go over all slides, restart the index to show the first slide and start again
         if (index === slides.length) index = 0;
 
         slides[index].classList.add('active');
@@ -45,16 +43,28 @@ async function getShoes() {
     }
 }
 
+function skeletonLoader() {
+    for (let i = 0; i < 21; i++) {
+        const shoeContainer = document.createElement("div");
+        shoeContainer.className = "shoeLoaderContainer";
+        shoesDisplay.style.display = "flex";
+        shoesDisplay.style.textAlign = "initial";
+        shoesDisplay.append(shoeContainer)
+    }
+}
+
+skeletonLoader()
+
 let shoeDataArr;
 
 async function getShoeData() {
     const shoeData = await getShoes();
     shoeDataArr = [...shoeData.data]
+    shoesDisplay.innerHTML = "";
     displayShoes(shoeDataArr)
 }
 
 getShoeData();
-
 
 function displayShoes(arr) {
 
@@ -156,6 +166,7 @@ async function shoeFilter() {
 
 showAllBtn.addEventListener("click", () => {
     shoesDisplay.innerHTML = "";
+    shoesDisplay.classList.remove("centerFilterMsg")
     displayShoes(shoeDataArr)
     brandSelect.value = "default";
     colourSelect.value = "default";
