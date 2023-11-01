@@ -3,8 +3,8 @@
         <nav>
             <h1><a href="/">SHOE PARADISE</a></h1>
             <div class="menu-section">
-                <div id="login-btn"><a href="/login">Login</a></div>
-                <div id="signup-btn"><a href="/signup">Sign Up</a></div>
+                <div id="login-btn">Login</div>
+                <div id="signup-btn">Sign Up</div>
                 <div><a href="/add">Add Shoe</a></div>
                 <div class="cart-icon-section">
                     <a href="/cart">
@@ -89,6 +89,58 @@
     </div>
     <section class="full-bleed">
     </section>
+    <div class="modal-overlay hidden"></div>
+    <div class="login-form-container hidden">
+        <div id="close-login-form">x</div>
+        <div id="login-heading">
+            <h1>Login</h1>
+        </div>
+        <form>
+            <div>
+                <label for="">Email</label>
+            </div>
+            <input type="text" name="" id="name-input">
+            <div>
+                <label for="">Password</label>
+            </div>
+            <input type="text" name="" id="brand-input">
+
+            <button type="submit" id="login-btn">Login</button>
+        </form>
+    </div>
+    <div class="signup-form-container hidden">
+        <div id="close-signup-form">x</div>
+        <div id="signup-heading">
+            <h1>Sign Up</h1>
+        </div>
+        <form>
+            <div>
+                <label for="">Name</label>
+            </div>
+            <input type="text" name="" id="name-input">
+            <div>
+                <label for="">Surname</label>
+            </div>
+            <input type="text" name="" id="brand-input">
+            <div>
+                <label for="">Email</label>
+            </div>
+            <input type="text" name="" id="name-input">
+            <div>
+                <label for="">Password</label>
+            </div>
+            <input type="text" name="" id="brand-input">
+            <div>
+                <label for="">Confirm Password</label>
+            </div>
+            <input type="text" name="" id="brand-input">
+            <div>
+                <label for="">Address</label>
+            </div>
+            <input type="text" name="" id="brand-input">
+            <button type="submit" id="login-btn">Sign Up</button>
+        </form>
+    </div>
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>

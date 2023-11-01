@@ -4,6 +4,13 @@ const colourSelect = document.querySelector("#colourSelect");
 const sizeSelect = document.querySelector("#sizeSelect");
 const showAllBtn = document.querySelector("#showAllBtn");
 const cartIconBadge = document.querySelector(".cart-icon-badge");
+const loginBtn = document.querySelector("#login-btn")
+const loginFormContainer = document.querySelector(".login-form-container")
+const signupBtn = document.querySelector("#signup-btn");
+const signupFormContainer = document.querySelector(".signup-form-container");
+const closeLoginForm = document.querySelector("#close-login-form")
+const closeSignupForm = document.querySelector("#close-signup-form")
+const overlay = document.querySelector(".modal-overlay")
 
 var slideshows = document.querySelectorAll('[data-component="slideshow"]')
 
@@ -184,4 +191,28 @@ showAllBtn.addEventListener("click", () => {
     brandSelect.value = "default";
     colourSelect.value = "default";
     sizeSelect.value = "default";
+})
+
+loginBtn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+    loginFormContainer.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+})
+
+signupBtn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+    signupFormContainer.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+})
+
+closeLoginForm.addEventListener("click", () => {
+    overlay.classList.add("hidden");
+    loginFormContainer.classList.add("hidden");
+    document.body.style.overflow = "visible";
+})
+
+closeSignupForm.addEventListener("click", () => {
+    overlay.classList.add("hidden");
+    signupFormContainer.classList.add("hidden");
+    document.body.style.overflow = "visible";
 })

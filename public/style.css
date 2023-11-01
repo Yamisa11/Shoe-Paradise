@@ -305,15 +305,17 @@ nav {
     display: flex;
     align-items: center;
     font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    color: #404040;
 }
 
 .menu-section a {
-    color: black;
+    color: #404040;
     text-decoration: none;
-    font-size: 24px;
 }
 
-.menu-section a:hover {
+.menu-section a:hover, #login-btn:hover, #signup-btn:hover {
     color: #418dff;
 }
 
@@ -553,6 +555,13 @@ nav h1 a {
 
 .login-form-container h1 {
     font-family: 'Oxygen', sans-serif;
+    margin-top: 0;
+}
+
+.signup-form-container h1 {
+    font-family: 'Oxygen', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .login-form-container {
@@ -606,6 +615,101 @@ nav h1 a {
             rgba(0, 0, 0, 0.3));
     background-size: cover;
     height: 100%;
+}
+
+.signup-form-container {
+    margin-top: 0;
+    background-color: #DFDFDF;
+    width: 470px;
+    padding: 30px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 14px;
+    height: 600px;
+    padding-bottom: 0;
+}
+
+.signup-form-container input {
+    width: 94%;
+    padding: 10px;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: none;
+    color: #696969;
+}
+
+.signup-form-container input:focus {
+    border: 3px solid #A4A4A4;
+}
+
+.signup-form-container button {
+    width: 98%;
+    font-size: 18px;
+    border: 1px solid #696969;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #CDCDCD;
+}
+
+.signup-form-container button:hover {
+    background-color: #A4A4A4;
+    cursor: pointer;
+}
+
+#signup-heading {
+    text-align: center;
+}
+
+.signup-form-center {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3));
+    background-size: cover;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-form-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+.signup-form-container {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+#close-login-form, #close-signup-form {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: right;
+    cursor: pointer;
+    font-size: 18px
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    z-index: 1;
 }
 
 @keyframes skeleton-loading {
