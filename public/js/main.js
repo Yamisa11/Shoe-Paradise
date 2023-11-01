@@ -134,9 +134,11 @@ function displayShoes(arr) {
 
             Toastify({
 
-                text: "Item added to cart",
+                text: " Item added to cart",
 
-                duration: 3000
+                duration: 3000,
+
+                avatar: "/images/icons/check.png"
 
             }).showToast();
 
