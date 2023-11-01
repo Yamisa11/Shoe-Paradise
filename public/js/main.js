@@ -138,8 +138,11 @@ function displayShoes(arr) {
 
                 duration: 3000,
 
-                avatar: "/images/icons/check.png"
+                avatar: "/images/icons/check.png",
 
+                style: {
+                    fontFamily: "'Oxygen', sans-serif"
+                }
             }).showToast();
 
         })

@@ -551,6 +551,63 @@ nav h1 a {
     animation: skeleton-loading 1s infinite alternate;
 }
 
+.login-form-container h1 {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.login-form-container {
+    margin-top: 60px;
+    background-color: #DFDFDF;
+    width: 470px;
+    padding: 30px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    height: 340px;
+    margin-bottom: 60px;
+}
+
+.login-form-container input {
+    width: 94%;
+    padding: 10px;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border: none;
+    color: #696969;
+}
+
+.login-form-container input:focus {
+    border: 3px solid #A4A4A4;
+}
+
+.login-form-container button {
+    width: 98%;
+    font-size: 18px;
+    border: 1px solid #696969;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #CDCDCD;
+}
+
+.login-form-container button:hover {
+    background-color: #A4A4A4;
+    cursor: pointer;
+}
+
+#login-heading {
+    text-align: center;
+}
+
+.login-form-center {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3));
+    background-size: cover;
+    height: 100%;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;

@@ -25,4 +25,8 @@ app.get("/cart", (req, res) => {
     res.render("cart")
 })
 
+app.get("/login", (req, res) => {
+    res.render("login")
+})
+
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));
