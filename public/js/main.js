@@ -132,6 +132,14 @@ function displayShoes(arr) {
                 }
             })
 
+            Toastify({
+
+                text: "Item added to cart",
+
+                duration: 3000
+
+            }).showToast();
+
         })
     })
 }
