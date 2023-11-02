@@ -3,8 +3,15 @@
         <nav>
             <h1><a href="/">SHOE PARADISE</a></h1>
             <div class="menu-section">
-                <div id="login-btn">Login</div>
-                <div id="signup-btn">Sign Up</div>
+                <div class="user-dropdown">
+                    <div id="login-btn">Hidaayat <i class="fa fa-caret-down"></i></div>
+                    <div class="dropdown-content">
+                        <a href="#">Account</a>
+                        <a href="#">Orders</a>
+                        <a href="#">Wishlist</a>
+                    </div>
+                </div>
+                <div id="signup-btn">Logout</div>
                 <div><a href="/add">Add Shoe</a></div>
                 <div class="cart-icon-section">
                     <a href="/cart">
@@ -89,62 +96,6 @@
     </div>
     <section class="full-bleed">
     </section>
-    <div class="modal-overlay hidden"></div>
-    <div class="login-form-container hidden">
-        <div id="close-login-form">x</div>
-        <div id="login-heading">
-            <h1>Login</h1>
-        </div>
-        <form action="/login" method="POST">
-            <div>
-                <label for="">Email</label>
-            </div>
-            <input type="text" name="email" id="login-email">
-            <div>
-                <label for="">Password</label>
-            </div>
-            <input type="password" name="password" id="login-password">
-            <button type="submit">Login</button>
-        </form>
-        <div id="error-msg"></div>
-    </div>
-    <div class="signup-form-container hidden">
-        <div id="close-signup-form">x</div>
-        <div id="signup-heading">
-            <h1>Sign Up</h1>
-        </div>
-        <form action="/signup" method="POST">
-            <div>
-                <label for="">Name</label>
-            </div>
-            <input type="text" name="name">
-            <div>
-                <label for="">Surname</label>
-            </div>
-            <input type="text" name="surname">
-            <div>
-                <label for="">Address</label>
-            </div>
-            <input type="text" name="address">
-            <div>
-                <label for="">Phone number</label>
-            </div>
-            <input type="text" name="phoneNumber">
-            <div>
-                <label for="">Email</label>
-            </div>
-            <input type="text" name="email">
-            <div>
-                <label for="">Password</label>
-            </div>
-            <input type="password" name="password">
-            <div>
-                <label for="">Confirm Password</label>
-            </div>
-            <input type="password" name="confirm-password">
-            <button type="submit">Sign Up</button>
-        </form>
-    </div>
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>

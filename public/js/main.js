@@ -11,6 +11,10 @@ const signupFormContainer = document.querySelector(".signup-form-container");
 const closeLoginForm = document.querySelector("#close-login-form")
 const closeSignupForm = document.querySelector("#close-signup-form")
 const overlay = document.querySelector(".modal-overlay")
+const loginForm = document.querySelector(".login-form-container form")
+const loginEmailInput = document.querySelector("#login-email");
+const loginPasswordInput = document.querySelector("#login-password");
+const errorMsg = document.querySelector("#error-msg");
 
 var slideshows = document.querySelectorAll('[data-component="slideshow"]')
 
@@ -121,7 +125,7 @@ function displayShoes(arr) {
 
             const shoeName = item.closest(".shoeContainer").children[1].innerText;
 
-            shoeCatalogue.addToCart(shoeName)
+            // shoeCatalogue.addToCart(shoeName)
 
             const shoeItem = item.closest(".shoeContainer").children[4];
 
@@ -133,11 +137,15 @@ function displayShoes(arr) {
 
             cartIconBadge.innerText = cartItemsAdded;
 
-            shoeCatalogue.shoes.forEach(item => {
-                if (shoeName === item.name) {
-                    shoeItem.innerHTML = `<span>${item.in_stock} </span>in stock`;
-                }
-            })
+            // shoeCatalogue.shoes.forEach(item => {
+            //     if (shoeName === item.name) {
+            //         shoeItem.innerHTML = `<span>${item.in_stock} </span>in stock`;
+            //     }
+            // })
+
+            req.params
+
+            console.log(decodeURIComponent(document.cookie))
 
             Toastify({
 
@@ -197,6 +205,9 @@ loginBtn.addEventListener("click", () => {
     overlay.classList.remove("hidden");
     loginFormContainer.classList.remove("hidden");
     document.body.style.overflow = "hidden";
+    errorMsg.innerText = "";
+    loginEmailInput.value = "";
+    loginPasswordInput.value = "";
 })
 
 signupBtn.addEventListener("click", () => {
@@ -215,4 +226,17 @@ closeSignupForm.addEventListener("click", () => {
     overlay.classList.add("hidden");
     signupFormContainer.classList.add("hidden");
     document.body.style.overflow = "visible";
+})
+
+loginForm.addEventListener("submit", (event) => {
+    
+    event.preventDefault();
+
+    if (!loginEmailInput.value && !loginPasswordInput.value) {
+        errorMsg.innerText = "Please enter a username and a password";
+    } else if (!loginEmailInput.value) {
+        errorMsg.innerText = "Please enter a username";
+    } else if (!loginPasswordInput.value) {
+        errorMsg.innerText = "Please enter a password";
+    }
 })
