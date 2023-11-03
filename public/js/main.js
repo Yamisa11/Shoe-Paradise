@@ -143,8 +143,6 @@ function displayShoes(arr) {
             //     }
             // })
 
-            req.params
-
             console.log(decodeURIComponent(document.cookie))
 
             Toastify({
