@@ -15,6 +15,8 @@ const loginForm = document.querySelector(".login-form-container form")
 const loginEmailInput = document.querySelector("#login-email");
 const loginPasswordInput = document.querySelector("#login-password");
 const errorMsg = document.querySelector("#error-msg");
+const shopNowBtn = document.querySelector("#shop-now-btn");
+const availableShoesSection = document.querySelector("#available-shoes-section");
 
 var slideshows = document.querySelectorAll('[data-component="slideshow"]')
 
@@ -85,15 +87,20 @@ function displayShoes(arr) {
         const shoeImg = document.createElement("img");
         const shoeName = document.createElement("p");
         const shoeBrand = document.createElement("p");
+        const shoeSize = document.createElement("p");
+        const shoeColour = document.createElement("p");
         const shoePrice = document.createElement("p");
         const shoeStock = document.createElement("p");
         const addToCartBtn = document.createElement("button");
         const centeredBtnContainer = document.createElement("div");
+        const sizeAndColourContainer = document.createElement("div");
 
         shoeContainer.dataset.shoeId = item.id;
         shoeImg.src = item.img_src;
         shoeName.innerText = item.name;
         shoeBrand.innerText = item.brand;
+        shoeSize.innerHTML = `Size: <span class="colouredItems">${item.size}</span>`;
+        shoeColour.innerHTML = `Colour: <span class="colouredItems">${item.colour}</span>`;
         shoePrice.innerHTML = `<span>R</span>${item.price}`;
         shoeStock.innerHTML = `<span>${item.in_stock} </span>in stock`;
         addToCartBtn.innerText = "ADD TO CART";
@@ -103,17 +110,23 @@ function displayShoes(arr) {
         addToCartBtn.style.border = "1px solid #333535";
         shoeStock.style.color = "#048c44";
 
+
         shoeContainer.className = "shoeContainer";
         shoeImg.className = "shoeImage";
         shoeStock.className = "shoeStock";
         addToCartBtn.className = "addToCartBtn";
         centeredBtnContainer.className = "centeredBtnContainer"
+        sizeAndColourContainer.className = "sizeAndColourContainer";
+        shoeSize.className = "shoeSize";
+        shoeColour.className = "shoeColour";
+        shoePrice.className = "shoePrice";
 
         shoesDisplay.style.display = "flex";
         shoesDisplay.style.textAlign = "initial";
 
         centeredBtnContainer.append(addToCartBtn);
-        shoeContainer.append(shoeImg, shoeName, shoeBrand, shoePrice, shoeStock, centeredBtnContainer);
+        sizeAndColourContainer.append(shoeSize, shoeColour);
+        shoeContainer.append(shoeImg, shoeName, shoeBrand, sizeAndColourContainer, shoePrice, shoeStock, centeredBtnContainer);
         shoesDisplay.append(shoeContainer)
     })
 
@@ -237,4 +250,8 @@ loginForm.addEventListener("submit", (event) => {
     } else if (!loginPasswordInput.value) {
         errorMsg.innerText = "Please enter a password";
     }
+})
+
+shopNowBtn.addEventListener("click", () => {
+    availableShoesSection.scrollIntoView({behavior: "smooth"});
 })

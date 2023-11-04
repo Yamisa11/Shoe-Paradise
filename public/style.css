@@ -36,7 +36,7 @@ h2 {
 }
 
 .shoeContainer {
-    margin-right: 18px;
+    /* margin-right: 24px; */
     margin-bottom: 20px;
     font-family: 'Oxygen', sans-serif;
     background-color: white;
@@ -53,7 +53,15 @@ section {
     display: flex;
     flex-wrap: wrap;
     /* background-color: #e0e4ec; */
-    /* justify-content: space-between; */
+    justify-content: space-between;
+    min-height: 472px;
+}
+
+section::after {
+    content: "";
+    flex: auto;
+    flex: 0 0 49%;
+    max-width: 896px;
 }
 
 .full-bleed {
@@ -85,8 +93,8 @@ button.addToCartBtn {
 }
 
 .shoeContainer p {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 4px;
 }
 
 .slide {
@@ -149,6 +157,35 @@ select {
 
 #showAllBtn:active {
     transform: translateY(2px);
+}
+
+.sizeAndColourContainer {
+    display: flex;
+}
+
+.shoeSize {
+    margin-right: 20px;
+}
+
+.shoeSize, .shoeColour {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+p.shoeStock {
+    margin-bottom: 8px;
+}
+
+.colouredItems {
+    color: #8d8989;
+}
+
+.shoeContainer > p:first-of-type, .shoePrice {
+    font-weight: bold;
+}
+
+#shop-now-btn {
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
@@ -626,6 +663,7 @@ nav h1 a {
     background-color: #DFDFDF;
     width: 470px;
     padding: 30px;
+    padding-left: 40px;
     font-family: 'Oxygen', sans-serif;
     font-size: 14px;
     height: 600px;

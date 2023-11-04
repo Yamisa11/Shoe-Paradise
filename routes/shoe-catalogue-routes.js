@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
@@ -19,7 +20,13 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
         const passwordHashCheck = await bcrypt.compare(password, passwordHash)
 
+        const maxAge = 1 * 24 * 60 * 60;
+
         if (passwordHashCheck) {
+
+            const token = jwt.sign({ email }, "shoe catalogue secret", {
+                expiresIn: maxAge
+            })
             res.render("user")
         } else {
             res.render("index")
