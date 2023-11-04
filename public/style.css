@@ -305,15 +305,19 @@ nav {
     display: flex;
     align-items: center;
     font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    color: #404040;
 }
 
 .menu-section a {
-    color: black;
+    color: #404040;
     text-decoration: none;
-    font-size: 24px;
 }
 
-.menu-section a:hover {
+.menu-section a:hover,
+#login-btn:hover,
+#signup-btn:hover {
     color: #418dff;
 }
 
@@ -466,7 +470,8 @@ nav h1 a {
     padding: 6px 16px;
 }
 
-.quantity-select div:nth-child(1), .quantity-select div:nth-child(3) {
+.quantity-select div:nth-child(1),
+.quantity-select div:nth-child(3) {
     font-weight: bold;
     font-size: 30px;
     cursor: pointer;
@@ -537,7 +542,8 @@ nav h1 a {
     cursor: pointer;
 }
 
-#login-btn, #signup-btn {
+#login-btn,
+#signup-btn {
     margin-right: 14px;
 }
 
@@ -549,6 +555,195 @@ nav h1 a {
     width: 241px;
     height: 412px;
     animation: skeleton-loading 1s infinite alternate;
+}
+
+.login-form-container h1 {
+    font-family: 'Oxygen', sans-serif;
+    margin-top: 0;
+}
+
+.signup-form-container h1 {
+    font-family: 'Oxygen', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.login-form-container {
+    margin-top: 60px;
+    background-color: #DFDFDF;
+    width: 470px;
+    padding: 30px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 16px;
+    height: 340px;
+    margin-bottom: 60px;
+}
+
+.login-form-container input {
+    width: 94%;
+    padding: 10px;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border: none;
+    color: #696969;
+}
+
+.login-form-container input:focus {
+    border: 3px solid #A4A4A4;
+}
+
+.login-form-container button {
+    width: 98%;
+    font-size: 18px;
+    border: 1px solid #696969;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #CDCDCD;
+}
+
+.login-form-container button:hover {
+    background-color: #A4A4A4;
+    cursor: pointer;
+}
+
+#login-heading {
+    text-align: center;
+}
+
+.login-form-center {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3));
+    background-size: cover;
+    height: 100%;
+}
+
+.signup-form-container {
+    margin-top: 0;
+    background-color: #DFDFDF;
+    width: 470px;
+    padding: 30px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 14px;
+    height: 600px;
+    padding-bottom: 0;
+}
+
+.signup-form-container input {
+    width: 94%;
+    padding: 6px;
+    outline: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border: none;
+    color: #696969;
+}
+
+.signup-form-container input:focus {
+    border: 3px solid #A4A4A4;
+}
+
+.signup-form-container button {
+    width: 98%;
+    font-size: 18px;
+    border: 1px solid #696969;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #CDCDCD;
+}
+
+.signup-form-container button:hover {
+    background-color: #A4A4A4;
+    cursor: pointer;
+}
+
+#signup-heading {
+    text-align: center;
+}
+
+.signup-form-center {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3));
+    background-size: cover;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-form-container {
+    position: absolute;
+    transform: translate(-50%, -65%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+.signup-form-container {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+#close-login-form,
+#close-signup-form {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: right;
+    cursor: pointer;
+    font-size: 18px
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+#brandSelect,
+#colourSelect,
+#sizeSelect {
+    border: none;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 12px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    z-index: 3;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#error-msg {
+    padding-top: 10px;
+    text-align: center;
+    color: #EE5253;
 }
 
 @keyframes skeleton-loading {
