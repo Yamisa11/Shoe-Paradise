@@ -239,16 +239,26 @@ closeSignupForm.addEventListener("click", () => {
     document.body.style.overflow = "visible";
 })
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
     
     event.preventDefault();
 
-    if (!loginEmailInput.value && !loginPasswordInput.value) {
-        errorMsg.innerText = "Please enter a username and a password";
-    } else if (!loginEmailInput.value) {
-        errorMsg.innerText = "Please enter a username";
-    } else if (!loginPasswordInput.value) {
-        errorMsg.innerText = "Please enter a password";
+    try {        
+        const response = await axios.post("http://localhost:3000/login", {
+            email:  loginEmailInput.value,
+            password: loginPasswordInput.value
+        })
+
+        if (response.data.status === "error") {
+            errorMsg.innerText = response.data.error_message;
+        } else {
+            window.location.href = "cart"
+        }
+
+        console.log(response.data)
+        
+    } catch(error) {
+        console.log(error)
     }
 })
 

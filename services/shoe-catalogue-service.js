@@ -15,8 +15,21 @@ export default function ShoeCatalogueService(db) {
         return result.password;
     }
 
+    async function userCheck(email) {
+        const selectQuery = `SELECT email FROM users WHERE email = $1`;
+
+        const result = await db.oneOrNone(selectQuery, [email])
+
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return {
         signup,
-        getPasswordHash
+        getPasswordHash,
+        userCheck
     }
 }

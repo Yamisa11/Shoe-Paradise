@@ -16,23 +16,56 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
     async function loginUser(req, res) {
         const { email, password } = req.body;
 
-        const passwordHash = await shoeCatalogueService.getPasswordHash(email);
-
-        const passwordHashCheck = await bcrypt.compare(password, passwordHash)
-
-        const maxAge = 1 * 24 * 60 * 60;
-
-        if (passwordHashCheck) {
-
-            const token = jwt.sign({ email }, "shoe catalogue secret", {
-                expiresIn: maxAge
+        if (!email && !password) {
+            res.json({
+                status: "error",
+                error_message: "Please enter an email and password"
             })
-            res.render("user")
+        } else if (!email) {
+            res.json({
+                status: "error",
+                error_message: "Please enter an email address"
+            })
+        } else if (!password) {
+            res.json({
+                status: "error",
+                error_message: "Please enter a password"
+            })
         } else {
-            res.render("index")
-        }
 
+            const userCheck = await shoeCatalogueService.userCheck(email)
+
+            if (userCheck) {
+                const passwordHash = await shoeCatalogueService.getPasswordHash(email);
+
+                const passwordHashCheck = await bcrypt.compare(password, passwordHash);
+
+                if (passwordHashCheck) {
+
+                    const token = jwt.sign({ email }, "shoe catalogue secret")
+
+                    res.json({
+                        status: "success",
+                        token: token
+                    })
+                } else {
+                    res.json({
+                        status: "error",
+                        error_message: "Password is incorrect"
+                    })
+                }
+            } else {
+                res.json({
+                    status: "error",
+                    error_message: "User does not exist"
+                })
+            } 
+        }
     }
+
+            
+
+    
 
     return {
         signupUser,
