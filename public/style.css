@@ -354,7 +354,7 @@ nav {
 
 #user-menu:hover,
 #login-btn:hover,
-#signup-btn:hover, #logout-btn:hover, .dropdown-content a:hover {
+#signup-btn:hover, #logout-btn:hover, .dropdown-content a:hover, .add-shoe a:hover {
     color: #418dff;
 }
 

@@ -127,45 +127,51 @@ function displayShoes(arr) {
 
             if (localStorage.getItem("jwtToken")) {
 
-                
+
                 const shoeName = item.closest(".shoeContainer").children[1].innerText;
 
-            // shoeCatalogue.addToCart(shoeName)
+                // shoeCatalogue.addToCart(shoeName)
 
-            const shoeItem = item.closest(".shoeContainer").children[4];
+                const shoeItem = item.closest(".shoeContainer").children[4];
 
-            let cartItemsAdded = Number(cartIconBadge.innerText)
+                let cartItemsAdded = Number(cartIconBadge.innerText)
 
-            if (Number(shoeItem.innerText[0]) !== 0) {
-                cartItemsAdded++;
-            }
-
-            cartIconBadge.innerText = cartItemsAdded;
-
-            // shoeCatalogue.shoes.forEach(item => {
-            //     if (shoeName === item.name) {
-            //         shoeItem.innerHTML = `<span>${item.in_stock} </span>in stock`;
-            //     }
-            // })
-
-             await createCart()
-
-            Toastify({
-
-                text: " Item added to cart",
-
-                duration: 3000,
-
-                avatar: "/images/icons/check.png",
-                
-                style: {
-                    fontFamily: "'Oxygen', sans-serif"
+                if (Number(shoeItem.innerText[0]) !== 0) {
+                    cartItemsAdded++;
                 }
-            }).showToast();
 
-        } else {
-            showLoginForm();
-        }
+                cartIconBadge.innerText = cartItemsAdded;
+
+                // shoeCatalogue.shoes.forEach(item => {
+                //     if (shoeName === item.name) {
+                //         shoeItem.innerHTML = `<span>${item.in_stock} </span>in stock`;
+                //     }
+                // })
+
+                const shoeId = item.closest(".shoeContainer").dataset.shoeId;
+                
+                try {
+                    await createCart(shoeId)
+                } catch(error) {
+                    console.log(error)
+                }
+
+                Toastify({
+
+                    text: " Item added to cart",
+
+                    duration: 3000,
+
+                    avatar: "/images/icons/check.png",
+
+                    style: {
+                        fontFamily: "'Oxygen', sans-serif"
+                    }
+                }).showToast();
+
+            } else {
+                showLoginForm();
+            }
         })
     })
 }
@@ -208,5 +214,5 @@ showAllBtn.addEventListener("click", () => {
 })
 
 shopNowBtn.addEventListener("click", () => {
-    availableShoesSection.scrollIntoView({behavior: "smooth"});
+    availableShoesSection.scrollIntoView({ behavior: "smooth" });
 })

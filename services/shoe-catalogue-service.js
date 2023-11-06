@@ -87,6 +87,7 @@ export default function ShoeCatalogueService(db) {
         checkExistingCart,
         createCart,
         addItemToCart,
-        getCartId
+        getCartId,
+        getUserId
     }
 }

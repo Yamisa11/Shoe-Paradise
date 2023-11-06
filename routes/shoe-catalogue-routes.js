@@ -69,11 +69,25 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
     async function addToCart(req, res) {
         const email = req.body.email;
+        const shoeId = req.body.shoeId;
 
         const cartExists = await shoeCatalogueService.checkExistingCart(email)
 
         if (!cartExists) {
             await shoeCatalogueService.createCart(email);
+
+            const userId = await shoeCatalogueService.getUserId(email);
+
+            const cartId = await shoeCatalogueService.getCartId(userId);
+
+            await shoeCatalogueService.addItemToCart(cartId, shoeId)
+        } else {
+
+            const userId = await shoeCatalogueService.getUserId(email);
+
+            const cartId = await shoeCatalogueService.getCartId(userId);
+
+            await shoeCatalogueService.addItemToCart(cartId, shoeId)
         }
     }
 

@@ -9,15 +9,19 @@ logoutBtn.addEventListener("click", () => {
 
 userMenu.innerText = JSON.parse(localStorage.getItem("user"))[0];
 
-async function createCart() {
-
+async function createCart(shoeId) {
     const email = JSON.parse(localStorage.getItem("user"))[1];
 
-    await axios.post("/user", {
-        email
-    })
+    try {
+        await axios.post("/user", {
+            email,
+            shoeId
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-async function addShoeToCart() {
-    
+function addShoeToCart() {
+    console.log("work")
 }
