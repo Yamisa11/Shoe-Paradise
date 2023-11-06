@@ -352,9 +352,9 @@ nav {
     text-decoration: none;
 }
 
-.menu-section a:hover,
+#user-menu:hover,
 #login-btn:hover,
-#signup-btn:hover {
+#signup-btn:hover, #logout-btn:hover, .dropdown-content a:hover {
     color: #418dff;
 }
 
@@ -580,7 +580,7 @@ nav h1 a {
 }
 
 #login-btn,
-#signup-btn {
+#signup-btn, #logout-btn, #user-menu {
     margin-right: 14px;
 }
 
@@ -717,7 +717,7 @@ nav h1 a {
 }
 
 .login-form-container {
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, -65%);
     top: 50%;
     left: 50%;

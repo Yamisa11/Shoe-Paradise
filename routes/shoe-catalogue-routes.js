@@ -40,13 +40,17 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
                 const passwordHashCheck = await bcrypt.compare(password, passwordHash);
 
+                const username = await shoeCatalogueService.getUsername(email);
+
                 if (passwordHashCheck) {
 
                     const token = jwt.sign({ email }, "shoe catalogue secret")
 
                     res.json({
                         status: "success",
-                        token: token
+                        token,
+                        username,
+                        email
                     })
                 } else {
                     res.json({
@@ -63,12 +67,19 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         }
     }
 
-            
+    async function addToCart(req, res) {
+        const email = req.body.email;
 
-    
+        const cartExists = await shoeCatalogueService.checkExistingCart(email)
+
+        if (!cartExists) {
+            await shoeCatalogueService.createCart(email);
+        }
+    }
 
     return {
         signupUser,
-        loginUser
+        loginUser,
+        addToCart
     }
 }

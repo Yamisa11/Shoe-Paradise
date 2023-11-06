@@ -4,17 +4,6 @@ const colourSelect = document.querySelector("#colourSelect");
 const sizeSelect = document.querySelector("#sizeSelect");
 const showAllBtn = document.querySelector("#showAllBtn");
 const cartIconBadge = document.querySelector(".cart-icon-badge");
-const loginBtn = document.querySelector("#login-btn")
-const loginFormContainer = document.querySelector(".login-form-container")
-const signupBtn = document.querySelector("#signup-btn");
-const signupFormContainer = document.querySelector(".signup-form-container");
-const closeLoginForm = document.querySelector("#close-login-form")
-const closeSignupForm = document.querySelector("#close-signup-form")
-const overlay = document.querySelector(".modal-overlay")
-const loginForm = document.querySelector(".login-form-container form")
-const loginEmailInput = document.querySelector("#login-email");
-const loginPasswordInput = document.querySelector("#login-password");
-const errorMsg = document.querySelector("#error-msg");
 const shopNowBtn = document.querySelector("#shop-now-btn");
 const availableShoesSection = document.querySelector("#available-shoes-section");
 
@@ -134,9 +123,12 @@ function displayShoes(arr) {
 
     addBtnElem.forEach(item => {
 
-        item.addEventListener("click", () => {
+        item.addEventListener("click", async () => {
 
-            const shoeName = item.closest(".shoeContainer").children[1].innerText;
+            if (localStorage.getItem("jwtToken")) {
+
+                
+                const shoeName = item.closest(".shoeContainer").children[1].innerText;
 
             // shoeCatalogue.addToCart(shoeName)
 
@@ -156,7 +148,7 @@ function displayShoes(arr) {
             //     }
             // })
 
-            console.log(decodeURIComponent(document.cookie))
+             await createCart()
 
             Toastify({
 
@@ -165,12 +157,15 @@ function displayShoes(arr) {
                 duration: 3000,
 
                 avatar: "/images/icons/check.png",
-
+                
                 style: {
                     fontFamily: "'Oxygen', sans-serif"
                 }
             }).showToast();
 
+        } else {
+            showLoginForm();
+        }
         })
     })
 }
@@ -210,56 +205,6 @@ showAllBtn.addEventListener("click", () => {
     brandSelect.value = "default";
     colourSelect.value = "default";
     sizeSelect.value = "default";
-})
-
-loginBtn.addEventListener("click", () => {
-    overlay.classList.remove("hidden");
-    loginFormContainer.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-    errorMsg.innerText = "";
-    loginEmailInput.value = "";
-    loginPasswordInput.value = "";
-})
-
-signupBtn.addEventListener("click", () => {
-    overlay.classList.remove("hidden");
-    signupFormContainer.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-})
-
-closeLoginForm.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-    loginFormContainer.classList.add("hidden");
-    document.body.style.overflow = "visible";
-})
-
-closeSignupForm.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-    signupFormContainer.classList.add("hidden");
-    document.body.style.overflow = "visible";
-})
-
-loginForm.addEventListener("submit", async (event) => {
-    
-    event.preventDefault();
-
-    try {        
-        const response = await axios.post("http://localhost:3000/login", {
-            email:  loginEmailInput.value,
-            password: loginPasswordInput.value
-        })
-
-        if (response.data.status === "error") {
-            errorMsg.innerText = response.data.error_message;
-        } else {
-            window.location.href = "cart"
-        }
-
-        console.log(response.data)
-        
-    } catch(error) {
-        console.log(error)
-    }
 })
 
 shopNowBtn.addEventListener("click", () => {
