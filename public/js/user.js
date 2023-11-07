@@ -1,6 +1,7 @@
 const logoutBtn = document.querySelector("#logout-btn");
 const userMenu = document.querySelector("#user-menu span");
 
+
 logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("user");
@@ -13,10 +14,13 @@ async function createCart(shoeId) {
     const email = JSON.parse(localStorage.getItem("user"))[1];
 
     try {
-        await axios.post("/user", {
+        const data = await axios.post("/user", {
             email,
             shoeId
         })
+        
+        return data;
+
     } catch (error) {
         console.log(error)
     }

@@ -63,7 +63,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
                     status: "error",
                     error_message: "User does not exist"
                 })
-            } 
+            }
         }
     }
 
@@ -81,6 +81,12 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             const cartId = await shoeCatalogueService.getCartId(userId);
 
             await shoeCatalogueService.addItemToCart(cartId, shoeId)
+
+            const cartItemsList = await shoeCatalogueService.getCartItemsList(cartId);
+
+            res.json({
+                cartTotal: cartItemsList.length
+            })
         } else {
 
             const userId = await shoeCatalogueService.getUserId(email);
@@ -88,12 +94,39 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             const cartId = await shoeCatalogueService.getCartId(userId);
 
             await shoeCatalogueService.addItemToCart(cartId, shoeId)
+
+            const cartItemsList = await shoeCatalogueService.getCartItemsList(cartId);
+
+            res.json({
+                cartTotal: cartItemsList.length
+            })
+        }
+    }
+
+    async function getCart(req, res) {
+        const email = req.body.email;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            const cartId = await shoeCatalogueService.getCartId(userId);
+
+            const cartItems = await shoeCatalogueService.getCartItemsList(cartId);
+
+            res.json(cartItems);
+        }
+
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
         }
     }
 
     return {
         signupUser,
         loginUser,
-        addToCart
+        addToCart,
+        getCart
     }
 }

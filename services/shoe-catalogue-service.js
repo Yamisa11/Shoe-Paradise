@@ -79,6 +79,16 @@ export default function ShoeCatalogueService(db) {
         return result.id;
     }
 
+    async function getCartItemsList(cartId) {
+        const selectQuery = `SELECT shoes.* FROM shoes 
+        JOIN cart_items ON shoes.id = cart_items.shoe_id 
+        WHERE cart_items.cart_id = $1;`;
+
+        const result = await db.many(selectQuery, [cartId])
+
+        return result;
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -88,6 +98,7 @@ export default function ShoeCatalogueService(db) {
         createCart,
         addItemToCart,
         getCartId,
-        getUserId
+        getUserId,
+        getCartItemsList
     }
 }

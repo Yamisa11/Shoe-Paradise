@@ -40,6 +40,8 @@ app.get("/cart", (req, res) => {
     res.render("cart")
 })
 
+app.post("/cart", shoeCatalogueRoutes.getCart)
+
 app.get("/user", (req, res) => {
     res.render("user")
 })

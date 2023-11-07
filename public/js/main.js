@@ -127,31 +127,13 @@ function displayShoes(arr) {
 
             if (localStorage.getItem("jwtToken")) {
 
-
-                const shoeName = item.closest(".shoeContainer").children[1].innerText;
-
-                // shoeCatalogue.addToCart(shoeName)
-
-                const shoeItem = item.closest(".shoeContainer").children[4];
-
-                let cartItemsAdded = Number(cartIconBadge.innerText)
-
-                if (Number(shoeItem.innerText[0]) !== 0) {
-                    cartItemsAdded++;
-                }
-
-                cartIconBadge.innerText = cartItemsAdded;
-
-                // shoeCatalogue.shoes.forEach(item => {
-                //     if (shoeName === item.name) {
-                //         shoeItem.innerHTML = `<span>${item.in_stock} </span>in stock`;
-                //     }
-                // })
-
                 const shoeId = item.closest(".shoeContainer").dataset.shoeId;
                 
                 try {
-                    await createCart(shoeId)
+                   const response = await createCart(shoeId);
+
+                   cartIconBadge.innerText = response.data.cartTotal;
+
                 } catch(error) {
                     console.log(error)
                 }

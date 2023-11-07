@@ -784,6 +784,50 @@ nav h1 a {
     color: #EE5253;
 }
 
+.cart-size-colour-item {
+    display: flex;
+}
+
+.cart-size-colour-item p:first-of-type {
+    color: #8d8989;
+}
+
+.cart-size-colour-item p:first-of-type {
+    margin-right: 10px;
+}
+
+.cart-size-colour-item span {
+    color: #333535;
+}
+
+.cart-item-info p {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.cart-item-info > p:first-of-type {
+    margin-top: 24px;
+}
+
+#removeFromCartBtn {
+    font-size: 16px;
+    font-weight: normal;
+    width: fit-content;
+    margin-top: 0;
+    margin-left: 36px;
+    padding: 6px 8px;
+    background-color: #eb8b98;
+    cursor: pointer;
+}
+
+#removeFromCartBtn:hover {
+    background-color: #e6707f;
+}
+
+.cart-item-price p {
+    margin-bottom: 12px;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
