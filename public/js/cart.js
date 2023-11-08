@@ -1,8 +1,8 @@
 
 const cartItems = document.querySelector(".cart-items");
 const totalSummary = document.querySelector(".total-summary")
+const itemsSummary = document.querySelector(".items-summary");
 let cartTotal = 0;
-
 
 async function getCartItems() {
     try {
@@ -82,8 +82,11 @@ async function displayCartItems() {
 
         totalSummary.children[1].innerText = `R${cartTotal}`;
 
+        
     })
-
+    
+    itemsSummary.children[1].innerText = cartItemsList.data.length;
+    
     const increaseQtyBtn = document.querySelectorAll(".increase-qty");
     const decreaseQtyBtn = document.querySelectorAll(".decrease-qty");
 
