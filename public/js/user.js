@@ -1,7 +1,6 @@
 const logoutBtn = document.querySelector("#logout-btn");
 const userMenu = document.querySelector("#user-menu span");
 
-
 logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("user");

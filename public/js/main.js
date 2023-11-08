@@ -6,6 +6,7 @@ const showAllBtn = document.querySelector("#showAllBtn");
 const cartIconBadge = document.querySelector(".cart-icon-badge");
 const shopNowBtn = document.querySelector("#shop-now-btn");
 const availableShoesSection = document.querySelector("#available-shoes-section");
+let cartTotal = 0;
 
 var slideshows = document.querySelectorAll('[data-component="slideshow"]')
 
@@ -132,7 +133,8 @@ function displayShoes(arr) {
                 try {
                    const response = await createCart(shoeId);
 
-                   cartIconBadge.innerText = response.data.cartTotal;
+                   cartTotal = response.data.cartTotal;
+                   cartIconBadge.innerText = cartTotal;
 
                 } catch(error) {
                     console.log(error)
@@ -198,3 +200,5 @@ showAllBtn.addEventListener("click", () => {
 shopNowBtn.addEventListener("click", () => {
     availableShoesSection.scrollIntoView({ behavior: "smooth" });
 })
+
+cartIconBadge.innerText = cartTotal;
