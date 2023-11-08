@@ -36,7 +36,6 @@ h2 {
 }
 
 .shoeContainer {
-    /* margin-right: 24px; */
     margin-bottom: 20px;
     font-family: 'Oxygen', sans-serif;
     background-color: white;
@@ -585,7 +584,6 @@ nav h1 a {
 }
 
 .shoeLoaderContainer {
-    margin-right: 18px;
     margin-bottom: 20px;
     background-color: darkgrey;
     padding: 10px;
