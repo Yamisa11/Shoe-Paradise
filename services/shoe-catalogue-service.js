@@ -90,6 +90,12 @@ export default function ShoeCatalogueService(db) {
         return result;
     }
 
+    async function removeItemFromCart(cartId, shoeId) {
+        const deleteQuery = `DELETE FROM cart_items WHERE cart_id = $1 AND shoe_id = $2`;
+
+        await db.none(deleteQuery, [cartId, shoeId])
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -100,6 +106,7 @@ export default function ShoeCatalogueService(db) {
         addItemToCart,
         getCartId,
         getUserId,
-        getCartItemsList
+        getCartItemsList,
+        removeItemFromCart
     }
 }

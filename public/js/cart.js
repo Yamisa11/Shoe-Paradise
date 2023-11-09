@@ -83,9 +83,9 @@ async function displayCartItems() {
 
         totalSummary.children[1].innerText = `R${cartTotal}`;
 
-        
+
     })
-    
+
     itemsSummary.children[1].innerText = cartItemsList.data.length;
 
     const increaseQtyBtn = document.querySelectorAll(".increase-qty");
@@ -123,11 +123,27 @@ async function displayCartItems() {
     const removeFromCartBtnElements = document.querySelectorAll(".removeFromCartBtn");
 
     removeFromCartBtnElements.forEach(item => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", async () => {
 
-            console.log(item.closest(".cart-item").dataset.shoeId)
+            const shoeId = item.closest(".cart-item").dataset.shoeId;
+            const email = JSON.parse(localStorage.getItem("user"))[1];
+
+            try {
+                await axios.delete(`/cart/${shoeId}`, {
+                    data: { email }
+                })
+
+                cartItems.innerHTML = "";
+                cartTotal = 0;
+                await displayCartItems();
+            }
+
+            catch (err) {
+                console.log(err.message)
+            }
+
         })
     })
-};
+}
 
 await displayCartItems();
