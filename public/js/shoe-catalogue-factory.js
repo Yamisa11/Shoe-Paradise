@@ -18,7 +18,10 @@ function ShoeCatalogue() {
         const colourSelection = colour === "default";
         const sizeSelection = size === "default";
 
-        if(!brandSelection && !colourSelection && !sizeSelection) {
+        if (brandSelection && colourSelection && sizeSelection) {
+            const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes`)
+            return result.data;
+        } else if(!brandSelection && !colourSelection && !sizeSelection) {
             const result = await axios.get(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/brand/${brand}/colour/${colour}/size/${size}`)
             return result.data;
         } else if (!brandSelection && !colourSelection) {

@@ -826,6 +826,10 @@ nav h1 a {
     margin-bottom: 12px;
 }
 
+.home-btn {
+    cursor: pointer;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
