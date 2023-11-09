@@ -53,8 +53,9 @@ async function displayCartItems() {
         quantitySelect.className = "quantity-select";
         quantityDecrease.className = "decrease-qty";
         quantityIncrease.className = "increase-qty";
-        removeFromCartBtn.id = "removeFromCartBtn";
+        removeFromCartBtn.className = "removeFromCartBtn";
 
+        cartItem.dataset.shoeId = item.id;
         img.src = item.img_src;
         name.innerText = item.name;
         brand.innerText = item.brand;
@@ -86,7 +87,7 @@ async function displayCartItems() {
     })
     
     itemsSummary.children[1].innerText = cartItemsList.data.length;
-    
+
     const increaseQtyBtn = document.querySelectorAll(".increase-qty");
     const decreaseQtyBtn = document.querySelectorAll(".decrease-qty");
 
@@ -116,6 +117,15 @@ async function displayCartItems() {
 
             item.nextElementSibling.innerText = updatedQty;
 
+        })
+    })
+
+    const removeFromCartBtnElements = document.querySelectorAll(".removeFromCartBtn");
+
+    removeFromCartBtnElements.forEach(item => {
+        item.addEventListener("click", () => {
+
+            console.log(item.closest(".cart-item").dataset.shoeId)
         })
     })
 };

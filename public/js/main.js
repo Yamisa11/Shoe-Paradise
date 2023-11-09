@@ -200,5 +200,3 @@ showAllBtn.addEventListener("click", () => {
 shopNowBtn.addEventListener("click", () => {
     availableShoesSection.scrollIntoView({ behavior: "smooth" });
 })
-
-cartIconBadge.innerText = cartTotal;

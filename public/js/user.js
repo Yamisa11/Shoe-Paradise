@@ -17,7 +17,7 @@ async function createCart(shoeId) {
             email,
             shoeId
         })
-        
+
         return data;
 
     } catch (error) {
@@ -25,6 +25,21 @@ async function createCart(shoeId) {
     }
 }
 
-function addShoeToCart() {
-    console.log("work")
+async function getNumOfCartItems() {
+    const email = JSON.parse(localStorage.getItem("user"))[1];
+    try {
+        const result = await axios.post("/cart", {
+            email
+        })
+
+        return result.data.length;
+    }
+
+    catch (error) {
+        console.log(error)
+    }
 }
+
+(async function numOfCartItems() {
+    cartIconBadge.innerText = await getNumOfCartItems()
+})();

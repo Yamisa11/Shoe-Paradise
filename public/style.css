@@ -807,7 +807,7 @@ nav h1 a {
     margin-top: 24px;
 }
 
-#removeFromCartBtn {
+.removeFromCartBtn {
     font-size: 16px;
     font-weight: normal;
     width: fit-content;
@@ -818,7 +818,7 @@ nav h1 a {
     cursor: pointer;
 }
 
-#removeFromCartBtn:hover {
+.removeFromCartBtn:hover {
     background-color: #e6707f;
 }
 

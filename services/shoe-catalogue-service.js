@@ -81,8 +81,9 @@ export default function ShoeCatalogueService(db) {
 
     async function getCartItemsList(cartId) {
         const selectQuery = `SELECT shoes.* FROM shoes 
-        JOIN cart_items ON shoes.id = cart_items.shoe_id 
-        WHERE cart_items.cart_id = $1;`;
+        JOIN cart_items ON shoes.id = cart_items.shoe_id
+        JOIN cart ON cart.id = cart_items.cart_id 
+        WHERE cart_items.cart_id = $1 AND cart.status = 'Created'`;
 
         const result = await db.many(selectQuery, [cartId])
 
