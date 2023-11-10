@@ -556,6 +556,10 @@ nav h1 a {
     cursor: pointer;
 }
 
+#checkout-btn:active {
+    transform: translateY(2px);
+}
+
 #checkout-btn div:first-child {
     margin-right: 10px;
 }
@@ -571,11 +575,15 @@ nav h1 a {
     justify-content: center;
 }
 
-#clear-btn {
+#clear-cart-btn {
     margin-right: 18px;
     background-color: #DA2C43;
     padding: 6px 10px;
     cursor: pointer;
+}
+
+#clear-cart-btn:active {
+    transform: translateY(2px);
 }
 
 #login-btn,

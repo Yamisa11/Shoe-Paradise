@@ -41,5 +41,10 @@ async function getNumOfCartItems() {
 }
 
 (async function numOfCartItems() {
-    cartIconBadge.innerText = await getNumOfCartItems()
+
+    if (await getNumOfCartItems() === undefined) {
+        cartIconBadge.innerText = 0;
+    } else {
+        cartIconBadge.innerText = await getNumOfCartItems()
+    }
 })();

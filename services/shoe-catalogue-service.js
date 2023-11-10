@@ -72,7 +72,7 @@ export default function ShoeCatalogueService(db) {
     }
 
     async function getCartId(userId) {
-        const selectQuery = `SELECT id FROM cart WHERE user_id = $1`;
+        const selectQuery = `SELECT id FROM cart WHERE user_id = $1 AND status = 'Created'`;
 
         const result = await db.oneOrNone(selectQuery, [userId]);
 
@@ -96,6 +96,14 @@ export default function ShoeCatalogueService(db) {
         await db.none(deleteQuery, [cartId, shoeId])
     }
 
+    async function removeCompleteCart(cartId) {
+        const deleteQueryItems = `DELETE FROM cart_items WHERE cart_id = $1`;
+        const deleteQueryCart = `DELETE FROM cart WHERE id = $1`;
+
+        await db.none(deleteQueryItems, [cartId])
+        await db.none(deleteQueryCart, [cartId])
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -107,6 +115,7 @@ export default function ShoeCatalogueService(db) {
         getCartId,
         getUserId,
         getCartItemsList,
-        removeItemFromCart
+        removeItemFromCart,
+        removeCompleteCart
     }
 }

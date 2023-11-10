@@ -2,6 +2,8 @@
 const cartItems = document.querySelector(".cart-items");
 const totalSummary = document.querySelector(".total-summary")
 const itemsSummary = document.querySelector(".items-summary");
+const clearCartBtn = document.querySelector("#clear-cart-btn");
+
 let cartTotal = 0;
 
 async function getCartItems() {
@@ -23,127 +25,149 @@ async function getCartItems() {
 async function displayCartItems() {
     const cartItemsList = await getCartItems();
 
-    cartItemsList.data.forEach(item => {
+    if (!Array.isArray(cartItemsList.data)) {
+        cartItems.innerText = "Your shopping cart is empty"
+    } else {
 
-        const cartItem = document.createElement("div");
-        const cartItemImage = document.createElement("div");
-        const cartItemInfo = document.createElement("div");
-        const cartItemPrice = document.createElement("div");
-        const cartItemQuantity = document.createElement("div");
-        const cartSizeAndColourItem = document.createElement("div");
-        const removeFromCartBtn = document.createElement("div");
-        const img = document.createElement("img");
-        const name = document.createElement("p");
-        const brand = document.createElement("p");
-        const price = document.createElement("p");
-        const size = document.createElement("p");
-        const colour = document.createElement("p");
-        const quantity = document.createElement("p");
-        const quantitySelect = document.createElement("div");
-        const quantityDecrease = document.createElement("div");
-        const quantityIncrease = document.createElement("div");
-        const quantityAmount = document.createElement("div");
+        cartItemsList.data.forEach(item => {
 
-        cartItem.className = "cart-item";
-        cartItemImage.className = "cart-item-image";
-        cartItemInfo.className = "cart-item-info";
-        cartItemQuantity.className = "cart-item-quantity";
-        cartItemPrice.className = "cart-item-price";
-        cartSizeAndColourItem.className = "cart-size-colour-item";
-        quantitySelect.className = "quantity-select";
-        quantityDecrease.className = "decrease-qty";
-        quantityIncrease.className = "increase-qty";
-        removeFromCartBtn.className = "removeFromCartBtn";
+            const cartItem = document.createElement("div");
+            const cartItemImage = document.createElement("div");
+            const cartItemInfo = document.createElement("div");
+            const cartItemPrice = document.createElement("div");
+            const cartItemQuantity = document.createElement("div");
+            const cartSizeAndColourItem = document.createElement("div");
+            const removeFromCartBtn = document.createElement("div");
+            const img = document.createElement("img");
+            const name = document.createElement("p");
+            const brand = document.createElement("p");
+            const price = document.createElement("p");
+            const size = document.createElement("p");
+            const colour = document.createElement("p");
+            const quantity = document.createElement("p");
+            const quantitySelect = document.createElement("div");
+            const quantityDecrease = document.createElement("div");
+            const quantityIncrease = document.createElement("div");
+            const quantityAmount = document.createElement("div");
 
-        cartItem.dataset.shoeId = item.id;
-        img.src = item.img_src;
-        name.innerText = item.name;
-        brand.innerText = item.brand;
-        price.innerText = `R${item.price}`;
-        size.innerHTML = `<span>Size: </span>${item.size}`;
-        colour.innerHTML = `<span>Colour: </span>${item.colour}`;
-        quantity.innerText = "Quantity";
-        quantityAmount.innerText = "1";
-        quantityDecrease.innerHTML = "&ndash;";
-        quantityIncrease.innerText = "+";
-        removeFromCartBtn.innerText = "REMOVE FROM CART";
+            cartItem.className = "cart-item";
+            cartItemImage.className = "cart-item-image";
+            cartItemInfo.className = "cart-item-info";
+            cartItemQuantity.className = "cart-item-quantity";
+            cartItemPrice.className = "cart-item-price";
+            cartSizeAndColourItem.className = "cart-size-colour-item";
+            quantitySelect.className = "quantity-select";
+            quantityDecrease.className = "decrease-qty";
+            quantityIncrease.className = "increase-qty";
+            removeFromCartBtn.className = "removeFromCartBtn";
 
-        cartItemImage.append(img);
-        cartSizeAndColourItem.append(size, colour);
-        cartItemInfo.append(name, brand, cartSizeAndColourItem);
-        quantitySelect.append(quantityDecrease, quantityAmount, quantityIncrease)
-        cartItemQuantity.append(quantity, quantitySelect);
-        cartItemPrice.append(price, removeFromCartBtn);
+            cartItem.dataset.shoeId = item.id;
+            img.src = item.img_src;
+            name.innerText = item.name;
+            brand.innerText = item.brand;
+            price.innerText = `R${item.price}`;
+            size.innerHTML = `<span>Size: </span>${item.size}`;
+            colour.innerHTML = `<span>Colour: </span>${item.colour}`;
+            quantity.innerText = "Quantity";
+            quantityAmount.innerText = "1";
+            quantityDecrease.innerHTML = "&ndash;";
+            quantityIncrease.innerText = "+";
+            removeFromCartBtn.innerText = "REMOVE FROM CART";
 
-        cartItem.append(cartItemImage, cartItemInfo, cartItemQuantity, cartItemPrice);
+            cartItemImage.append(img);
+            cartSizeAndColourItem.append(size, colour);
+            cartItemInfo.append(name, brand, cartSizeAndColourItem);
+            quantitySelect.append(quantityDecrease, quantityAmount, quantityIncrease)
+            cartItemQuantity.append(quantity, quantitySelect);
+            cartItemPrice.append(price, removeFromCartBtn);
 
-        cartItems.append(cartItem);
+            cartItem.append(cartItemImage, cartItemInfo, cartItemQuantity, cartItemPrice);
 
-        cartTotal += item.price;
+            cartItems.append(cartItem);
 
-        totalSummary.children[1].innerText = `R${cartTotal}`;
+            cartTotal += item.price;
 
-
-    })
-
-    itemsSummary.children[1].innerText = cartItemsList.data.length;
-
-    const increaseQtyBtn = document.querySelectorAll(".increase-qty");
-    const decreaseQtyBtn = document.querySelectorAll(".decrease-qty");
-
-    increaseQtyBtn.forEach(item => {
-
-        item.addEventListener("click", () => {
-            let qty = item.previousElementSibling.innerText;
-
-            let updatedQty = Number(qty);
-
-            updatedQty++;
-
-            item.previousElementSibling.innerText = updatedQty;
-        })
-    })
-
-    decreaseQtyBtn.forEach(item => {
-
-        item.addEventListener("click", () => {
-            let qty = item.nextElementSibling.innerText;
-
-            let updatedQty = Number(qty);
-
-            if (Number(qty) > 0) {
-                updatedQty--;
-            }
-
-            item.nextElementSibling.innerText = updatedQty;
+            totalSummary.children[1].innerText = `R${cartTotal}`;
 
         })
-    })
 
-    const removeFromCartBtnElements = document.querySelectorAll(".removeFromCartBtn");
+        itemsSummary.children[1].innerText = cartItemsList.data.length;
 
-    removeFromCartBtnElements.forEach(item => {
-        item.addEventListener("click", async () => {
+        const increaseQtyBtn = document.querySelectorAll(".increase-qty");
+        const decreaseQtyBtn = document.querySelectorAll(".decrease-qty");
 
-            const shoeId = item.closest(".cart-item").dataset.shoeId;
-            const email = JSON.parse(localStorage.getItem("user"))[1];
+        increaseQtyBtn.forEach(item => {
 
-            try {
-                await axios.delete(`/cart/${shoeId}`, {
-                    data: { email }
-                })
+            item.addEventListener("click", () => {
+                let qty = item.previousElementSibling.innerText;
 
-                cartItems.innerHTML = "";
-                cartTotal = 0;
-                await displayCartItems();
-            }
+                let updatedQty = Number(qty);
 
-            catch (err) {
-                console.log(err.message)
-            }
+                updatedQty++;
 
+                item.previousElementSibling.innerText = updatedQty;
+            })
         })
-    })
+
+        decreaseQtyBtn.forEach(item => {
+
+            item.addEventListener("click", () => {
+                let qty = item.nextElementSibling.innerText;
+
+                let updatedQty = Number(qty);
+
+                if (Number(qty) > 0) {
+                    updatedQty--;
+                }
+
+                item.nextElementSibling.innerText = updatedQty;
+
+            })
+        })
+
+        const removeFromCartBtnElements = document.querySelectorAll(".removeFromCartBtn");
+
+        removeFromCartBtnElements.forEach(item => {
+            item.addEventListener("click", async () => {
+
+                const shoeId = item.closest(".cart-item").dataset.shoeId;
+                const email = JSON.parse(localStorage.getItem("user"))[1];
+
+                try {
+                    await axios.delete(`/cart/${shoeId}`, {
+                        data: { email }
+                    })
+
+                    cartItems.innerText = "";
+                    cartTotal = 0;
+                    await displayCartItems();
+                }
+
+                catch (err) {
+                    console.log(err.message)
+                }
+
+            })
+        })
+    }
 }
 
 await displayCartItems();
+
+clearCartBtn.addEventListener("click", async () => {
+
+    const email = JSON.parse(localStorage.getItem("user"))[1];
+
+    try {
+        await axios.delete(`/cart`, {
+            data: { email }
+        })
+
+        cartItems.innerText = "";
+        await displayCartItems();
+    }
+
+    catch (err) {
+        console.log(err.message)
+    }
+})

@@ -54,4 +54,6 @@ app.post("/signup", shoeCatalogueRoutes.signupUser)
 
 app.delete("/cart/:id", shoeCatalogueRoutes.removeFromCart)
 
+app.delete("/cart", shoeCatalogueRoutes.removeCart)
+
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));
