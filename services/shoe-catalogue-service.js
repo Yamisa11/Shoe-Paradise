@@ -66,7 +66,7 @@ export default function ShoeCatalogueService(db) {
     }
 
     async function addItemToCart(cartId, shoeId) {
-        const insertQuery = `INSERT INTO cart_items(cart_id, shoe_id) VALUES ($1, $2)`;
+        const insertQuery = `INSERT INTO cart_items(cart_id, shoe_id, quantity) VALUES ($1, $2, 1)`;
 
         await db.none(insertQuery, [cartId, shoeId])
     }
@@ -102,6 +102,10 @@ export default function ShoeCatalogueService(db) {
 
         await db.none(deleteQueryItems, [cartId])
         await db.none(deleteQueryCart, [cartId])
+    }
+
+    async function updateCartItem(cartId, shoeId) {
+        // const updateQuery = 
     }
 
     return {

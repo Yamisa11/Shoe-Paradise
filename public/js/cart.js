@@ -1,8 +1,5 @@
-
 const cartItems = document.querySelector(".cart-items");
-const totalSummary = document.querySelector(".total-summary")
-const itemsSummary = document.querySelector(".items-summary");
-const clearCartBtn = document.querySelector("#clear-cart-btn");
+const cartItemsContainer = document.querySelector(".cart-items-container");
 
 let cartTotal = 0;
 
@@ -26,7 +23,7 @@ async function displayCartItems() {
     const cartItemsList = await getCartItems();
 
     if (!Array.isArray(cartItemsList.data)) {
-        cartItems.innerText = "Your shopping cart is empty"
+        cartItems.innerHTML = "Your shopping cart is empty"
     } else {
 
         cartItemsList.data.forEach(item => {
@@ -86,12 +83,58 @@ async function displayCartItems() {
             cartItems.append(cartItem);
 
             cartTotal += item.price;
-
-            totalSummary.children[1].innerText = `R${cartTotal}`;
-
         })
 
-        itemsSummary.children[1].innerText = cartItemsList.data.length;
+        const cartSummary = document.createElement("div");
+        const summaryHeading = document.createElement("div");
+        const hr = document.createElement("hr");
+        const itemsSummary = document.createElement("div");
+        const items = document.createElement("div");
+        const divItems = document.createElement("div");
+        const divTotal = document.createElement("div");
+        const totalSummary = document.createElement("div");
+        const totalText = document.createElement("div");
+        const checkoutSummary = document.createElement("div");
+        const clearCartBtn = document.createElement("div")
+        const clearCartImg = document.createElement("img");
+        const checkoutBtn = document.createElement("div");
+        const checkoutText = document.createElement("div");
+        const checkoutImg = document.createElement("img");
+        const divCheckoutImg = document.createElement("div");
+
+        cartSummary.className = "cart-summary";
+        summaryHeading.id = "summary-heading";
+        itemsSummary.className = "items-summary";
+        totalSummary.className = "total-summary";
+        checkoutSummary.className = "checkout-summary";
+        clearCartBtn.id = "clear-cart-btn";
+        checkoutBtn.id = "checkout-btn";
+
+        summaryHeading.innerText = "Cart Summary";
+        items.innerText = "Items";
+        totalText.innerText = "Total";
+        checkoutText.innerText = "Checkout";
+        clearCartImg.src = "/images/icons/delete-icon.png";
+        checkoutImg.src = "/images/icons/checkout-icon.png";
+
+        itemsSummary.append(items, divItems);
+        totalSummary.append(totalText, divTotal);
+
+        clearCartBtn.append(clearCartImg);
+        divCheckoutImg.append(checkoutImg);
+        checkoutBtn.append(checkoutText, divCheckoutImg);
+
+        checkoutSummary.append(clearCartBtn, checkoutBtn);
+
+        cartSummary.append(summaryHeading, hr, itemsSummary, hr, totalSummary, checkoutSummary);
+
+        cartItemsContainer.append(cartSummary);
+
+        const totalSummaryElement = document.querySelector(".total-summary")
+        const itemsSummaryElement = document.querySelector(".items-summary");
+
+        totalSummaryElement.children[1].innerText = `R${cartTotal}`;
+        itemsSummaryElement.children[1].innerText = cartItemsList.data.length;
 
         const increaseQtyBtn = document.querySelectorAll(".increase-qty");
         const decreaseQtyBtn = document.querySelectorAll(".decrease-qty");
@@ -138,7 +181,8 @@ async function displayCartItems() {
                         data: { email }
                     })
 
-                    cartItems.innerText = "";
+                    cartItems.innerHTML = "";
+                    cartItemsContainer.innerHTML = "";
                     cartTotal = 0;
                     await displayCartItems();
                 }
@@ -149,25 +193,28 @@ async function displayCartItems() {
 
             })
         })
+
+        const clearCartBtnElement = document.querySelector("#clear-cart-btn");
+
+        clearCartBtnElement.addEventListener("click", async () => {
+
+            const email = JSON.parse(localStorage.getItem("user"))[1];
+
+            try {
+                await axios.delete(`/cart`, {
+                    data: { email }
+                })
+
+                cartItemsContainer.innerHTML = "";
+                await displayCartItems();
+            }
+
+            catch (err) {
+                console.log(err.message)
+            }
+        })
     }
 }
 
 await displayCartItems();
 
-clearCartBtn.addEventListener("click", async () => {
-
-    const email = JSON.parse(localStorage.getItem("user"))[1];
-
-    try {
-        await axios.delete(`/cart`, {
-            data: { email }
-        })
-
-        cartItems.innerText = "";
-        await displayCartItems();
-    }
-
-    catch (err) {
-        console.log(err.message)
-    }
-})

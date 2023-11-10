@@ -36,12 +36,6 @@ app.get("/add", (req, res) => {
     res.render("addShoe")
 })
 
-app.get("/cart", (req, res) => {
-    res.render("cart")
-})
-
-app.post("/cart", shoeCatalogueRoutes.getCart)
-
 app.get("/user", (req, res) => {
     res.render("user")
 })
@@ -52,8 +46,16 @@ app.post("/login", shoeCatalogueRoutes.loginUser)
 
 app.post("/signup", shoeCatalogueRoutes.signupUser)
 
+app.get("/cart", (req, res) => {
+    res.render("cart")
+})
+
+app.post("/cart", shoeCatalogueRoutes.getCart)
+
 app.delete("/cart/:id", shoeCatalogueRoutes.removeFromCart)
 
 app.delete("/cart", shoeCatalogueRoutes.removeCart)
+
+app.put("/cart/:id", shoeCatalogueRoutes.updateCart)
 
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));
