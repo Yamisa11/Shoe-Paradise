@@ -1,7 +1,24 @@
 const cartItems = document.querySelector(".cart-items");
 const cartItemsContainer = document.querySelector(".cart-items-container");
+const cartSummary = document.querySelector(".cart-summary");
+cartSummary.style.display = "none";
 
 let cartTotal = 0;
+
+function cartSkeletonLoader() {
+
+    for (let i = 0; i < 3; i++) {
+        const cartItemLoaderContainer = document.createElement("div");
+        cartItemLoaderContainer.className = "cartItemLoaderContainer";
+        cartItems.append(cartItemLoaderContainer);
+    }
+    cartSummary.remove();
+    const cartSummaryLoaderContainer = document.createElement("div")
+    cartSummaryLoaderContainer.className = "cartSummaryLoaderContainer";
+    cartItemsContainer.append(cartSummaryLoaderContainer);
+}
+
+cartSkeletonLoader();
 
 async function getCartItems() {
     try {
@@ -19,13 +36,21 @@ async function getCartItems() {
     }
 }
 
-async function displayCartItems() {
+async function displayCartItems(n) {
+
     const cartItemsList = await getCartItems();
+
+    cartItems.innerHTML = "";
+    const cartSummaryLoaderContainerElement = document.querySelector(".cartSummaryLoaderContainer");
+
+    if (cartSummaryLoaderContainerElement) {
+        cartSummaryLoaderContainerElement.remove();
+    }
 
     if (!Array.isArray(cartItemsList.data)) {
         cartItems.innerHTML = "Your shopping cart is empty"
     } else {
-
+        console.log("test")
         cartItemsList.data.forEach(item => {
 
             const cartItem = document.createElement("div");
@@ -85,7 +110,7 @@ async function displayCartItems() {
             cartTotal += item.price;
         })
 
-        const cartSummary = document.createElement("div");
+
         const summaryHeading = document.createElement("div");
         const hr = document.createElement("hr");
         const itemsSummary = document.createElement("div");
@@ -102,7 +127,7 @@ async function displayCartItems() {
         const checkoutImg = document.createElement("img");
         const divCheckoutImg = document.createElement("div");
 
-        cartSummary.className = "cart-summary";
+        // cartSummary.className = "cart-summary";
         summaryHeading.id = "summary-heading";
         itemsSummary.className = "items-summary";
         totalSummary.className = "total-summary";
@@ -127,6 +152,7 @@ async function displayCartItems() {
         checkoutSummary.append(clearCartBtn, checkoutBtn);
 
         cartSummary.append(summaryHeading, hr, itemsSummary, hr, totalSummary, checkoutSummary);
+        cartSummary.style.display = "block";
 
         cartItemsContainer.append(cartSummary);
 
@@ -181,15 +207,26 @@ async function displayCartItems() {
                         data: { email }
                     })
 
-                    cartItems.innerHTML = "";
-                    cartItemsContainer.innerHTML = "";
                     cartTotal = 0;
-                    await displayCartItems();
+                    cartItems.innerHTML = "";
+                    cartSummary.innerHTML = "";
+                    cartSummary.style.display = "none";
+                    
+                    const cartItemsList = await getCartItems();
+
+                    if (Array.isArray(cartItemsList)) {
+                        cartSkeletonLoader()
+                    }
+
+                    if (n) {
+                        await displayCartItems(false);
+                    }
                 }
 
                 catch (err) {
                     console.log(err.message)
                 }
+
 
             })
         })
@@ -216,5 +253,6 @@ async function displayCartItems() {
     }
 }
 
-await displayCartItems();
+await displayCartItems(true);
+
 

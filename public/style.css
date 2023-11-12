@@ -603,6 +603,22 @@ nav h1 a {
     animation: skeleton-loading 1s infinite alternate;
 }
 
+.cartItemLoaderContainer {
+    width: 800px;
+    height: 140px;
+    margin-bottom: 20px;
+    background-color: darkgrey;
+    animation: cart-skeleton-loading 1s infinite alternate;
+}
+
+.cartSummaryLoaderContainer {
+    width: 300px;
+    padding: 20px;
+    background-color: darkgrey;
+    height: 200px;
+    animation: cart-skeleton-loading 1s infinite alternate;
+}
+
 .login-form-container h1 {
     font-family: 'Oxygen', sans-serif;
     margin-top: 0;
@@ -842,6 +858,16 @@ nav h1 a {
 }
 
 @keyframes skeleton-loading {
+    0% {
+        background-color: darkgrey;
+    }
+
+    100% {
+        background-color: #F1F1F1;
+    }
+}
+
+@keyframes cart-skeleton-loading {
     0% {
         background-color: darkgrey;
     }
