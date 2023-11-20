@@ -189,9 +189,11 @@ async function displayCartItems(n) {
                         email
                     })
 
-                    console.log(response.data.quantity)
-
                     item.previousElementSibling.innerText = response.data.quantity;
+
+                    console.log(response)
+
+                    item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = response.data.total;
                 }
 
                 catch (err) {

@@ -119,7 +119,11 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
                 const quantity = await shoeCatalogueService.getCartNumberOfItems(cartId, shoeId);
 
-                const obj = { ...item, quantity }
+                const total = item.price * item.quantity;
+
+                console.log(typeof item.price, typeof item.quantity)
+
+                const obj = { ...item, quantity, total }
 
                 result.push(obj)
             }
