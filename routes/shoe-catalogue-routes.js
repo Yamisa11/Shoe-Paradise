@@ -112,7 +112,19 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
             const cartItems = await shoeCatalogueService.getCartItemsList(cartId);
 
-            res.json(cartItems);
+            const result = [];
+
+            for (const item of cartItems) {
+                const shoeId = item.id;
+
+                const quantity = await shoeCatalogueService.getCartNumberOfItems(cartId, shoeId);
+
+                const obj = { ...item, quantity }
+
+                result.push(obj)
+            }
+
+            res.json(result);
         }
 
         catch (err) {

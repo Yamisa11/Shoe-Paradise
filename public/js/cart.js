@@ -48,7 +48,7 @@ async function displayCartItems(n) {
     if (cartSummaryLoaderContainerElement) {
         cartSummaryLoaderContainerElement.remove();
     }
-    console.log("got here")
+
     if (!Array.isArray(cartItemsList.data) || cartItemsList.data.length === 0) {
         const divCart = document.createElement("div")
         const divImg = document.createElement("div")
@@ -103,7 +103,7 @@ async function displayCartItems(n) {
             size.innerHTML = `<span>Size: </span>${item.size}`;
             colour.innerHTML = `<span>Colour: </span>${item.colour}`;
             quantity.innerText = "Quantity";
-            quantityAmount.innerText = "1";
+            quantityAmount.innerText = item.quantity;
             quantityDecrease.innerHTML = "&ndash;";
             quantityIncrease.innerText = "+";
             removeFromCartBtn.innerText = "REMOVE FROM CART";
@@ -139,7 +139,6 @@ async function displayCartItems(n) {
         const checkoutImg = document.createElement("img");
         const divCheckoutImg = document.createElement("div");
 
-        // cartSummary.className = "cart-summary";
         summaryHeading.id = "summary-heading";
         itemsSummary.className = "items-summary";
         totalSummary.className = "total-summary";
@@ -180,13 +179,6 @@ async function displayCartItems(n) {
         increaseQtyBtn.forEach(item => {
 
             item.addEventListener("click", async () => {
-                // let qty = ;
-
-                // let updatedQty = Number(qty);
-
-                // updatedQty++;
-
-                // item.previousElementSibling.innerText = updatedQty;
 
                 const email = JSON.parse(localStorage.getItem("user"))[1];
 
@@ -211,13 +203,6 @@ async function displayCartItems(n) {
         decreaseQtyBtn.forEach(item => {
 
             item.addEventListener("click", async () => {
-                // let qty = item.nextElementSibling.innerText;
-
-                // let updatedQty = Number(qty);
-
-                // if (Number(qty) > 0) {
-                //     updatedQty--;
-                // }
 
                 item.nextElementSibling.innerText = updatedQty;
 
@@ -275,7 +260,6 @@ async function displayCartItems(n) {
                 catch (err) {
                     console.log(err.message)
                 }
-
 
             })
         })
