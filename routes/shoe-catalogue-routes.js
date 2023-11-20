@@ -178,20 +178,30 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
     async function updateCart(req, res) {
         const shoeId = req.params.id;
         const type = req.query.type;
+        const email = req.body.email;
 
         try {
             const userId = await shoeCatalogueService.getUserId(email);
             const cartId = await shoeCatalogueService.getCartId(userId);
 
             if (type === "increase") {
-                await shoeCatalogueService.updateCartItemByIncrease(cartId, shoeId);
+                const result = await shoeCatalogueService.updateCartItemByIncrease(cartId, shoeId);
+
+                res.json({
+                    status: "success",
+                    quantity: result
+                })
+
             } else if (type === "decrease") {
-                await shoeCatalogueService.updateCartItemByDecrease(cartId, shoeId);
+                const result = await shoeCatalogueService.updateCartItemByDecrease(cartId, shoeId);
+
+                res.json({
+                    status: "success",
+                    quantity: result
+                })
             }
 
-            res.json({
-                status: "success"
-            })
+
         }
 
         catch (err) {

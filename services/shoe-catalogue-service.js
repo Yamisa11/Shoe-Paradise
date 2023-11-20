@@ -108,12 +108,24 @@ export default function ShoeCatalogueService(db) {
         const updateQuery = `UPDATE cart_items SET quantity = quantity + 1 WHERE cart_id = $1 AND shoe_id = $2`;
 
         await db.none(updateQuery, [cartId, shoeId])
+
+        return await getCartNumberOfItems(cartId, shoeId)
     }
 
     async function updateCartItemByDecrease(cartId, shoeId) {
-        const updateQuery = `UPDATE cart_items SET quantity = quantity + 1 WHERE cart_id = $1 AND shoe_id = $2`;
+        const updateQuery = `UPDATE cart_items SET quantity = quantity - 1 WHERE cart_id = $1 AND shoe_id = $2`;
 
         await db.none(updateQuery, [cartId, shoeId])
+
+        return await getCartNumberOfItems(cartId, shoeId)
+    }
+
+    async function getCartNumberOfItems(cartId, shoeId) {
+        const selectQuery = `SELECT quantity FROM cart_items WHERE cart_Id = $1 AND shoe_id = $2`;
+
+        const result = await db.one(selectQuery, [cartId, shoeId]);
+
+        return result.quantity;
     }
 
     return {
@@ -130,6 +142,7 @@ export default function ShoeCatalogueService(db) {
         removeItemFromCart,
         removeCompleteCart,
         updateCartItemByIncrease,
-        updateCartItemByDecrease
+        updateCartItemByDecrease,
+        getCartNumberOfItems
     }
 }

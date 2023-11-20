@@ -56,6 +56,6 @@ app.delete("/cart/:id", shoeCatalogueRoutes.removeFromCart)
 
 app.delete("/cart", shoeCatalogueRoutes.removeCart)
 
-app.put("/cart/:id", shoeCatalogueRoutes.updateCart)
+app.post("/cart/update/:id", shoeCatalogueRoutes.updateCart)
 
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));

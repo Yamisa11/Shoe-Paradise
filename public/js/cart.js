@@ -179,29 +179,63 @@ async function displayCartItems(n) {
 
         increaseQtyBtn.forEach(item => {
 
-            item.addEventListener("click", () => {
-                let qty = item.previousElementSibling.innerText;
+            item.addEventListener("click", async () => {
+                // let qty = ;
 
-                let updatedQty = Number(qty);
+                // let updatedQty = Number(qty);
 
-                updatedQty++;
+                // updatedQty++;
 
-                item.previousElementSibling.innerText = updatedQty;
+                // item.previousElementSibling.innerText = updatedQty;
+
+                const email = JSON.parse(localStorage.getItem("user"))[1];
+
+                const shoeId = item.closest(".cart-item").dataset.shoeId;
+
+                try {
+                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=increase`, { 
+                        email
+                    })
+
+                    console.log(response.data.quantity)
+
+                    item.previousElementSibling.innerText = response.data.quantity;
+                }
+
+                catch (err) {
+                    console.log(err)
+                }
             })
         })
 
         decreaseQtyBtn.forEach(item => {
 
-            item.addEventListener("click", () => {
-                let qty = item.nextElementSibling.innerText;
+            item.addEventListener("click", async () => {
+                // let qty = item.nextElementSibling.innerText;
 
-                let updatedQty = Number(qty);
+                // let updatedQty = Number(qty);
 
-                if (Number(qty) > 0) {
-                    updatedQty--;
-                }
+                // if (Number(qty) > 0) {
+                //     updatedQty--;
+                // }
 
                 item.nextElementSibling.innerText = updatedQty;
+
+                const email = JSON.parse(localStorage.getItem("user"))[1];
+
+                const shoeId = item.closest(".cart-item").dataset.shoeId;
+
+                try {
+                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=decrease`, { 
+                        email
+                    })
+
+                    item.previousElementSibling.innerText = response.data.quantity;
+                }
+
+                catch (err) {
+                    console.log(err)
+                }
 
             })
         })
@@ -223,13 +257,13 @@ async function displayCartItems(n) {
                     cartItems.innerHTML = "";
                     cartSummary.innerHTML = "";
                     cartSummary.style.display = "none";
-                    
+
                     const cartItemsList = await getCartItems();
 
                     if (!Array.isArray(cartItemsList)) {
                         cartSkeletonLoader()
                     }
-                    
+
                     n = true;
 
                     if (n) {
@@ -258,7 +292,7 @@ async function displayCartItems(n) {
                 })
 
                 cartItemsContainer.innerHTML = "";
-                await displayCartItems();
+                await displayCartItems(false);
             }
 
             catch (err) {
