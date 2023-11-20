@@ -1,6 +1,8 @@
 const cartItems = document.querySelector(".cart-items");
 const cartItemsContainer = document.querySelector(".cart-items-container");
 const cartSummary = document.querySelector(".cart-summary");
+const container = document.querySelector(".container");
+const shoppingCartHeading = document.querySelector("#shopping-cart-heading")
 cartSummary.style.display = "none";
 
 let cartTotal = 0;
@@ -46,11 +48,21 @@ async function displayCartItems(n) {
     if (cartSummaryLoaderContainerElement) {
         cartSummaryLoaderContainerElement.remove();
     }
-
-    if (!Array.isArray(cartItemsList.data)) {
-        cartItems.innerHTML = "Your shopping cart is empty"
+    console.log("got here")
+    if (!Array.isArray(cartItemsList.data) || cartItemsList.data.length === 0) {
+        const divCart = document.createElement("div")
+        const divImg = document.createElement("div")
+        const divText = document.createElement("div");
+        const img = document.createElement("img");
+        divCart.className = "empty-cart"
+        divImg.className = "empty-cart-img";
+        divText.innerText = "Your shopping cart is empty";
+        img.src = "/images/icons/empty-cart.png";
+        divImg.append(img)
+        divCart.append(divText, divImg)
+        cartItemsContainer.remove()
+        shoppingCartHeading.parentElement.insertBefore(divCart, shoppingCartHeading.nextSiblingElement)
     } else {
-        console.log("test")
         cartItemsList.data.forEach(item => {
 
             const cartItem = document.createElement("div");
@@ -214,13 +226,16 @@ async function displayCartItems(n) {
                     
                     const cartItemsList = await getCartItems();
 
-                    if (Array.isArray(cartItemsList)) {
+                    if (!Array.isArray(cartItemsList)) {
                         cartSkeletonLoader()
                     }
+                    
+                    n = true;
 
                     if (n) {
                         await displayCartItems(false);
                     }
+
                 }
 
                 catch (err) {

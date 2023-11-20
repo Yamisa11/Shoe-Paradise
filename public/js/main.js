@@ -200,3 +200,9 @@ showAllBtn.addEventListener("click", () => {
 shopNowBtn.addEventListener("click", () => {
     availableShoesSection.scrollIntoView({ behavior: "smooth" });
 })
+
+window.addEventListener("load", () => {
+    if(window.location.pathname === "/" && localStorage.getItem("jwtToken")) {
+        window.location.href = "/user";
+    }
+})

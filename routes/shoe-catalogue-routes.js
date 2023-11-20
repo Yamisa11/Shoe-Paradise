@@ -133,12 +133,18 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
             await shoeCatalogueService.removeItemFromCart(cartId, shoeId)
 
+            const cartItemsList = await shoeCatalogueService.getCartItemsList(cartId);
+
+            if (cartItemsList.length === 0) {
+                await shoeCatalogueService.removeCompleteCart(cartId)
+            }
+
             res.json({
                 status: "success"
             })
         }
 
-        catch(err) {
+        catch (err) {
             res.json({
                 status: "error",
                 error: err.stack
@@ -154,7 +160,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             const cartId = await shoeCatalogueService.getCartId(userId);
 
             await shoeCatalogueService.removeCompleteCart(cartId);
-        
+
             res.json({
                 status: "success"
             })
@@ -171,13 +177,18 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
     async function updateCart(req, res) {
         const shoeId = req.params.id;
+        const type = req.query.type;
 
         try {
             const userId = await shoeCatalogueService.getUserId(email);
             const cartId = await shoeCatalogueService.getCartId(userId);
 
-            await shoeCatalogueService.updateCartItem(cartId, shoeId);
-        
+            if (type === "increase") {
+                await shoeCatalogueService.updateCartItemByIncrease(cartId, shoeId);
+            } else if (type === "decrease") {
+                await shoeCatalogueService.updateCartItemByDecrease(cartId, shoeId);
+            }
+
             res.json({
                 status: "success"
             })
