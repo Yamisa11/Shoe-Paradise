@@ -2,7 +2,8 @@ const cartItems = document.querySelector(".cart-items");
 const cartItemsContainer = document.querySelector(".cart-items-container");
 const cartSummary = document.querySelector(".cart-summary");
 const container = document.querySelector(".container");
-const shoppingCartHeading = document.querySelector("#shopping-cart-heading")
+const shoppingCartHeading = document.querySelector("#shopping-cart-heading");
+const cartMenu = document.querySelector(".cart-menu")
 
 cartSummary.style.display = "none";
 
@@ -60,7 +61,7 @@ async function displayCartItems(n) {
         divImg.append(img)
         divCart.append(divText, divImg)
         cartItemsContainer.remove()
-        shoppingCartHeading.parentElement.insertBefore(divCart, shoppingCartHeading.nextSiblingElement)
+        cartMenu.parentElement.insertBefore(divCart, cartMenu.nextSiblingElement)
     } else {
         cartItemsList.data.forEach(item => {
 
@@ -261,7 +262,6 @@ async function displayCartItems(n) {
                         data: { email }
                     })
 
-                    cartTotal = 0;
                     cartItems.innerHTML = "";
                     cartSummary.innerHTML = "";
                     cartSummary.style.display = "none";
@@ -306,9 +306,40 @@ async function displayCartItems(n) {
                 console.log(err.message)
             }
         })
+
+        const checkoutBtnElement = document.querySelector("#checkout-btn");
+
+        checkoutBtnElement.addEventListener("click", async () => {
+            const email = JSON.parse(localStorage.getItem("user"))[1];
+
+            try {
+                const cartItems = await axios.post("/cart", {
+                    email
+                })
+
+                for (const item of cartItems.data) {
+                    axios.post(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/sold/${item.id}`, {
+                        total: item.quantity
+                    })
+                }
+
+                await axios.post("http://localhost:3000/cart/checkout", {
+                    email
+                })
+            }
+
+            catch (err) {
+                console.log(err)
+            }
+
+            console.log(cartItems)
+        })
+
     }
 }
 
 await displayCartItems(true);
+
+
 
 

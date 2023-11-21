@@ -268,6 +268,24 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         }
     }
 
+    async function updateCartCheckout(req, res) {
+        const email = req.body.email;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            const cartId = await shoeCatalogueService.getCartId(userId);
+
+            await shoeCatalogueService.updateCartStatus(cartId);
+        }
+
+        catch(err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
+
     return {
         signupUser,
         loginUser,
@@ -276,6 +294,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         removeFromCart,
         removeCart,
         updateCart,
-        getCartTotal
+        getCartTotal,
+        updateCartCheckout
     }
 }

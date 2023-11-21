@@ -137,6 +137,12 @@ export default function ShoeCatalogueService(db) {
         return quantity * total.price;
     }
 
+    async function updateCartStatus(cartId) {
+        const updateStatusQuery = `UPDATE cart SET status = 'Completed' WHERE id = $1;`
+
+        await db.none(updateStatusQuery, [cartId])
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -153,6 +159,7 @@ export default function ShoeCatalogueService(db) {
         updateCartItemByIncrease,
         updateCartItemByDecrease,
         getCartNumberOfItems,
-        getCartItemsTotal
+        getCartItemsTotal,
+        updateCartStatus
     }
 }
