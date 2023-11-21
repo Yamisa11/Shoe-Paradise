@@ -118,17 +118,17 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
                 const shoeId = item.id;
 
                 const quantity = await shoeCatalogueService.getCartNumberOfItems(cartId, shoeId);
-
-                const total = item.price * item.quantity;
-
-                console.log(typeof item.price, typeof item.quantity)
-
-                const obj = { ...item, quantity, total }
+                const obj = { ...item, quantity }
 
                 result.push(obj)
             }
 
-            res.json(result);
+            const data = result.map(item => {
+                const total = item.price * item.quantity;
+                return { ...item, total }
+            })
+
+            res.json(data);
         }
 
         catch (err) {
@@ -201,23 +201,63 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             const cartId = await shoeCatalogueService.getCartId(userId);
 
             if (type === "increase") {
+
                 const result = await shoeCatalogueService.updateCartItemByIncrease(cartId, shoeId);
+                const total = await shoeCatalogueService.getCartItemsTotal(cartId, shoeId);
 
                 res.json({
                     status: "success",
-                    quantity: result
+                    quantity: result,
+                    total
                 })
 
             } else if (type === "decrease") {
                 const result = await shoeCatalogueService.updateCartItemByDecrease(cartId, shoeId);
+                const total = await shoeCatalogueService.getCartItemsTotal(cartId, shoeId);
 
                 res.json({
                     status: "success",
-                    quantity: result
+                    quantity: result,
+                    total
                 })
             }
 
 
+        }
+
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
+
+    async function getCartTotal(req, res) {
+        const email = req.body.email;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            const cartId = await shoeCatalogueService.getCartId(userId);
+
+            const cartItems = await shoeCatalogueService.getCartItemsList(cartId);
+
+            const grandTotalArr = [];
+
+            for (const item of cartItems) {
+                const shoeId = item.id;
+
+                const total = await shoeCatalogueService.getCartItemsTotal(cartId, shoeId);
+
+                grandTotalArr.push(total)
+            }
+
+            const grandTotal = grandTotalArr.reduce((total, item) => total += item);
+
+            res.json({
+                status: "success",
+                grandTotal
+            })
         }
 
         catch (err) {
@@ -235,6 +275,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         getCart,
         removeFromCart,
         removeCart,
-        updateCart
+        updateCart,
+        getCartTotal
     }
 }

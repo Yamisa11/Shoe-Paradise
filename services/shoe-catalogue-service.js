@@ -128,6 +128,15 @@ export default function ShoeCatalogueService(db) {
         return result.quantity;
     }
 
+    async function getCartItemsTotal(cartId, shoeId) {
+        const quantity = await getCartNumberOfItems(cartId, shoeId);
+        const selectQuery = `SELECT price FROM shoes WHERE id = $1`;
+
+        const total = await db.one(selectQuery, [shoeId]);
+
+        return quantity * total.price;
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -143,6 +152,7 @@ export default function ShoeCatalogueService(db) {
         removeCompleteCart,
         updateCartItemByIncrease,
         updateCartItemByDecrease,
-        getCartNumberOfItems
+        getCartNumberOfItems,
+        getCartItemsTotal
     }
 }

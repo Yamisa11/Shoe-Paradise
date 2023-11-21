@@ -3,9 +3,8 @@ const cartItemsContainer = document.querySelector(".cart-items-container");
 const cartSummary = document.querySelector(".cart-summary");
 const container = document.querySelector(".container");
 const shoppingCartHeading = document.querySelector("#shopping-cart-heading")
-cartSummary.style.display = "none";
 
-let cartTotal = 0;
+cartSummary.style.display = "none";
 
 function cartSkeletonLoader() {
 
@@ -99,7 +98,7 @@ async function displayCartItems(n) {
             img.src = item.img_src;
             name.innerText = item.name;
             brand.innerText = item.brand;
-            price.innerText = `R${item.price}`;
+            price.innerText = `R${item.total}`;
             size.innerHTML = `<span>Size: </span>${item.size}`;
             colour.innerHTML = `<span>Colour: </span>${item.colour}`;
             quantity.innerText = "Quantity";
@@ -118,10 +117,7 @@ async function displayCartItems(n) {
             cartItem.append(cartItemImage, cartItemInfo, cartItemQuantity, cartItemPrice);
 
             cartItems.append(cartItem);
-
-            cartTotal += item.price;
         })
-
 
         const summaryHeading = document.createElement("div");
         const hr = document.createElement("hr");
@@ -169,8 +165,20 @@ async function displayCartItems(n) {
 
         const totalSummaryElement = document.querySelector(".total-summary")
         const itemsSummaryElement = document.querySelector(".items-summary");
+        const email = JSON.parse(localStorage.getItem("user"))[1];
 
-        totalSummaryElement.children[1].innerText = `R${cartTotal}`;
+        try {
+            const res = await axios.post("http://localhost:3000/cart/total", {
+                email
+            })
+
+            totalSummaryElement.children[1].innerText = `R${res.data.grandTotal}`;
+        }
+
+        catch (err) {
+            console.log(err)
+        }
+
         itemsSummaryElement.children[1].innerText = cartItemsList.data.length;
 
         const increaseQtyBtn = document.querySelectorAll(".increase-qty");
@@ -185,15 +193,20 @@ async function displayCartItems(n) {
                 const shoeId = item.closest(".cart-item").dataset.shoeId;
 
                 try {
-                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=increase`, { 
+                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=increase`, {
                         email
                     })
 
                     item.previousElementSibling.innerText = response.data.quantity;
 
-                    console.log(response)
+                    item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
 
-                    item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = response.data.total;
+                    const res = await axios.post("http://localhost:3000/cart/total", {
+                        email
+                    })
+
+                    const totalSummaryElement = document.querySelector(".total-summary")
+                    totalSummaryElement.children[1].innerText = `R${res.data.grandTotal}`;
                 }
 
                 catch (err) {
@@ -206,18 +219,26 @@ async function displayCartItems(n) {
 
             item.addEventListener("click", async () => {
 
-                item.nextElementSibling.innerText = updatedQty;
-
                 const email = JSON.parse(localStorage.getItem("user"))[1];
 
                 const shoeId = item.closest(".cart-item").dataset.shoeId;
 
                 try {
-                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=decrease`, { 
+                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=decrease`, {
                         email
                     })
 
-                    item.previousElementSibling.innerText = response.data.quantity;
+                    item.nextElementSibling.innerText = response.data.quantity;
+
+                    item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
+
+                    const res = await axios.post("http://localhost:3000/cart/total", {
+                        email
+                    })
+
+                    const totalSummaryElement = document.querySelector(".total-summary")
+                    totalSummaryElement.children[1].innerText = `R${res.data.grandTotal}`;
+
                 }
 
                 catch (err) {

@@ -885,6 +885,22 @@ header {
     background-color: #F5F5F5;
 }
 
+.form-center, main{
+    margin-top: 71px;
+}
+
+.cart-menu {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oxygen', sans-serif;
+}
+
+#back-button {
+    font-size: 24px;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
