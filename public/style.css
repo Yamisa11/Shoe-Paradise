@@ -923,6 +923,19 @@ header {
     text-decoration: none;
 }
 
+.checkout-success-container {
+    font-size: 24px;
+    font-family: 'Oxygen', sans-serif;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+
+.checkout-success-container img {
+    width: 500px;
+    height: 500px;
+    
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;

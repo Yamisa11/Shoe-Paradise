@@ -326,6 +326,8 @@ async function displayCartItems(n) {
                 await axios.post("http://localhost:3000/cart/checkout", {
                     email
                 })
+
+                window.location.href = "/cart/checkout/success"
             }
 
             catch (err) {

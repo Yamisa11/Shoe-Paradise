@@ -286,6 +286,10 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         }
     }
 
+    async function checkoutSuccess(req, res) {
+        res.render("checkout-success")
+    }
+
     return {
         signupUser,
         loginUser,
@@ -295,6 +299,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         removeCart,
         updateCart,
         getCartTotal,
-        updateCartCheckout
+        updateCartCheckout,
+        checkoutSuccess
     }
 }

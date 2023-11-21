@@ -62,4 +62,6 @@ app.post("/cart/total", shoeCatalogueRoutes.getCartTotal)
 
 app.post("/cart/checkout", shoeCatalogueRoutes.updateCartCheckout)
 
+app.get("/cart/checkout/success", shoeCatalogueRoutes.checkoutSuccess)
+
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));
