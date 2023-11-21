@@ -877,6 +877,14 @@ nav h1 a {
     margin-bottom: 20px;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #F5F5F5;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
