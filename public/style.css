@@ -901,6 +901,28 @@ header {
     font-size: 24px;
 }
 
+.back-container img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    left: -30px;
+}
+
+.back-container {
+    display: flex;
+    position: relative;
+}
+
+.back-container:hover {
+    cursor: pointer;
+}
+
+.back-container a {
+    color: black;
+    text-decoration: none;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
