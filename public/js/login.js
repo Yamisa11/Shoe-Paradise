@@ -9,6 +9,7 @@ const loginForm = document.querySelector(".login-form-container form")
 const loginEmailInput = document.querySelector("#login-email");
 const loginPasswordInput = document.querySelector("#login-password");
 const errorMsg = document.querySelector("#error-msg");
+const cartIconSection = document.querySelector(".cart-icon-section")
 
 function showLoginForm() {
     overlay.classList.remove("hidden");
@@ -61,5 +62,13 @@ loginForm.addEventListener("submit", async (event) => {
         
     } catch(error) {
         console.log(error)
+    }
+})
+
+cartIconSection.addEventListener("click", () => {
+    if (localStorage.getItem("jwtToken")) {
+        window.location.href = "/cart";
+    } else {
+        showLoginForm();
     }
 })
