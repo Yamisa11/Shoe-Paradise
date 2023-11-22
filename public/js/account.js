@@ -36,11 +36,13 @@ editName.addEventListener("click", () => {
         editName.innerText = "save"
         nameField.removeAttribute("disabled")
         nameField.focus()
+        nameField.classList.add("edit-state");
     } else {
         nameField.blur()
         editName.innerText = "edit";
         nameField.setAttribute("disabled", "");
         nameField.innerText = nameField.innerText;
+        nameField.classList.remove("edit-state");
     }
 })
 editSurname.addEventListener("click", () => {
@@ -48,11 +50,13 @@ editSurname.addEventListener("click", () => {
         editSurname.innerText = "save"
         surnameField.removeAttribute("disabled")
         surnameField.focus()
+        surnameField.classList.add("edit-state");
     } else {
         surnameField.blur()
         editSurname.innerText = "edit";
         surnameField.setAttribute("disabled", "");
         surnameField.innerText = surnameField.innerText;
+        surnameField.classList.remove("edit-state");
     }
 })
 editPhoneNumber.addEventListener("click", () => {
@@ -60,11 +64,13 @@ editPhoneNumber.addEventListener("click", () => {
         editPhoneNumber.innerText = "save"
         phoneNumberField.removeAttribute("disabled")
         phoneNumberField.focus()
+        phoneNumberField.classList.add("edit-state");
     } else {
         phoneNumberField.blur()
         editPhoneNumber.innerText = "edit";
         phoneNumberField.setAttribute("disabled", "");
         phoneNumberField.innerText = phoneNumberField.innerText;
+        phoneNumberField.classList.remove("edit-state");
     }
 })
 editAddress.addEventListener("click", () => {
@@ -72,10 +78,12 @@ editAddress.addEventListener("click", () => {
         editAddress.innerText = "save"
         addressField.removeAttribute("disabled")
         addressField.focus()
+        addressField.classList.add("edit-state");
     } else {
         addressField.blur()
         editAddress.innerText = "edit";
         addressField.setAttribute("disabled", "");
         addressField.innerText = addressField.innerText;
+        addressField.classList.remove("edit-state");
     }
 })

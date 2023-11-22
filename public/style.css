@@ -950,11 +950,34 @@ header {
 
 #name-field, #surname-field, #email-field, #phone-number-field, #address-field {
     border: none;
-    border-bottom: 1px solid grey;
+}
+
+.edit-state {
+    border-bottom: 2px solid #00A36C !important;
+    background-color: #E5E4E2;
 }
 
 #name-field:focus, #surname-field:focus, #email-field:focus, #phone-number-field:focus, #address-field:focus {
     outline: none;
+}
+
+.account-details-section label {
+    width: 140px;
+    display: inline-block;
+}
+
+.account-details-section input {
+    font-size: 20px;
+}
+
+.account-details-section small {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.account-details-section div {
+    height: 24px;
+    margin-bottom: 4px;
 }
 
 @keyframes skeleton-loading {
