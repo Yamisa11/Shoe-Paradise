@@ -202,7 +202,7 @@ async function displayCartItems(n) {
 
                     item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
 
-                    const res = await axios.post("https://shoe-catalogue.onrender.comcart/total", {
+                    const res = await axios.post("https://shoe-catalogue.onrender.com/cart/total", {
                         email
                     })
 
