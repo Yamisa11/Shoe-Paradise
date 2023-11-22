@@ -46,11 +46,11 @@ export default function ShoeCatalogueService(db) {
     async function checkExistingCart(email) {
         const userId = await getUserId(email);
 
-        const selectQuery = `SELECT * FROM cart WHERE user_id = $1`;
+        const selectQuery = `SELECT * FROM cart WHERE user_id = $1 AND status = 'Created'`;
 
         const result = await db.oneOrNone(selectQuery, [userId])
 
-        if (!result || result.status !== "Created") {
+        if (!result) {
             return false;
         } else {
             return true;
