@@ -143,6 +143,12 @@ export default function ShoeCatalogueService(db) {
         await db.none(updateStatusQuery, [cartId])
     }
 
+    async function getAccountDetails(email) {
+        const selectQuery = `SELECT * FROM users WHERE email = $1`;
+
+        await db.one(selectQuery, [email]);
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -160,6 +166,7 @@ export default function ShoeCatalogueService(db) {
         updateCartItemByDecrease,
         getCartNumberOfItems,
         getCartItemsTotal,
-        updateCartStatus
+        updateCartStatus,
+        getAccountDetails
     }
 }

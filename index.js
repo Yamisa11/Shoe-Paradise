@@ -64,4 +64,10 @@ app.post("/cart/checkout", shoeCatalogueRoutes.updateCartCheckout)
 
 app.get("/cart/checkout/success", shoeCatalogueRoutes.checkoutSuccess)
 
+app.get("/user/account", (req, res) => {
+    res.render("account-details")
+})
+
+app.post("/user/account", shoeCatalogueRoutes.accountDetails)
+
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));

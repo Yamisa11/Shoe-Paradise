@@ -444,7 +444,7 @@ nav h1 a {
     text-decoration: underline;
 }
 
-#shopping-cart-heading {
+#shopping-cart-heading, #account-details-heading {
     font-family: 'Oxygen', sans-serif;
     font-weight: normal;
 }
@@ -941,6 +941,20 @@ header {
 
 .checkout-success-container div:nth-of-type(2) {
     margin-bottom: 20px;
+}
+
+.account-details-section {
+    font-size: 20px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+#name-field, #surname-field, #email-field, #phone-number-field, #address-field {
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#name-field:focus, #surname-field:focus, #email-field:focus, #phone-number-field:focus, #address-field:focus {
+    outline: none;
 }
 
 @keyframes skeleton-loading {

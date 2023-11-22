@@ -290,6 +290,23 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         res.render("checkout-success")
     }
 
+    async function accountDetails(req, res) {
+        const email = req.body.email;
+
+        try {
+            const data = await shoeCatalogueService.getAccountDetails(email);
+
+            res.json(data)
+        }
+
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
+
     return {
         signupUser,
         loginUser,
@@ -300,6 +317,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         updateCart,
         getCartTotal,
         updateCartCheckout,
-        checkoutSuccess
+        checkoutSuccess,
+        accountDetails
     }
 }
