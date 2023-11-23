@@ -1,6 +1,6 @@
 # Shoe Catalogue App 👞
 
-![shoe-paradise-website](https://github.com/Horizyn77/shoe-catalogue/assets/116552523/64d5e8ee-33e9-4411-8c84-55ef5a8fd26e)
+![shoe-paradise-website](https://github.com/Horizyn77/shoe-catalogue/assets/116552523/6f309c2e-8b13-45f2-a5d7-3ab56ee214ee)
 
 Link to app 🔗:  
 
