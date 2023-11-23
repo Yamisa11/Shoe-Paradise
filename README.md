@@ -4,7 +4,7 @@
 
 Link to app 🔗:  
 
-(https://shoe-catalogue.onrender.com/)
+https://shoe-catalogue.onrender.com/
 
 Please note the app is using a free hosting account on render which has limitations. To speed up the loading process open the site and reload it again.
 
