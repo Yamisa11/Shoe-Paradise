@@ -146,7 +146,19 @@ export default function ShoeCatalogueService(db) {
     async function getAccountDetails(email) {
         const selectQuery = `SELECT * FROM users WHERE email = $1`;
 
-        await db.one(selectQuery, [email]);
+        const accountDetails = await db.one(selectQuery, [email]);
+
+        return accountDetails;
+    }
+
+    async function getWishlist(userId) {
+        const selectQuery = `SELECT shoes.* FROM shoes 
+        JOIN wishlist ON wishlist.shoe_id = shoes.id 
+        WHERE wishlist.user_id = $1`;
+
+        const result = await db.manyOrNone(selectQuery, [userId]);
+
+        return result;
     }
 
     return {
@@ -167,6 +179,7 @@ export default function ShoeCatalogueService(db) {
         getCartNumberOfItems,
         getCartItemsTotal,
         updateCartStatus,
-        getAccountDetails
+        getAccountDetails,
+        getWishlist
     }
 }

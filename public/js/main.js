@@ -82,6 +82,7 @@ function displayShoes(arr) {
         const shoePrice = document.createElement("p");
         const shoeStock = document.createElement("p");
         const addToCartBtn = document.createElement("button");
+        const addToWishlistBtn = document.createElement("button");
         const centeredBtnContainer = document.createElement("div");
         const sizeAndColourContainer = document.createElement("div");
 
@@ -94,10 +95,12 @@ function displayShoes(arr) {
         shoePrice.innerHTML = `<span>R</span>${item.price}`;
         shoeStock.innerHTML = `<span>${item.in_stock} </span>in stock`;
         addToCartBtn.innerText = "ADD TO CART";
+        addToWishlistBtn.innerText = "+ WISHLIST"
         shoeName.style.color = "#333535";
         shoeBrand.style.color = "#8d8989";
         shoePrice.style.color = "#333535";
         addToCartBtn.style.border = "1px solid #333535";
+        addToWishlistBtn.style.border = "1px solid #333535";
         shoeStock.style.color = "#048c44";
 
 
@@ -105,6 +108,7 @@ function displayShoes(arr) {
         shoeImg.className = "shoeImage";
         shoeStock.className = "shoeStock";
         addToCartBtn.className = "addToCartBtn";
+        addToWishlistBtn.className = "addToWishlistBtn";
         centeredBtnContainer.className = "centeredBtnContainer"
         sizeAndColourContainer.className = "sizeAndColourContainer";
         shoeSize.className = "shoeSize";
@@ -114,7 +118,7 @@ function displayShoes(arr) {
         shoesDisplay.style.display = "flex";
         shoesDisplay.style.textAlign = "initial";
 
-        centeredBtnContainer.append(addToCartBtn);
+        centeredBtnContainer.append(addToCartBtn, addToWishlistBtn);
         sizeAndColourContainer.append(shoeSize, shoeColour);
         shoeContainer.append(shoeImg, shoeName, shoeBrand, sizeAndColourContainer, shoePrice, shoeStock, centeredBtnContainer);
         shoesDisplay.append(shoeContainer)

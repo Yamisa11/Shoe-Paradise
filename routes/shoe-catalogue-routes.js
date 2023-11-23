@@ -278,7 +278,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             await shoeCatalogueService.updateCartStatus(cartId);
         }
 
-        catch(err) {
+        catch (err) {
             res.json({
                 status: "error",
                 error: err.stack
@@ -291,12 +291,12 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
     }
 
     async function accountDetails(req, res) {
-        const email = req.body.email;
+        const email = req.query.user;
 
         try {
             const data = await shoeCatalogueService.getAccountDetails(email);
 
-            res.json(data)
+            res.render("account-details", { data })
         }
 
         catch (err) {
@@ -307,6 +307,26 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         }
     }
 
+    async function wishlist(req, res) {
+        const email = req.query.user;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            const wishlistItems = await shoeCatalogueService.getWishlist(userId);
+
+            res.render("wishlist", { wishlistItems })
+        }
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
+
+    async function orderHistory(req, res) {
+        res.render("order-history")
+    }
     return {
         signupUser,
         loginUser,
@@ -318,6 +338,8 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         getCartTotal,
         updateCartCheckout,
         checkoutSuccess,
-        accountDetails
+        accountDetails,
+        wishlist,
+        orderHistory
     }
 }

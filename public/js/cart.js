@@ -239,13 +239,11 @@ async function displayCartItems(n) {
 
                     const totalSummaryElement = document.querySelector(".total-summary")
                     totalSummaryElement.children[1].innerText = `R${res.data.grandTotal}`;
-
                 }
 
                 catch (err) {
                     console.log(err)
                 }
-
             })
         })
 
@@ -277,13 +275,11 @@ async function displayCartItems(n) {
                     if (n) {
                         await displayCartItems(false);
                     }
-
                 }
 
                 catch (err) {
                     console.log(err.message)
                 }
-
             })
         })
 

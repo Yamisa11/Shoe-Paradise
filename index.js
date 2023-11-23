@@ -64,10 +64,10 @@ app.post("/cart/checkout", shoeCatalogueRoutes.updateCartCheckout)
 
 app.get("/cart/checkout/success", shoeCatalogueRoutes.checkoutSuccess)
 
-app.get("/user/account", (req, res) => {
-    res.render("account-details")
-})
+app.get("/user/account", shoeCatalogueRoutes.accountDetails)
 
-app.post("/user/account", shoeCatalogueRoutes.accountDetails)
+app.get("/user/wishlist", shoeCatalogueRoutes.wishlist)
+
+app.get("/user/orders", shoeCatalogueRoutes.orderHistory)
 
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));

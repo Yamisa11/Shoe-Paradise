@@ -8,29 +8,6 @@ const surnameField = document.querySelector("#surname-field");
 const phoneNumberField = document.querySelector("#phone-number-field");
 const addressField = document.querySelector("#address-field");
 
-async function getAccountDetails() {
-
-    let email = "";
-
-    if (localStorage.getItem("jwtToken")) {
-        email = JSON.parse(localStorage.getItem("user"))[1];
-    }
-
-    try {
-        const data = await axios.post("/user/account", {
-            email
-        })
-
-        console.log(data)
-    }
-
-    catch (err) {
-        console.log(err)
-    }
-}
-
-(getAccountDetails)()
-
 editName.addEventListener("click", () => {
     if (editName.innerText === "edit") {
         editName.innerText = "save"
@@ -87,3 +64,5 @@ editAddress.addEventListener("click", () => {
         addressField.classList.remove("edit-state");
     }
 })
+
+history.replaceState({}, null, "/user/account");

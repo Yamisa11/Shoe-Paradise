@@ -76,14 +76,25 @@ button.addToCartBtn {
     border: none;
     position: relative;
     cursor: pointer;
+    margin-bottom: 6px;
 }
 
-.addToCartBtn:hover {
+button.addToWishlistBtn {
+    padding: 8px 81px 8px;
+    background-color: #e0e4ec;
+    color: #2C3539;
+    border: 1px solid #2C3539 !important;
+    border: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.addToCartBtn:hover, .addToWishlistBtn:hover {
     background-color: #2C3539;
     color: white;
 }
 
-.addToCartBtn:active {
+.addToCartBtn:active, .addToWishlistBtn:active {
     transform: translateY(2px);
 }
 
@@ -594,7 +605,7 @@ nav h1 a {
 }
 
 #login-btn,
-#signup-btn, #logout-btn, #user-menu {
+#signup-btn, #user-menu {
     margin-right: 14px;
 }
 
@@ -656,6 +667,10 @@ nav h1 a {
     color: #696969;
 }
 
+#login-email:focus, #login-password:focus {
+    margin: 7px 0;
+}
+
 .login-form-container input:focus {
     border: 3px solid #A4A4A4;
 }
@@ -712,6 +727,10 @@ nav h1 a {
 
 .signup-form-container input:focus {
     border: 3px solid #A4A4A4;
+}
+
+.signup-form-container input:focus {
+    margin: 5px 0;
 }
 
 .signup-form-container button {

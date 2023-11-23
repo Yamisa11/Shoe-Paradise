@@ -1,0 +1,28 @@
+<header>
+    <div class="container">
+        <nav>
+            <h1 class="home-btn">SHOE PARADISE</h1>
+        </nav>
+    </div>
+</header>
+<div class="container">
+    <div class="cart-menu">
+        <h2 id="account-details-heading">Wishlist</h2>
+        <div class="back-container">
+            <a href="/user">
+                <img src="/images/icons/back.png" alt="">
+                <div id="back-button">Back to Home</div>
+            </a>
+        </div>
+    </div>
+</div>
+{{#if wishlistItems }}
+{{#each wishlistItems}}
+<div>{{this.name}}</div>
+<div>{{this.brand}}</div>
+{{/each}}
+
+{{else}}
+<div>No items</div>
+{{/if}}
+<script src="/js/wishlist.js"></script>

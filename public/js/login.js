@@ -45,7 +45,7 @@ loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     try {        
-        const response = await axios.post("https://shoe-catalogue.onrender.com/login", {
+        const response = await axios.post("http://localhost:3000/login", {
             email:  loginEmailInput.value,
             password: loginPasswordInput.value
         })

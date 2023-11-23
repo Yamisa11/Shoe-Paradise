@@ -1,5 +1,6 @@
 const logoutBtn = document.querySelector("#logout-btn");
 const userMenu = document.querySelector("#user-menu span");
+const dropdownContent = document.querySelector(".dropdown-content");
 
 logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("jwtToken");
@@ -48,3 +49,8 @@ async function getNumOfCartItems() {
         cartIconBadge.innerText = await getNumOfCartItems()
     }
 })();
+
+const email = JSON.parse(localStorage.getItem("user"))[1];
+
+dropdownContent.firstElementChild.href = `${dropdownContent.firstElementChild.href}?user=${email}`;
+dropdownContent.children[2].href = `${dropdownContent.children[2].href}?user=${email}`;
