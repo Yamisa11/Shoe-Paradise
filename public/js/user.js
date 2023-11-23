@@ -53,4 +53,5 @@ async function getNumOfCartItems() {
 const email = JSON.parse(localStorage.getItem("user"))[1];
 
 dropdownContent.firstElementChild.href = `${dropdownContent.firstElementChild.href}?user=${email}`;
+dropdownContent.children[1].href = `${dropdownContent.children[1].href}?user=${email}`;
 dropdownContent.children[2].href = `${dropdownContent.children[2].href}?user=${email}`;

@@ -16,3 +16,19 @@
         </div>
     </div>
 </div>
+<div>
+    {{#if orders}}
+    {{#each orders}}
+    {{#each this}}
+    <div>{{this.cart_id}}
+        <div></div>
+    </div>
+    <div>{{this.name}}</div>
+    <div>{{this.price}}</div>
+    {{/each}}
+    {{/each}}
+    {{else}}
+    <div>No orders</div>
+    {{/if}}
+</div>
+<script src="/js/orders.js"></script>

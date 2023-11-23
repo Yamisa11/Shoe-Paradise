@@ -161,6 +161,25 @@ export default function ShoeCatalogueService(db) {
         return result;
     }
 
+    async function getCompletedCarts(userId) {
+        const selectQuery = `SELECT id FROM cart WHERE user_id = $1 AND status = 'Completed'`;
+
+        const result = await db.manyOrNone(selectQuery, [userId]);
+
+        return result;
+    }
+
+    async function getOrders(cartId) {
+        const selectQuery = `SELECT * FROM shoes 
+        JOIN cart_items ON shoes.id = shoe_id 
+        JOIN cart ON cart.id = cart_id 
+        WHERE cart_id = $1`;
+
+        const result = db.manyOrNone(selectQuery, [cartId]);
+
+        return result;
+    }
+
     return {
         signup,
         getPasswordHash,
@@ -180,6 +199,8 @@ export default function ShoeCatalogueService(db) {
         getCartItemsTotal,
         updateCartStatus,
         getAccountDetails,
-        getWishlist
+        getWishlist,
+        getCompletedCarts,
+        getOrders
     }
 }

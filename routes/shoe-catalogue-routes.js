@@ -325,7 +325,37 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
     }
 
     async function orderHistory(req, res) {
-        res.render("order-history")
+        const email = req.query.user;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+
+            const completedCarts = await shoeCatalogueService.getCompletedCarts(userId);
+
+            const orders = [];
+
+            for (const cart of completedCarts) {
+                const order = await shoeCatalogueService.getOrders(cart.id);
+                orders.push(order)
+            }
+            
+            // const sortedOrders = orders.reduce((total, order) => {
+            //     return Object.assign(total, { order: [{}]})
+            // })
+
+            console.log(orders)
+
+            res.render("order-history", {
+                orders
+            })
+            
+        }
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
     }
     return {
         signupUser,
