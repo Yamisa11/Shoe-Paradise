@@ -169,7 +169,7 @@ async function displayCartItems(n) {
         const email = JSON.parse(localStorage.getItem("user"))[1];
 
         try {
-            const res = await axios.post("https://shoe-catalogue.onrender.com/cart/total", {
+            const res = await axios.post("http://localhost:3000/cart/total", {
                 email
             })
 
@@ -194,7 +194,7 @@ async function displayCartItems(n) {
                 const shoeId = item.closest(".cart-item").dataset.shoeId;
 
                 try {
-                    const response = await axios.post(`https://shoe-catalogue.onrender.com/cart/update/${shoeId}?type=increase`, {
+                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=increase`, {
                         email
                     })
 
@@ -202,7 +202,7 @@ async function displayCartItems(n) {
 
                     item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
 
-                    const res = await axios.post("https://shoe-catalogue.onrender.com/cart/total", {
+                    const res = await axios.post("http://localhost:3000/cart/total", {
                         email
                     })
 
@@ -225,7 +225,7 @@ async function displayCartItems(n) {
                 const shoeId = item.closest(".cart-item").dataset.shoeId;
 
                 try {
-                    const response = await axios.post(`https://shoe-catalogue.onrender.com/cart/update/${shoeId}?type=decrease`, {
+                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=decrease`, {
                         email
                     })
 
@@ -233,7 +233,7 @@ async function displayCartItems(n) {
 
                     item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
 
-                    const res = await axios.post("https://shoe-catalogue.onrender.com/cart/total", {
+                    const res = await axios.post("http://localhost:3000/cart/total", {
                         email
                     })
 
@@ -309,26 +309,28 @@ async function displayCartItems(n) {
             const email = JSON.parse(localStorage.getItem("user"))[1];
 
             try {
-                const cartItems = await axios.post("/cart", {
+                const cartItems = await axios.post("http://localhost:3000/cart", {
                     email
                 })
 
                 for (const item of cartItems.data) {
-                    axios.post(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/sold/${item.id}`, {
+                    await axios.post(`https://shoe-catalogue-api-au25.onrender.com/api/shoes/sold/${item.id}`, {
                         total: item.quantity
                     })
                 }
 
-                await axios.post("https://shoe-catalogue.onrender.com/cart/checkout", {
+                await axios.post("http://localhost:3000/cart/checkout", {
                     email
                 })
+
+                window.location.href = "http://localhost:3000/cart/checkout/success"
+
             }
 
             catch (err) {
                 console.log(err)
             }
 
-            window.location.href = "https://shoe-catalogue.onrender.com/cart/checkout/success"
         })
 
     }

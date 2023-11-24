@@ -161,6 +161,12 @@ export default function ShoeCatalogueService(db) {
         return result;
     }
 
+    async function addShoeToWishlist(userId, shoeId) {
+        const insertQuery = `INSERT INTO wishlist(user_id, shoe_id) VALUES($1, $2)`;
+
+        await db.none(insertQuery, [userId, shoeId])
+    }
+
     async function getCompletedCarts(userId) {
         const selectQuery = `SELECT id FROM cart WHERE user_id = $1 AND status = 'Completed'`;
 
@@ -200,6 +206,7 @@ export default function ShoeCatalogueService(db) {
         updateCartStatus,
         getAccountDetails,
         getWishlist,
+        addShoeToWishlist,
         getCompletedCarts,
         getOrders
     }

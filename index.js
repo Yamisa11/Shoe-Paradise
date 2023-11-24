@@ -68,6 +68,8 @@ app.get("/user/account", shoeCatalogueRoutes.accountDetails)
 
 app.get("/user/wishlist", shoeCatalogueRoutes.wishlist)
 
+app.post("/user/wishlist", shoeCatalogueRoutes.addToWishlist)
+
 app.get("/user/orders", shoeCatalogueRoutes.orderHistory)
 
 app.listen(PORT, () => console.log(`Server started at Port: ${PORT}`));

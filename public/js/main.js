@@ -97,11 +97,9 @@ function displayShoes(arr) {
         addToCartBtn.innerText = "ADD TO CART";
         addToWishlistBtn.innerText = "+ WISHLIST"
         shoeName.style.color = "#333535";
-        shoeBrand.style.color = "#8d8989";
         shoePrice.style.color = "#333535";
         addToCartBtn.style.border = "1px solid #333535";
         addToWishlistBtn.style.border = "1px solid #333535";
-        shoeStock.style.color = "#048c44";
 
 
         shoeContainer.className = "shoeContainer";
@@ -111,6 +109,7 @@ function displayShoes(arr) {
         addToWishlistBtn.className = "addToWishlistBtn";
         centeredBtnContainer.className = "centeredBtnContainer"
         sizeAndColourContainer.className = "sizeAndColourContainer";
+        shoeBrand.className = "shoeBrand";
         shoeSize.className = "shoeSize";
         shoeColour.className = "shoeColour";
         shoePrice.className = "shoePrice";
@@ -157,6 +156,42 @@ function displayShoes(arr) {
                     }
                 }).showToast();
 
+            } else {
+                showLoginForm();
+            }
+        })
+    })
+
+    const addToWishlistBtnElem = document.querySelectorAll(".addToWishlistBtn");
+
+    addToWishlistBtnElem.forEach(item => {
+        item.addEventListener("click", async () => {
+            alert("click")
+
+            if (localStorage.getItem("jwtToken")) {
+
+                const shoeId = item.closest(".shoeContainer").dataset.shoeId;
+
+                try {
+                    await addItemToWishlist(shoeId)
+                }
+
+                catch (error) {
+                    console.log(error)
+                }
+
+                Toastify({
+
+                    text: " Item added to wishlist",
+
+                    duration: 3000,
+
+                    avatar: "/images/icons/check.png",
+
+                    style: {
+                        fontFamily: "'Oxygen', sans-serif"
+                    }
+                }).showToast();
             } else {
                 showLoginForm();
             }

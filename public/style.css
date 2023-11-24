@@ -89,12 +89,14 @@ button.addToWishlistBtn {
     cursor: pointer;
 }
 
-.addToCartBtn:hover, .addToWishlistBtn:hover {
+.addToCartBtn:hover,
+.addToWishlistBtn:hover {
     background-color: #2C3539;
     color: white;
 }
 
-.addToCartBtn:active, .addToWishlistBtn:active {
+.addToCartBtn:active,
+.addToWishlistBtn:active {
     transform: translateY(2px);
 }
 
@@ -177,9 +179,20 @@ select {
     margin-right: 20px;
 }
 
-.shoeSize, .shoeColour {
+.shoeSize,
+.shoeColour {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.shoeStock {
+    color: #048c44;
+}
+
+.shoeBrand,
+#sizeWishlist,
+#colourWishlist {
+    color: #8d8989;
 }
 
 p.shoeStock {
@@ -190,7 +203,8 @@ p.shoeStock {
     color: #8d8989;
 }
 
-.shoeContainer > p:first-of-type, .shoePrice {
+.shoeContainer>p:first-of-type,
+.shoePrice {
     font-weight: bold;
 }
 
@@ -364,7 +378,10 @@ nav {
 
 #user-menu:hover,
 #login-btn:hover,
-#signup-btn:hover, #logout-btn:hover, .dropdown-content a:hover, .add-shoe a:hover {
+#signup-btn:hover,
+#logout-btn:hover,
+.dropdown-content a:hover,
+.add-shoe a:hover {
     color: #418dff;
 }
 
@@ -455,7 +472,8 @@ nav h1 a {
     text-decoration: underline;
 }
 
-#shopping-cart-heading, #account-details-heading {
+#shopping-cart-heading,
+#account-details-heading {
     font-family: 'Oxygen', sans-serif;
     font-weight: normal;
 }
@@ -605,7 +623,8 @@ nav h1 a {
 }
 
 #login-btn,
-#signup-btn, #user-menu {
+#signup-btn,
+#user-menu {
     margin-right: 14px;
 }
 
@@ -667,7 +686,8 @@ nav h1 a {
     color: #696969;
 }
 
-#login-email:focus, #login-password:focus {
+#login-email:focus,
+#login-password:focus {
     margin: 7px 0;
 }
 
@@ -853,7 +873,7 @@ nav h1 a {
     margin-bottom: 6px;
 }
 
-.cart-item-info > p:first-of-type {
+.cart-item-info>p:first-of-type {
     margin-top: 24px;
 }
 
@@ -904,7 +924,8 @@ header {
     background-color: #F5F5F5;
 }
 
-.form-center, main{
+.form-center,
+main {
     margin-top: 71px;
 }
 
@@ -967,7 +988,11 @@ header {
     font-family: 'Oxygen', sans-serif;
 }
 
-#name-field, #surname-field, #email-field, #phone-number-field, #address-field {
+#name-field,
+#surname-field,
+#email-field,
+#phone-number-field,
+#address-field {
     border: none;
 }
 
@@ -976,7 +1001,11 @@ header {
     background-color: #E5E4E2;
 }
 
-#name-field:focus, #surname-field:focus, #email-field:focus, #phone-number-field:focus, #address-field:focus {
+#name-field:focus,
+#surname-field:focus,
+#email-field:focus,
+#phone-number-field:focus,
+#address-field:focus {
     outline: none;
 }
 

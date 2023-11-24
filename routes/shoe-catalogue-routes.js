@@ -276,6 +276,10 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             const cartId = await shoeCatalogueService.getCartId(userId);
 
             await shoeCatalogueService.updateCartStatus(cartId);
+
+            res.json({
+                status: "success"
+            })
         }
 
         catch (err) {
@@ -324,6 +328,27 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         }
     }
 
+    async function addToWishlist(req, res) {
+        const email = req.body.email;
+        const shoeId = req.body.shoeId;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            await shoeCatalogueService.addShoeToWishlist(userId, shoeId)
+
+            res.json({
+                status: "success"
+            })
+        }
+
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
+
     async function orderHistory(req, res) {
         const email = req.query.user;
 
@@ -338,7 +363,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
                 const order = await shoeCatalogueService.getOrders(cart.id);
                 orders.push(order)
             }
-            
+
             // const sortedOrders = orders.reduce((total, order) => {
             //     return Object.assign(total, { order: [{}]})
             // })
@@ -348,7 +373,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             res.render("order-history", {
                 orders
             })
-            
+
         }
         catch (err) {
             res.json({
@@ -370,6 +395,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         checkoutSuccess,
         accountDetails,
         wishlist,
+        addToWishlist,
         orderHistory
     }
 }

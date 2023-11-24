@@ -15,14 +15,24 @@
             </a>
         </div>
     </div>
+    <section>
+        {{#if wishlistItems }}
+        {{#each wishlistItems}}
+        <div class="shoeContainer" data-shoe-id="{{this.id}}">
+            <img src="{{this.img_src}}" alt="" class="shoeImage">
+            <p>{{this.name}}</p>
+            <p class="shoeBrand">{{this.brand}}</p>
+            <div class="sizeAndColourContainer">
+                <p class="shoeSize">Size: <span id="sizeWishlist"> {{this.size}}</span></p>
+                <p class="shoeColour">Colour: <span id="colourWishlist">{{this.colour}}</span></p>
+            </div>
+            <p class="shoePrice">R{{this.price}}</p>
+            <p class="shoeStock">{{this.in_stock}} in stock</p>
+        </div>
+        {{/each}}
+        {{else}}
+        <div>No items</div>
+        {{/if}}
+    </section>
 </div>
-{{#if wishlistItems }}
-{{#each wishlistItems}}
-<div>{{this.name}}</div>
-<div>{{this.brand}}</div>
-{{/each}}
-
-{{else}}
-<div>No items</div>
-{{/if}}
 <script src="/js/wishlist.js"></script>
