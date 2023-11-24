@@ -376,6 +376,28 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             })
         }
     }
+
+    async function updateWishlist(req, res) {
+        const shoeId = req.params.id;
+        const email = req.body.email;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            await shoeCatalogueService.removeFromWishlist(userId, shoeId);
+
+            res.json({
+                status: "success",
+                error: err.stack
+            })
+        }
+
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
     return {
         signupUser,
         loginUser,
@@ -390,6 +412,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         accountDetails,
         wishlist,
         addToWishlist,
+        updateWishlist,
         orderHistory
     }
 }

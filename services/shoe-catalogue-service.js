@@ -167,6 +167,12 @@ export default function ShoeCatalogueService(db) {
         await db.none(insertQuery, [userId, shoeId])
     }
 
+    async function removeFromWishlist(userId, shoeId) {
+        const deleteQuery = `DELETE FROM wishlist WHERE user_id = $1 AND shoe_id = $2`;
+
+        await db.none(deleteQuery, [userId, shoeId])
+    }
+
     async function getCompletedCarts(userId) {
         const selectQuery = `SELECT id FROM cart WHERE user_id = $1 AND status = 'Completed'`;
 
@@ -207,6 +213,7 @@ export default function ShoeCatalogueService(db) {
         getAccountDetails,
         getWishlist,
         addShoeToWishlist,
+        removeFromWishlist,
         getCompletedCarts,
         getOrders
     }
