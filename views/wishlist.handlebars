@@ -15,7 +15,7 @@
             </a>
         </div>
     </div>
-    <section>
+    <section class="wishlist-section">
         {{#if wishlistItems }}
         {{#each wishlistItems}}
         <div class="shoeContainer" data-shoe-id="{{this.id}}">
@@ -28,6 +28,9 @@
             </div>
             <p class="shoePrice">R{{this.price}}</p>
             <p class="shoeStock">{{this.in_stock}} in stock</p>
+            <div class="centeredBtnContainer">
+                <button class="removeFromWishlistBtn">REMOVE FROM WISHLIST</button>
+            </div>
         </div>
         {{/each}}
         {{else}}

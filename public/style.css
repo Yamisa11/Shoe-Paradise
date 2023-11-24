@@ -79,7 +79,7 @@ button.addToCartBtn {
     margin-bottom: 6px;
 }
 
-button.addToWishlistBtn {
+button.addToWishlistBtn, button.removeFromWishlistBtn {
     padding: 8px 81px 8px;
     background-color: #e0e4ec;
     color: #2C3539;
@@ -89,14 +89,18 @@ button.addToWishlistBtn {
     cursor: pointer;
 }
 
+button.removeFromWishlistBtn {
+    padding: 8px 35px 8px;
+}
+
 .addToCartBtn:hover,
-.addToWishlistBtn:hover {
+.addToWishlistBtn:hover, .removeFromWishlistBtn:hover {
     background-color: #2C3539;
     color: white;
 }
 
 .addToCartBtn:active,
-.addToWishlistBtn:active {
+.addToWishlistBtn:active, .removeFromWishlistBtn:active {
     transform: translateY(2px);
 }
 
@@ -191,7 +195,7 @@ select {
 
 .shoeBrand,
 #sizeWishlist,
-#colourWishlist {
+#colourWishlist, #sizeOrders, #colourOrders {
     color: #8d8989;
 }
 
@@ -1026,6 +1030,57 @@ main {
 .account-details-section div {
     height: 24px;
     margin-bottom: 4px;
+}
+
+.order-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 26px;
+    font-family: 'Oxygen', sans-serif;
+    /* background-color: #e0ebeb; */
+    background-color: #e3eded;
+    /* background-color: #caedde; */
+    width: 80%;
+}
+
+.order-item .cart-item {
+    margin-left: 24px;
+    background-color: #F5F5F5;
+}
+
+#order-heading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.order-total-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#order-total-heading, #order-total-amount {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#order-total-amount {
+    margin-right: 42px;
+}
+
+.order-item .cart-item-quantity p:first-of-type {
+    margin-top: 24px;
+}
+
+.order-item .cart-item-quantity p:nth-of-type(2) {
+    margin-left: 50%;
+}
+
+.wishlist-section {
+    padding-top: 0;
 }
 
 @keyframes skeleton-loading {

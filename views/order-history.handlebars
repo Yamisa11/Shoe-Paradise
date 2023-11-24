@@ -15,21 +15,45 @@
             </a>
         </div>
     </div>
-</div>
-<div>
-    {{#if orders}}
-    {{#each orders}}
-    {{#each this}}
+
     <div>
-        {{this.cart_id}}
-        <div></div>
+        {{#if orders}}
+        <div class="cart-items">
+            {{#each orders}}
+            <div class="order-item">
+                <div id="order-heading">Order: #{{this.[0].cart_id}}</div>
+                {{#each this}}
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="{{this.img_src}}" alt="">
+                    </div>
+                    <div class="cart-item-info">
+                        <p>{{this.name}}</p>
+                        <p>{{this.brand}}</p>
+                        <div class="cart-size-colour-item">
+                            <p>Size: <span id="sizeOrders">{{this.size}}</span></p>
+                            <p>Colour: <span id="colourOrders">{{this.colour}}</span></p>
+                        </div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <p>Quantity</p>
+                        <p>{{this.quantity}}</p>
+                    </div>
+                    <div class="cart-item-price">
+                        <p>R{{this.price}}</p>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="order-total-container">
+                    <div id="order-total-heading">Total</div>
+                    <div id="order-total-amount">R500</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div>No orders</div>
+        {{/if}}
     </div>
-    <div>{{this.name}}</div>
-    <div>{{this.price}}</div>
-    {{/each}}
-    {{/each}}
-    {{else}}
-    <div>No orders</div>
-    {{/if}}
 </div>
 <script src="/js/orders.js"></script>

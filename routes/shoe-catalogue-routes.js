@@ -364,12 +364,6 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
                 orders.push(order)
             }
 
-            // const sortedOrders = orders.reduce((total, order) => {
-            //     return Object.assign(total, { order: [{}]})
-            // })
-
-            console.log(orders)
-
             res.render("order-history", {
                 orders
             })

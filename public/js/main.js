@@ -166,7 +166,6 @@ function displayShoes(arr) {
 
     addToWishlistBtnElem.forEach(item => {
         item.addEventListener("click", async () => {
-            alert("click")
 
             if (localStorage.getItem("jwtToken")) {
 
