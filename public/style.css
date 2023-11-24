@@ -1082,6 +1082,16 @@ main {
 .wishlist-section {
     padding-top: 0;
 }
+.wishlist-message-centered {
+    display: flex;
+    justify-content: center;
+}
+
+#empty-wishlist-message, #no-orders-message {
+    font-size: 28px;
+    font-family: 'Oxygen', sans-serif;
+}
+
 
 @keyframes skeleton-loading {
     0% {

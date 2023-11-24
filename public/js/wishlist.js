@@ -1,4 +1,4 @@
-// history.replaceState({}, null, "/user/wishlist");
+history.replaceState({}, null, "/user/wishlist");
 
 const removeFromWishlistBtn = document.querySelectorAll(".removeFromWishlistBtn");
 
