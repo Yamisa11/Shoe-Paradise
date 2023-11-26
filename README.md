@@ -8,6 +8,14 @@ https://shoe-catalogue.onrender.com/
 
 Please note the app is using a free hosting account on Render.com which has limitations. To speed up the loading process open the site and reload it again.
 
+### Shoe Catalogue API
+
+This app makes use of an accompanying API that I also built to get a list of shoes, and do some other functions like filtering, adding a new shoe to database and updating the stock.
+
+Link to API Repository 🔗:
+
+https://github.com/Horizyn77/shoe-catalogue-api
+
 ## Table of contents
 
 1. [Overview](#overview)
