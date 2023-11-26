@@ -850,7 +850,7 @@ nav h1 a {
     display: block;
 }
 
-#error-msg {
+#login-error-msg, #signup-error-msg {
     padding-top: 10px;
     text-align: center;
     color: #EE5253;

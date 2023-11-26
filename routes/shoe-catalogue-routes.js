@@ -4,13 +4,31 @@ import jwt from 'jsonwebtoken';
 export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
     async function signupUser(req, res) {
-        const { name, surname, address, phoneNumber, email, password } = req.body;
+        const { name, surname, address, phoneNumber, email, password, confirmPassword } = req.body;
 
-        const hashedPassword = await bcrypt.hash(password, 10)
+        if (!name || !surname || !address || !phoneNumber || !email || !password) {
+            console.log(name, surname, address, phoneNumber, email, password, confirmPassword)
+            res.json({
+                status: "error",
+                error_message: "Please complete all fields"
+            })
+        } else if (password !== confirmPassword) {
+            console.log("Here")
+            res.json({
+                status: "error",
+                error_message: "Passwords do not match"
+            })
+        } else {
 
-        shoeCatalogueService.signup(name, surname, address, phoneNumber, email, hashedPassword)
+            const hashedPassword = await bcrypt.hash(password, 10)
 
-        res.redirect("/")
+            shoeCatalogueService.signup(name, surname, address, phoneNumber, email, hashedPassword)
+
+            res.json({
+                status: "success",
+                message: "User successfully signed up"
+            })
+        }
     }
 
     async function loginUser(req, res) {
@@ -364,7 +382,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
                 orders.push(order)
             }
 
-            const sortedOrders = orders.map(item => item.map(item2 => ({...item2, subtotal: item2.quantity * item2.price})))
+            const sortedOrders = orders.map(item => item.map(item2 => ({ ...item2, subtotal: item2.quantity * item2.price })))
 
             const sortedOrdersArr = [...sortedOrders]
             console.log(sortedOrders === sortedOrdersArr)
@@ -375,7 +393,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
                         grandTotal: order[0].subtotal
                     }
                 } else {
-                    return order.reduce((total, item) => ({grandTotal: total.subtotal += item.subtotal}))
+                    return order.reduce((total, item) => ({ grandTotal: total.subtotal += item.subtotal }))
                 }
             })
 
