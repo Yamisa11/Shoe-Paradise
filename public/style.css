@@ -1044,7 +1044,8 @@ main {
     /* background-color: #e0ebeb; */
     background-color: #e3eded;
     /* background-color: #caedde; */
-    width: 80%;
+    width: 824px;
+    padding-right: 24px;
 }
 
 .order-item .cart-item {
@@ -1052,7 +1053,12 @@ main {
     background-color: #F5F5F5;
 }
 
-#order-heading {
+.order-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#order-heading, #date-heading {
     font-size: 22px;
     font-weight: bold;
     margin-left: 20px;
@@ -1072,7 +1078,7 @@ main {
 }
 
 #order-total-amount {
-    margin-right: 42px;
+    margin-right: 36px;
 }
 
 .order-item .cart-item-quantity p:first-of-type {

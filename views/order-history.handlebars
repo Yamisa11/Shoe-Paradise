@@ -21,7 +21,10 @@
         <div class="cart-items">
             {{#each sortedOrders}}
             <div class="order-item">
-                <div id="order-heading">Order: #{{this.[0].cart_id}}</div>
+                <div class="order-title-container">
+                <div id="order-heading">Order: #{{this.[0].order_number}}</div>
+                <div id="date-heading">Ordered on: {{this.[0].timestamp}}</div>
+                </div>
                 {{#each this}}
                 <div class="cart-item">
                     <div class="cart-item-image">

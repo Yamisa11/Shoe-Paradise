@@ -138,11 +138,9 @@ export default function ShoeCatalogueService(db) {
     }
 
     async function createOrder(cartId, orderNumber, timestamp) {
-        const updateQuery = `UPDATE cart SET status = 'Completed' WHERE id = $1;`
-        const insertQuery = `INSERT INTO cart(order_number, timestamp) VALUES($1, $2) WHERE id = $3;`
+        const updateQuery = `UPDATE cart SET status = 'Completed', order_number = $1, timestamp = $2 WHERE id = $3;`
 
-        await db.none(updateQuery, [cartId])
-        await db.none(insertQuery, [orderNumber, timestamp, cartId])
+        await db.none(updateQuery, [orderNumber, timestamp, cartId])
     }
 
     async function getAccountDetails(email) {
