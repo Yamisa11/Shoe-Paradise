@@ -72,6 +72,8 @@ Used for setting up a server and handling routes and logic
 Used for HTML templating
 #### PostgreSQL
 Used for providing database and crud functionality
+#### Bcrypt
+Used to hash and encrypt passwords
 #### Axios
 Used for making HTTP requests from the front-end site to the back-end API and server
 #### Toastify
