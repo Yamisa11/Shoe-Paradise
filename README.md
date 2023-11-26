@@ -10,7 +10,7 @@ Please note the app is using a free hosting account on Render.com which has limi
 
 ### Shoe Catalogue API
 
-This app makes use of an accompanying API that I also built to get a list of shoes, and do some other functions like filtering, adding a new shoe to database and updating the stock.
+This app makes use of an accompanying API that I also built to get a list of shoes, and do some other functions like filtering, adding a new shoe to the database and updating a shoes stock.
 
 Link to API Repository 🔗:
 
