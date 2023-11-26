@@ -1125,3 +1125,9 @@ main {
         margin-right: 28px;
     }
 }
+
+@media (min-width: 1367px) {
+    .cart-icon {
+        margin-right: 14px;
+    }
+}

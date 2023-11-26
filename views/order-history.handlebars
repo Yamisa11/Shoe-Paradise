@@ -17,9 +17,9 @@
     </div>
 
     <div>
-        {{#if orders}}
+        {{#if sortedOrders}}
         <div class="cart-items">
-            {{#each orders}}
+            {{#each sortedOrders}}
             <div class="order-item">
                 <div id="order-heading">Order: #{{this.[0].cart_id}}</div>
                 {{#each this}}
@@ -41,7 +41,7 @@
                     </div>
                     <div class="cart-item-price">
                         <p>R{{this.price}}</p>
-                        <p>Total : R200</p>
+                        <p>Subtotal: R{{this.subtotal}}</p>
                     </div>
                 </div>
                 {{/each}}
@@ -50,6 +50,10 @@
                     <div id="order-total-amount">R500</div>
                 </div>
             </div>
+            {{/each}}
+
+            {{#each grandTotal}}
+            {{this.grandTotal}}
             {{/each}}
         </div>
         {{else}}
