@@ -24,7 +24,7 @@ https://github.com/Horizyn77/shoe-catalogue-api
 
 ## Overview 📝<a name="overview"></a>
 
-The Shoe Catalogue App is an e-commerce website that can be used to buy shoes. You start off by creating an account and logging in. You can filter from a list of shoes to buy, add shoes to cart, and checkout shoes in cart. Your purchased shoes will be added to your orders page. You can also add shoes to a wishlist and view and update your account details.
+The Shoe Catalogue App is an e-commerce website that can be used to buy shoes. You start off by creating an account and logging in. You can filter from a list of shoes to buy, add shoes to cart, and checkout shoes in cart. Your purchased shoes will be added to your orders page. You can also add shoes to a wishlist and view and update your account details. An admin can add new shoes to the database.
 
 ## Features 🌟<a name="features"></a>
 
