@@ -856,6 +856,10 @@ nav h1 a {
     color: #EE5253;
 }
 
+#signup-error-msg {
+    font-size: 16px;
+}
+
 .cart-size-colour-item {
     display: flex;
 }
