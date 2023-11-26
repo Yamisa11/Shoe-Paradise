@@ -369,7 +369,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             const sortedOrdersArr = [...sortedOrders]
             console.log(sortedOrders === sortedOrdersArr)
 
-            const grandTotal = sortedOrdersArr.map(order => {
+            const grandTotal = sortedOrders.map(order => {
                 if (order.length === 1) {
                     return {
                         grandTotal: order[0].subtotal
@@ -383,7 +383,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             console.log(sortedOrders)
 
             res.render("order-history", {
-                sortedOrders
+                sortedOrdersArr
                 // grandTotal
             })
 

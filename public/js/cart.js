@@ -135,6 +135,10 @@ async function displayCartItems(n) {
         const checkoutText = document.createElement("div");
         const checkoutImg = document.createElement("img");
         const divCheckoutImg = document.createElement("div");
+        const paymentMethods = document.createElement("div");
+        const paypalIcon = document.createElement("img")
+        const mastercardIcon = document.createElement("img")
+        const visaIcon = document.createElement("img")
 
         summaryHeading.id = "summary-heading";
         itemsSummary.className = "items-summary";
@@ -142,6 +146,7 @@ async function displayCartItems(n) {
         checkoutSummary.className = "checkout-summary";
         clearCartBtn.id = "clear-cart-btn";
         checkoutBtn.id = "checkout-btn";
+        paymentMethods.className = "payment-methods";
 
         summaryHeading.innerText = "Cart Summary";
         items.innerText = "Items";
@@ -149,6 +154,9 @@ async function displayCartItems(n) {
         checkoutText.innerText = "Checkout";
         clearCartImg.src = "/images/icons/delete-icon.png";
         checkoutImg.src = "/images/icons/checkout-icon.png";
+        paypalIcon.src = "/images/icons/paypal.png"
+        mastercardIcon.src = "/images/icons/mastercard.png"
+        visaIcon.src = "/images/icons/visa.png"
 
         itemsSummary.append(items, divItems);
         totalSummary.append(totalText, divTotal);
@@ -159,7 +167,9 @@ async function displayCartItems(n) {
 
         checkoutSummary.append(clearCartBtn, checkoutBtn);
 
-        cartSummary.append(summaryHeading, hr, itemsSummary, hr, totalSummary, checkoutSummary);
+        paymentMethods.append(paypalIcon, mastercardIcon, visaIcon)
+
+        cartSummary.append(summaryHeading, hr, itemsSummary, hr, totalSummary, checkoutSummary, paymentMethods);
         cartSummary.style.display = "block";
 
         cartItemsContainer.append(cartSummary);
