@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import random from 'random-string-alphanumeric-generator';
 
 export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
@@ -292,8 +293,19 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         try {
             const userId = await shoeCatalogueService.getUserId(email);
             const cartId = await shoeCatalogueService.getCartId(userId);
-
-            await shoeCatalogueService.updateCartStatus(cartId);
+            
+            const orderNumber = random.randomNumber(6);
+            
+            const timestamp = new Date();
+            
+            const day = timestamp.getDate();
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const month = months[timestamp.getMonth()];
+            const year = timestamp.getFullYear();
+            
+            const timestampFormatted = `${day} ${month} ${year}`;
+            
+            await shoeCatalogueService.createOrder(cartId, orderNumber, timestampFormatted);
 
             res.json({
                 status: "success"
@@ -384,24 +396,24 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
             const sortedOrders = orders.map(item => item.map(item2 => ({ ...item2, subtotal: item2.quantity * item2.price })))
 
-            const sortedOrdersArr = [...sortedOrders]
-            console.log(sortedOrders === sortedOrdersArr)
+            // const sortedOrdersArr = [...sortedOrders]
+            // console.log(sortedOrders === sortedOrdersArr)
 
-            const grandTotal = sortedOrders.map(order => {
-                if (order.length === 1) {
-                    return {
-                        grandTotal: order[0].subtotal
-                    }
-                } else {
-                    return order.reduce((total, item) => ({ grandTotal: total.subtotal += item.subtotal }))
-                }
-            })
+            // const grandTotal = sortedOrders.map(order => {
+            //     if (order.length === 1) {
+            //         return {
+            //             grandTotal: order[0].subtotal
+            //         }
+            //     } else {
+            //         return order.reduce((total, item) => ({ grandTotal: total.subtotal += item.subtotal }))
+            //     }
+            // })
 
 
-            console.log(sortedOrders)
+            // console.log(sortedOrders)
 
             res.render("order-history", {
-                sortedOrdersArr
+                sortedOrders
                 // grandTotal
             })
 

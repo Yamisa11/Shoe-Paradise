@@ -17,9 +17,9 @@
     </div>
 
     <div>
-        {{#if sortedOrdersArr}}
+        {{#if sortedOrders}}
         <div class="cart-items">
-            {{#each sortedOrdersArr}}
+            {{#each sortedOrders}}
             <div class="order-item">
                 <div id="order-heading">Order: #{{this.[0].cart_id}}</div>
                 {{#each this}}
