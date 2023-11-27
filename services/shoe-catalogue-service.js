@@ -191,6 +191,25 @@ export default function ShoeCatalogueService(db) {
 
         return result;
     }
+    async function updateAccountDetails(userId, name, surname, address, phoneNumber) {
+        if (name) {
+            const updateQuery = `UPDATE users SET name = $1 WHERE id = $2`
+
+            await db.none(updateQuery, [name, userId])
+        } else if (surname) {
+            const updateQuery = `UPDATE users SET surname = $1 WHERE id = $2`
+
+            await db.none(updateQuery, [surname, userId])
+        } else if (address) {
+            const updateQuery = `UPDATE users SET address = $1 WHERE id = $2`
+
+            await db.none(updateQuery, [address, userId])
+        } else if (phoneNumber) {
+            const updateQuery = `UPDATE users SET phone_number = $1 WHERE id = $2`
+
+            await db.none(updateQuery, [phoneNumber, userId])
+        }
+    }
 
     return {
         signup,
@@ -215,6 +234,7 @@ export default function ShoeCatalogueService(db) {
         addShoeToWishlist,
         removeFromWishlist,
         getCompletedCarts,
-        getOrders
+        getOrders,
+        updateAccountDetails
     }
 }

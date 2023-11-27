@@ -66,6 +66,8 @@ app.get("/cart/checkout/success", shoeCatalogueRoutes.checkoutSuccess)
 
 app.get("/user/account", shoeCatalogueRoutes.accountDetails)
 
+app.post("/user/account/update", shoeCatalogueRoutes.updateAccount)
+
 app.get("/user/wishlist", shoeCatalogueRoutes.wishlist)
 
 app.post("/user/wishlist", shoeCatalogueRoutes.addToWishlist)

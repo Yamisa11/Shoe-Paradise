@@ -293,18 +293,18 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         try {
             const userId = await shoeCatalogueService.getUserId(email);
             const cartId = await shoeCatalogueService.getCartId(userId);
-            
+
             const orderNumber = random.randomNumber(6);
-            
+
             const timestamp = new Date();
-            
+
             const day = timestamp.getDate();
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             const month = months[timestamp.getMonth()];
             const year = timestamp.getFullYear();
-            
+
             const timestampFormatted = `${day} ${month} ${year}`;
-            
+
             await shoeCatalogueService.createOrder(cartId, orderNumber, timestampFormatted);
 
             res.json({
@@ -447,6 +447,26 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
             })
         }
     }
+
+    async function updateAccount(req, res) {
+        const { name, surname, address, phoneNumber, email } = req.body;
+
+        try {
+            const userId = await shoeCatalogueService.getUserId(email);
+            await shoeCatalogueService.updateAccountDetails(userId, name, surname, address, phoneNumber);
+
+            res.json({
+                status: "success",
+                message: "Account details successfully updated"
+            })
+        }
+        catch (err) {
+            res.json({
+                status: "error",
+                error: err.stack
+            })
+        }
+    }
     return {
         signupUser,
         loginUser,
@@ -459,6 +479,7 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         updateCartCheckout,
         checkoutSuccess,
         accountDetails,
+        updateAccount,
         wishlist,
         addToWishlist,
         updateWishlist,

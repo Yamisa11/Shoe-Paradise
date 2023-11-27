@@ -1115,6 +1115,21 @@ main {
     margin-right: 8px;
 }
 
+#account-update-message {
+    color: #00AD83;
+    font-size: 22px;
+    margin-top: 14px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+#account-update-notice {
+    font-size: 14px !important;
+    margin-top: 6px;
+}
+
+.hidden {
+    display: none;
+}
 
 @keyframes skeleton-loading {
     0% {

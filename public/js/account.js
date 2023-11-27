@@ -7,60 +7,131 @@ const nameField = document.querySelector("#name-field");
 const surnameField = document.querySelector("#surname-field");
 const phoneNumberField = document.querySelector("#phone-number-field");
 const addressField = document.querySelector("#address-field");
+const email = JSON.parse(localStorage.getItem("user"))[1];
 
-editName.addEventListener("click", () => {
-    if (editName.innerText === "edit") {
+const accountUpdateMessage = document.querySelector("#account-update-message");
+
+editName.addEventListener("click", async () => {
+    if (editName.innerText === "edit" && editSurname.innerText !== "save" && editPhoneNumber.innerText !== "save" && editAddress.innerText !== "save") {
         editName.innerText = "save"
         nameField.removeAttribute("disabled")
         nameField.focus()
         nameField.classList.add("edit-state");
     } else {
+        try {
+            const response = await axios.post("/user/account/update", {
+                name: nameField.value,
+                surname: null,
+                email: email,
+                address: null,
+                phoneNumber: null
+            })
+
+            if (response.data.status === "success") {
+                accountUpdateMessage.classList.remove("hidden")
+            }
+        }
+
+        catch (err) {
+            console.log(err)
+        }
         nameField.blur()
         editName.innerText = "edit";
         nameField.setAttribute("disabled", "");
-        nameField.innerText = nameField.innerText;
+        nameField.value = nameField.value;
         nameField.classList.remove("edit-state");
     }
 })
-editSurname.addEventListener("click", () => {
-    if (editSurname.innerText === "edit") {
+editSurname.addEventListener("click", async () => {
+    if (editSurname.innerText === "edit" && editName.innerText !== "save" && editPhoneNumber.innerText !== "save" && editAddress.innerText !== "save") {
         editSurname.innerText = "save"
         surnameField.removeAttribute("disabled")
         surnameField.focus()
         surnameField.classList.add("edit-state");
     } else {
+        try {
+            const response = await axios.post("/user/account/update", {
+                name: null,
+                surname: surnameField.value,
+                email: email,
+                address: null,
+                phoneNumber: null
+            })
+
+            if (response.data.status === "success") {
+                accountUpdateMessage.classList.remove("hidden")
+            }
+        }
+
+        catch (err) {
+            console.log(err)
+        }
         surnameField.blur()
         editSurname.innerText = "edit";
         surnameField.setAttribute("disabled", "");
-        surnameField.innerText = surnameField.innerText;
+        surnameField.value = surnameField.value;
         surnameField.classList.remove("edit-state");
     }
 })
-editPhoneNumber.addEventListener("click", () => {
-    if (editPhoneNumber.innerText === "edit") {
+editPhoneNumber.addEventListener("click", async () => {
+    if (editPhoneNumber.innerText === "edit" && editName.innerText !== "save" && editSurname.innerText !== "save" && editAddress.innerText !== "save") {
         editPhoneNumber.innerText = "save"
         phoneNumberField.removeAttribute("disabled")
         phoneNumberField.focus()
         phoneNumberField.classList.add("edit-state");
     } else {
+        try {
+            const response = await axios.post("/user/account/update", {
+                name: null,
+                surname: null,
+                email: email,
+                address: null,
+                phoneNumber: phoneNumberField.value
+            })
+
+            if (response.data.status === "success") {
+                accountUpdateMessage.classList.remove("hidden")
+            }
+        }
+
+        catch (err) {
+            console.log(err)
+        }
         phoneNumberField.blur()
         editPhoneNumber.innerText = "edit";
         phoneNumberField.setAttribute("disabled", "");
-        phoneNumberField.innerText = phoneNumberField.innerText;
+        phoneNumberField.value = phoneNumberField.value;
         phoneNumberField.classList.remove("edit-state");
     }
 })
-editAddress.addEventListener("click", () => {
-    if (editAddress.innerText === "edit") {
+editAddress.addEventListener("click", async () => {
+    if (editAddress.innerText === "edit" && editName.innerText !== "save" && editSurname.innerText !== "save" && editPhoneNumber.innerText !== "save") {
         editAddress.innerText = "save"
         addressField.removeAttribute("disabled")
         addressField.focus()
         addressField.classList.add("edit-state");
     } else {
+        try {
+            const response = await axios.post("/user/account/update", {
+                name: null,
+                surname: null,
+                email: email,
+                address: addressField.value,
+                phoneNumber: null
+            })
+
+            if (response.data.status === "success") {
+                accountUpdateMessage.classList.remove("hidden")
+            }
+        }
+
+        catch (err) {
+            console.log(err)
+        }
         addressField.blur()
         editAddress.innerText = "edit";
         addressField.setAttribute("disabled", "");
-        addressField.innerText = addressField.innerText;
+        addressField.value = addressField.value;
         addressField.classList.remove("edit-state");
     }
 })
