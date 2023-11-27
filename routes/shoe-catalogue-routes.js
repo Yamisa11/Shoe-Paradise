@@ -8,13 +8,11 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
         const { name, surname, address, phoneNumber, email, password, confirmPassword } = req.body;
 
         if (!name || !surname || !address || !phoneNumber || !email || !password) {
-            console.log(name, surname, address, phoneNumber, email, password, confirmPassword)
             res.json({
                 status: "error",
                 error_message: "Please complete all fields"
             })
         } else if (password !== confirmPassword) {
-            console.log("Here")
             res.json({
                 status: "error",
                 error_message: "Passwords do not match"

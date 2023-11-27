@@ -50,39 +50,39 @@ closeSignupForm.addEventListener("click", () => {
 })
 
 loginForm.addEventListener("submit", async (event) => {
-    
+
     event.preventDefault();
 
-    try {        
+    try {
         const response = await axios.post("http://localhost:3000/login", {
-            email:  loginEmailInput.value,
+            email: loginEmailInput.value,
             password: loginPasswordInput.value
         })
 
         if (response.data.status === "error") {
             loginErrorMsg.innerText = response.data.error_message;
-        } else if(response.data.status = "success"){
+        } else if (response.data.status = "success") {
             const token = response.data.token;
             const user = [response.data.username, response.data.email]
             localStorage.setItem("jwtToken", token)
             localStorage.setItem("user", JSON.stringify(user))
             window.location.href = "user";
         }
-        
-    } catch(error) {
+
+    } catch (error) {
         console.log(error)
     }
 })
 
 signupForm.addEventListener("submit", async (event) => {
-    
+
     event.preventDefault();
 
-    try {        
+    try {
         const response = await axios.post("http://localhost:3000/signup", {
-            name:  signupNameInput.value,
+            name: signupNameInput.value,
             surname: signupSurnameInput.value,
-            phoneNumber:  signupPhoneNumberInput.value,
+            phoneNumber: signupPhoneNumberInput.value,
             address: signupAddressInput.value,
             email: signupEmailInput.value,
             password: signupPasswordInput.value,
@@ -91,11 +91,11 @@ signupForm.addEventListener("submit", async (event) => {
 
         if (response.data.status === "error") {
             signupErrorMsg.innerText = response.data.error_message;
-        } else if(response.data.status = "success"){
-            window.location.href = "/";
+        } else if (response.data.status = "success") {
+            window.location.href = "/signup/success";
         }
-        
-    } catch(error) {
+
+    } catch (error) {
         console.log(error)
     }
 })

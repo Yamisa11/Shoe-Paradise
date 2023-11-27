@@ -46,6 +46,10 @@ app.post("/login", shoeCatalogueRoutes.loginUser)
 
 app.post("/signup", shoeCatalogueRoutes.signupUser)
 
+app.get("/signup/success", (req, res) => {
+    res.render("signup-success")
+})
+
 app.get("/cart", (req, res) => {
     res.render("cart")
 })
