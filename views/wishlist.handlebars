@@ -15,8 +15,8 @@
             </a>
         </div>
     </div>
+    {{#if wishlistItems }}
     <section class="wishlist-section">
-        {{#if wishlistItems }}
         {{#each wishlistItems}}
         <div class="shoeContainer" data-shoe-id="{{this.id}}">
             <img src="{{this.img_src}}" alt="" class="shoeImage">
@@ -33,12 +33,12 @@
             </div>
         </div>
         {{/each}}
-        {{else}}
-        <div class="wishlist-message-centered">
-            <div id="empty-wishlist-message">Your wishlist is empty</div>
-        </div>
-        {{/if}}
     </section>
+    {{else}}
+    <div class="wishlist-message-centered">
+        <div id="empty-wishlist-message">Your wishlist is empty</div>
+    </div>
+    {{/if}}
 </div>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 <script src="/js/wishlist.js"></script>

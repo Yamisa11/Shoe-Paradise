@@ -991,6 +991,20 @@ main {
     margin-bottom: 20px;
 }
 
+.checkout-success-container div:nth-of-type(3) a{
+    color: #418dff;
+    text-decoration: none;
+}
+
+.checkout-success-container div:nth-of-type(3) a:hover {
+    text-decoration: underline;
+}
+
+.checkout-success-container div:nth-of-type(3) {
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
 .account-details-section {
     font-size: 20px;
     font-family: 'Oxygen', sans-serif;
@@ -1093,6 +1107,11 @@ main {
     padding-top: 0;
 }
 .wishlist-message-centered {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.orders-message-centered {
     display: flex;
     justify-content: center;
 }

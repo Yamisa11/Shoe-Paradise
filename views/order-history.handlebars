@@ -22,8 +22,8 @@
             {{#each sortedOrders}}
             <div class="order-item">
                 <div class="order-title-container">
-                <div id="order-heading">Order: #{{this.[0].order_number}}</div>
-                <div id="date-heading">Ordered on: {{this.[0].timestamp}}</div>
+                    <div id="order-heading">Order: #{{this.[0].order_number}}</div>
+                    <div id="date-heading">Ordered on: {{this.[0].timestamp}}</div>
                 </div>
                 {{#each this}}
                 <div class="cart-item">
@@ -60,7 +60,9 @@
             {{/each}}
         </div>
         {{else}}
-        <div id="no-orders-message">You have not placed any orders</div>
+        <div class="orders-message-centered">
+            <div id="no-orders-message">You have not placed any orders</div>
+        </div>
         {{/if}}
     </div>
 </div>

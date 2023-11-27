@@ -1,2 +1,1 @@
-// history.replaceState({}, null, "/user/orders");
-
+history.replaceState({}, null, "/user/orders");
