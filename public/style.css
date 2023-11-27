@@ -1166,6 +1166,10 @@ main {
     text-decoration: underline;
 }
 
+.add-shoe-form input:focus {
+    margin: 7px 0;
+}
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
@@ -1202,5 +1206,9 @@ main {
 @media (min-width: 1367px) {
     .cart-icon {
         margin-right: 14px;
+    }
+
+    .add-shoe-form {
+        padding-bottom: 60px;
     }
 }

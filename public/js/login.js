@@ -24,7 +24,7 @@ function showLoginForm() {
     overlay.classList.remove("hidden");
     loginFormContainer.classList.remove("hidden");
     document.body.style.overflow = "hidden";
-    errorMsg.innerText = "";
+    loginErrorMsg.innerText = "";
     loginEmailInput.value = "";
     loginPasswordInput.value = "";
 }
