@@ -1219,6 +1219,34 @@ main {
     margin-bottom: 0;
 }
 
+.messageFadeOut {
+    animation: fadeOut ease 1s;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.messageFadeIn {
+    animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 
 @keyframes skeleton-loading {
     0% {

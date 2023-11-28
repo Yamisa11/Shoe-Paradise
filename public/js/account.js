@@ -17,7 +17,7 @@ editName.addEventListener("click", async () => {
         nameField.removeAttribute("disabled")
         nameField.focus()
         nameField.classList.add("edit-state");
-    } else if (editName.innerText === "save" && editSurname.innerText !== "save" && editPhoneNumber.innerText !== "save" && editAddress.innerText !== "save"){
+    } else if (editName.innerText === "save" && editSurname.innerText !== "save" && editPhoneNumber.innerText !== "save" && editAddress.innerText !== "save") {
         try {
             const response = await axios.post("/user/account/update", {
                 name: nameField.value,
@@ -28,8 +28,20 @@ editName.addEventListener("click", async () => {
             })
 
             if (response.data.status === "success") {
+                accountUpdateMessage.classList.add("messageFadeIn")
                 accountUpdateMessage.classList.remove("hidden")
+                setTimeout(() => {
+                    accountUpdateMessage.classList.remove("messageFadeIn");
+                    accountUpdateMessage.classList.add("messageFadeOut")
+                    accountUpdateMessage.addEventListener("animationend", (event) => {
+                        if (event.animationName === "fadeOut") {
+                            accountUpdateMessage.classList.add("hidden");
+                            accountUpdateMessage.classList.remove("messageFadeOut")
+                        }
+                    })
+                }, 5000)
             }
+
         }
 
         catch (err) {
@@ -59,7 +71,18 @@ editSurname.addEventListener("click", async () => {
             })
 
             if (response.data.status === "success") {
+                accountUpdateMessage.classList.add("messageFadeIn")
                 accountUpdateMessage.classList.remove("hidden")
+                setTimeout(() => {
+                    accountUpdateMessage.classList.remove("messageFadeIn");
+                    accountUpdateMessage.classList.add("messageFadeOut")
+                    accountUpdateMessage.addEventListener("animationend", (event) => {
+                        if (event.animationName === "fadeOut") {
+                            accountUpdateMessage.classList.add("hidden");
+                            accountUpdateMessage.classList.remove("messageFadeOut")
+                        }
+                    })
+                }, 5000)
             }
         }
 
@@ -79,7 +102,7 @@ editPhoneNumber.addEventListener("click", async () => {
         phoneNumberField.removeAttribute("disabled")
         phoneNumberField.focus()
         phoneNumberField.classList.add("edit-state");
-    } else if (editPhoneNumber.innerText === "save" && editName.innerText !== "save" && editSurname.innerText !== "save" && editAddress.innerText !== "save"){
+    } else if (editPhoneNumber.innerText === "save" && editName.innerText !== "save" && editSurname.innerText !== "save" && editAddress.innerText !== "save") {
         try {
             const response = await axios.post("/user/account/update", {
                 name: null,
@@ -90,7 +113,18 @@ editPhoneNumber.addEventListener("click", async () => {
             })
 
             if (response.data.status === "success") {
+                accountUpdateMessage.classList.add("messageFadeIn")
                 accountUpdateMessage.classList.remove("hidden")
+                setTimeout(() => {
+                    accountUpdateMessage.classList.remove("messageFadeIn");
+                    accountUpdateMessage.classList.add("messageFadeOut")
+                    accountUpdateMessage.addEventListener("animationend", (event) => {
+                        if (event.animationName === "fadeOut") {
+                            accountUpdateMessage.classList.add("hidden");
+                            accountUpdateMessage.classList.remove("messageFadeOut")
+                        }
+                    })
+                }, 5000)
             }
         }
 
@@ -121,7 +155,18 @@ editAddress.addEventListener("click", async () => {
             })
 
             if (response.data.status === "success") {
+                accountUpdateMessage.classList.add("messageFadeIn")
                 accountUpdateMessage.classList.remove("hidden")
+                setTimeout(() => {
+                    accountUpdateMessage.classList.remove("messageFadeIn");
+                    accountUpdateMessage.classList.add("messageFadeOut")
+                    accountUpdateMessage.addEventListener("animationend", (event) => {
+                        if (event.animationName === "fadeOut") {
+                            accountUpdateMessage.classList.add("hidden");
+                            accountUpdateMessage.classList.remove("messageFadeOut")
+                        }
+                    })
+                }, 5000)
             }
         }
 

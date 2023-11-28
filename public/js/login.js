@@ -61,6 +61,18 @@ loginForm.addEventListener("submit", async (event) => {
 
         if (response.data.status === "error") {
             loginErrorMsg.innerText = response.data.error_message;
+            loginErrorMsg.classList.add("messageFadeIn")
+            loginErrorMsg.classList.remove("hidden")
+            setTimeout(() => {
+                loginErrorMsg.classList.remove("messageFadeIn");
+                loginErrorMsg.classList.add("messageFadeOut")
+                loginErrorMsg.addEventListener("animationend", (event) => {
+                    if (event.animationName === "fadeOut") {
+                        loginErrorMsg.classList.add("hidden");
+                        loginErrorMsg.classList.remove("messageFadeOut")
+                    }
+                })
+            }, 4500)
         } else if (response.data.status = "success") {
             const token = response.data.token;
             const user = [response.data.username, response.data.email]
@@ -91,6 +103,18 @@ signupForm.addEventListener("submit", async (event) => {
 
         if (response.data.status === "error") {
             signupErrorMsg.innerText = response.data.error_message;
+            signupErrorMsg.classList.add("messageFadeIn")
+            signupErrorMsg.classList.remove("hidden")
+            setTimeout(() => {
+                signupErrorMsg.classList.remove("messageFadeIn");
+                signupErrorMsg.classList.add("messageFadeOut")
+                signupErrorMsg.addEventListener("animationend", (event) => {
+                    if (event.animationName === "fadeOut") {
+                        signupErrorMsg.classList.add("hidden");
+                        signupErrorMsg.classList.remove("messageFadeOut")
+                    }
+                })
+            }, 4500)
         } else if (response.data.status = "success") {
             window.location.href = "/signup/success";
         }
