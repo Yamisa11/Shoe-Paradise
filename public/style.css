@@ -1031,6 +1031,10 @@ main {
     outline: none;
 }
 
+.account-details-section {
+    font-size: 20px;
+}
+
 .account-details-section label {
     width: 140px;
     display: inline-block;
@@ -1047,7 +1051,7 @@ main {
 
 .account-details-section div {
     height: 24px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .order-item {
@@ -1106,12 +1110,12 @@ main {
 .wishlist-section {
     padding-top: 0;
 }
-.wishlist-message-centered {
-    display: flex !important;
-    justify-content: center !important;
+.wishlist-message-centered div{
+    display: flex;
+    justify-content: center;
 }
 
-.orders-message-centered {
+.orders-message-centered div{
     display: flex;
     justify-content: center;
 }
@@ -1197,6 +1201,25 @@ main {
     font-weight: normal;
 }
 
+.orders-message-centered img {
+    width: 600px;
+    height: 600px;
+}
+
+.wishlist-message-centered img {
+    width: 600px;
+    height: 600px;
+}
+
+.wishlist-message-centered div:first-of-type {
+    margin-bottom: 0;
+}
+
+.orders-message-centered div:first-of-type {
+    margin-bottom: 0;
+}
+
+
 @keyframes skeleton-loading {
     0% {
         background-color: darkgrey;
@@ -1237,5 +1260,10 @@ main {
 
     .add-shoe-form {
         padding-bottom: 60px;
+    }
+
+    .empty-cart-img img {
+        width: 600px;
+        height: 500px;
     }
 }

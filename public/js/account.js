@@ -17,7 +17,7 @@ editName.addEventListener("click", async () => {
         nameField.removeAttribute("disabled")
         nameField.focus()
         nameField.classList.add("edit-state");
-    } else {
+    } else if (editName.innerText === "save" && editSurname.innerText !== "save" && editPhoneNumber.innerText !== "save" && editAddress.innerText !== "save"){
         try {
             const response = await axios.post("/user/account/update", {
                 name: nameField.value,
@@ -48,7 +48,7 @@ editSurname.addEventListener("click", async () => {
         surnameField.removeAttribute("disabled")
         surnameField.focus()
         surnameField.classList.add("edit-state");
-    } else {
+    } else if (editSurname.innerText === "save" && editName.innerText !== "save" && editPhoneNumber.innerText !== "save" && editAddress.innerText !== "save") {
         try {
             const response = await axios.post("/user/account/update", {
                 name: null,
@@ -79,7 +79,7 @@ editPhoneNumber.addEventListener("click", async () => {
         phoneNumberField.removeAttribute("disabled")
         phoneNumberField.focus()
         phoneNumberField.classList.add("edit-state");
-    } else {
+    } else if (editPhoneNumber.innerText === "save" && editName.innerText !== "save" && editSurname.innerText !== "save" && editAddress.innerText !== "save"){
         try {
             const response = await axios.post("/user/account/update", {
                 name: null,
@@ -110,7 +110,7 @@ editAddress.addEventListener("click", async () => {
         addressField.removeAttribute("disabled")
         addressField.focus()
         addressField.classList.add("edit-state");
-    } else {
+    } else if (editAddress.innerText === "save" && editName.innerText !== "save" && editSurname.innerText !== "save" && editPhoneNumber.innerText !== "save") {
         try {
             const response = await axios.post("/user/account/update", {
                 name: null,
