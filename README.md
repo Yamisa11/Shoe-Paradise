@@ -74,6 +74,8 @@ Used for HTML templating
 Used for providing database and crud functionality
 #### Bcrypt
 Used to hash and encrypt passwords
+#### JWT
+Used to create a secure token to authenticate users
 #### Axios
 Used for making HTTP requests from the front-end site to the back-end API and server
 #### Toastify
