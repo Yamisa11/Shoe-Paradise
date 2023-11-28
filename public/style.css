@@ -1092,7 +1092,7 @@ main {
 }
 
 #order-total-amount {
-    margin-right: 36px;
+    margin-right: 20px;
 }
 
 .order-item .cart-item-quantity p:first-of-type {
@@ -1187,6 +1187,14 @@ main {
 
 .add-shoe-form input:focus {
     margin: 7px 0;
+}
+
+.order-item .cart-item-price  {
+    font-size: 22px;
+}
+
+.order-item .cart-item-price p {
+    font-weight: normal;
 }
 
 @keyframes skeleton-loading {

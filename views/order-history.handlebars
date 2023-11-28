@@ -15,7 +15,6 @@
             </a>
         </div>
     </div>
-
     <div>
         {{#if sortedOrders}}
         <div class="cart-items">
@@ -48,15 +47,13 @@
                     </div>
                 </div>
                 {{/each}}
+                {{#with (lookup ../grandTotalArr @index)}}
                 <div class="order-total-container">
                     <div id="order-total-heading">Total</div>
-                    <div id="order-total-amount">R500</div>
+                    <div id="order-total-amount">R{{grandtotal}}</div>
                 </div>
+                {{/with}}
             </div>
-            {{/each}}
-
-            {{#each grandTotal}}
-            {{this.grandTotal}}
             {{/each}}
         </div>
         {{else}}

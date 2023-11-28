@@ -394,25 +394,20 @@ export default function ShoeCatalogueRoutes(shoeCatalogueService) {
 
             const sortedOrders = orders.map(item => item.map(item2 => ({ ...item2, subtotal: item2.quantity * item2.price })))
 
-            // const sortedOrdersArr = [...sortedOrders]
-            // console.log(sortedOrders === sortedOrdersArr)
+            const grandTotalArr = []
+            let total = 0;
 
-            // const grandTotal = sortedOrders.map(order => {
-            //     if (order.length === 1) {
-            //         return {
-            //             grandTotal: order[0].subtotal
-            //         }
-            //     } else {
-            //         return order.reduce((total, item) => ({ grandTotal: total.subtotal += item.subtotal }))
-            //     }
-            // })
-
-
-            // console.log(sortedOrders)
+            sortedOrders.forEach(order => {
+                order.forEach(item => {
+                    total += item.subtotal;
+                })
+                grandTotalArr.push({ grandtotal: total })
+                total = 0;
+            })
 
             res.render("order-history", {
-                sortedOrders
-                // grandTotal
+                sortedOrders,
+                grandTotalArr
             })
 
         }
