@@ -179,7 +179,7 @@ async function displayCartItems(n) {
         const email = JSON.parse(localStorage.getItem("user"))[1];
 
         try {
-            const res = await axios.post("http://localhost:3000/cart/total", {
+            const res = await axios.post("/cart/total", {
                 email
             })
 
@@ -204,7 +204,7 @@ async function displayCartItems(n) {
                 const shoeId = item.closest(".cart-item").dataset.shoeId;
 
                 try {
-                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=increase`, {
+                    const response = await axios.post(`/cart/update/${shoeId}?type=increase`, {
                         email
                     })
 
@@ -212,7 +212,7 @@ async function displayCartItems(n) {
 
                     item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
 
-                    const res = await axios.post("http://localhost:3000/cart/total", {
+                    const res = await axios.post("/cart/total", {
                         email
                     })
 
@@ -235,7 +235,7 @@ async function displayCartItems(n) {
                 const shoeId = item.closest(".cart-item").dataset.shoeId;
 
                 try {
-                    const response = await axios.post(`http://localhost:3000/cart/update/${shoeId}?type=decrease`, {
+                    const response = await axios.post(`/cart/update/${shoeId}?type=decrease`, {
                         email
                     })
 
@@ -243,7 +243,7 @@ async function displayCartItems(n) {
 
                     item.closest(".cart-item-quantity").nextElementSibling.firstElementChild.innerText = `R${response.data.total}`;
 
-                    const res = await axios.post("http://localhost:3000/cart/total", {
+                    const res = await axios.post("/cart/total", {
                         email
                     })
 
@@ -319,7 +319,7 @@ async function displayCartItems(n) {
             const email = JSON.parse(localStorage.getItem("user"))[1];
 
             try {
-                const cartItems = await axios.post("http://localhost:3000/cart", {
+                const cartItems = await axios.post("/cart", {
                     email
                 })
 
@@ -329,11 +329,11 @@ async function displayCartItems(n) {
                     })
                 }
 
-                await axios.post("http://localhost:3000/cart/checkout", {
+                await axios.post("/cart/checkout", {
                     email
                 })
 
-                window.location.href = "http://localhost:3000/cart/checkout/success"
+                window.location.href = "/cart/checkout/success"
 
             }
 

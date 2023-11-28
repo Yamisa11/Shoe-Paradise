@@ -1,17 +1,4 @@
 function ShoeCatalogue() {
-
-    // function addToCart(shoeName) {
-    //     shoes.forEach(item => {
-
-    //         if (shoeName === item.name) {
-    //             if (item.in_stock > 0) {
-    //                 item.in_stock -= 1;
-    //             }
-    //         }
-
-    //     })
-    // }
-
     async function filterShoes(brand, colour, size) {
 
         const brandSelection = brand === "default";
@@ -47,7 +34,6 @@ function ShoeCatalogue() {
     }
 
     return {
-        // addToCart,
         filterShoes
     }
 }
