@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400&display=swap');
 
 @font-face {
-    font-family: "Bodoni";
-    src: url(fonts/BodoniflfRoman-vmAD.ttf)
-}
-
-@font-face {
     font-family: "AudreyNormal";
     src: url(fonts/Audrey-Normal.otf)
 }
@@ -1221,6 +1216,14 @@ main {
 
 .messageFadeOut {
     animation: fadeOut ease 1s;
+}
+
+.order-item .cart-item-info > p:first-of-type, .order-item .cart-item-quantity p:first-of-type {
+    font-weight: bold;
+}
+
+.order-item .cart-item-info .cart-size-colour-item p {
+    color: black;
 }
 
 @keyframes fadeOut {
