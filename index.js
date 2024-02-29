@@ -29,7 +29,8 @@ const shoeCatalogueService = ShoeCatalogueService(db);
 const shoeCatalogueRoutes = ShoeCatalogueRoutes(shoeCatalogueService);
 
 app.get("/", async (req, res) => {
-    let theRes = await shoeCatalogueService.getAll()
+    let theRes = await shoeCatalogueService.getAll
+    console.log(theRes)
     res.render("index")
 })
 
