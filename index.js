@@ -28,7 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 const shoeCatalogueService = ShoeCatalogueService(db);
 const shoeCatalogueRoutes = ShoeCatalogueRoutes(shoeCatalogueService);
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+    let theRes = await shoeCatalogueService.getAll()
     res.render("index")
 })
 
