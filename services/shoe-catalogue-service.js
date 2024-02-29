@@ -211,7 +211,13 @@ export default function ShoeCatalogueService(db) {
         }
     }
 
+    async function getAll(){
+        var results = await db.any('SELECT * FROM users')
+        return results
+    }
+
     return {
+        getAll,
         signup,
         getPasswordHash,
         userCheck,
